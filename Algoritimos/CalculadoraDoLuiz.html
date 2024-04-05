@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULADORA</title>
+</head>
+
+<body>
+    Digite o número de colaboradores:
+    <input id="input_colaboradores"><br>
+    Digite o número de faltas/atrasos (em média):
+    <input id="input_numero_faltas"><br>
+    Digite o número de dias trabalhados:
+    <input id="input_dias_trabalhados"><br>
+    Digite um salário base:
+    <input id="input_salario_base"> <br>
+    Lucros por ano (3 digitos):
+    <input id="input_lucros_ano"><br>
+    <!-- Digite o valor dos benefícios(em média):
+    <input id="input_valor_benefícios"><br>
+    Digite o valor dos impostos sobre a folha de pagamento:
+    <input id="input_valor_impostos"><br> -->
+    <button onclick="taxaAbs()">
+        Calcular taxa
+    </button>
+    <div id="div_calculadora">
+
+    </div>
+</body>
+
+</html>
+<script>
+    function taxaAbs() {
+        var colab = Number(input_colaboradores.value)
+        var faltas = Number(input_numero_faltas.value)
+        var dias = Number(input_dias_trabalhados.value)
+        var salario = Number(input_salario_base.value)
+        var lucros = Number(input_lucros_ano.value)
+        var taxa = (colab * faltas) / (colab * dias)
+        var porcentagem = taxa * 100
+
+        if (lucros > 5) {
+            var gastos = salario * 0.69
+            var base = gastos + salario
+            div_calculadora.innerHTML = `Sua taxa de absenteísmo é de:<p style="color:red"> ${porcentagem}%<p>
+            Com base na faixa de lucros <p style="color:green">R$${lucros} milhões<p> ao ano a porcentagem de gastos por funcionário é de:
+            69%.<br>
+            considerando o salário de ${salario} e a porcentagem de 69%<br>
+            Temos em média: ${base} de gastos ou seja <p style="color: red"><i>R$${gastos}<i><p> em cima do salário.<br>
+            Com nosso sistema conseguimos reduizir essa taxa pela metade ou seja: <p style="color:blue">R$${gastos/2}<p>
+            `
+        } else{
+            var gastos = salario * 0.60
+            var base = gastos + salario
+            div_calculadora.innerHTML = `Sua taxa de absenteísmo é de:<p style="color:red"> ${porcentagem}%<p>
+            Com base na faixa de lucros <p style="color:green">R$${lucros} milhões<p> ao ano a porcentagem de gastos por funcionário é de:
+            40%.<br>
+            considerando o salário de ${salario} e a porcentagem de 40%<br>
+            Temos em média: ${base} de gastos ou seja <p style="color: red"><i>R$${gastos}<i><p> em cima do salário.<br>
+            Com nosso sistema conseguimos reduizir essa taxa pela metade ou seja: <p style="color:blue">R$${gastos/2}<p>
+            ` 
+        }
+            
+        
+        
+            
+        
+        
+
+    }
+</script>

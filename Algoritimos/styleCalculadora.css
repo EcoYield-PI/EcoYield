@@ -1,0 +1,97 @@
+body {
+    background-size: cover;
+    background-color: #4e71a0;
+    font-family: Verdana;
+}
+
+main{
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    /* flex-direction: row; padrão alinhado - horizontal */
+    justify-content: space-between;
+}
+
+#conteinerResultado {
+   background-color: #27528B; 
+   padding: 40px;
+   height: 500px;
+   width: 700px;
+   border-radius: 20px;
+   margin: 160px 140px ;
+   display: inline;
+   float: left;
+   color: rgb(223, 217, 217);
+   font-size: 23px;
+   box-shadow: 2px 0 #00000080;
+   font-weight: 300px;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.conteiner {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+    color: white;
+    background-color: #27528B;
+    padding: 35px 60px;
+    box-shadow: 2px 0 #00000080;
+    height: 93%;
+    width: 500px;
+
+}
+
+.conteiner input {
+    border-color: white;
+    color: rgb(24, 23, 23);
+    font-weight: 350px;
+    background-color: #a5b9d3;
+    width: 400px;
+    height: 35px;
+    border-radius: 10px;
+    list-style: none;
+    margin-left: 45px;
+    font-size: 18px;
+}
+
+.conteiner p {
+    font-size: 19px;
+}
+
+.conteiner .label {
+    margin-left: 45px;
+    font-size: 17px;
+}
+
+.conteiner .titulo {
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 77px;
+}
+
+.conteiner button {
+    background-color: #E6BA35;
+    border-color: #E6BA35;
+    width: 210px;
+    height: 40px;
+    border-radius: 30px;
+    margin: 0px 40px;
+    cursor: pointer;
+    margin-left: 135px;
+    margin-top: 15px;
+}
+
+.conteiner button:hover {
+    background-color: #d7a91f;
+    border-color: #d7a91f;
+ 
+}
+
+.conteiner input::placeholder {
+    color: rgb(3, 3, 3);
+    position: absolute;
+    left: 15px;
+    font-size: 17px;
+}
+
