@@ -1,0 +1,95 @@
+body{
+    margin: 0;
+    font-family: Verdana;
+    background-color:white;
+}
+
+.Container{
+    width: 100%;
+    padding-top:  15px;
+    display: flex;
+    margin-right: 100px;
+}
+
+.Header{
+    background-color: #24548c;
+    height: 100px;
+    width:100%;
+}
+
+.simulador{
+    background-color: #f1c70b;
+    height: 35px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TITULO{
+    justify-content: center;
+    align-items: flex-end;
+    display: flex;
+}
+
+.TITULO img{
+    width: 180px;
+    height: 60px;
+
+}
+.navbar{
+    width: 400px;
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    list-style: none;
+    align-items: center;
+    font-family: 'Lucida Sans';
+}
+
+.Header .Container{
+    justify-content: space-around;
+}
+
+.Banner {
+    background-color: #6484ac;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.ContainerBANNER{
+    padding-left: 4%;
+    padding-right: 4%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Banner-title{
+    margin: 0;
+    color: white;
+    font-size: 35px;
+    font-family: 'Lucida Sans';
+}
+
+.texto{
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    width: 120px;
+    font-family: 'Lucida Sans';
+}
+
+.banner-img{
+    height: 250px;
+    width: 500px;
+}
+
+.IMG{
+    display: flex;
+    flex-direction: row;
+}
