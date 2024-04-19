@@ -1,0 +1,177 @@
+.Linkedin1 {
+    width: 62px;
+    height: 61px;
+    left: 44px;
+    top: 674px;
+    position: absolute
+}
+
+.retangulo_mensagem {
+
+    width: 681px;
+    height: 242px;
+    left: 720px;
+    top: 540px;
+    position: absolute;
+    background: #D9D9D9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 17px
+}
+
+.Rectangle4 {
+    width: 341px;
+    height: 88px;
+    left: 720px;
+    top: 390px;
+    position: absolute;
+    background: #D9D9D9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 17px
+}
+
+.Rectangle7 {
+    width: 288px;
+    height: 72px;
+    left: 720px;
+    top: 819px;
+    position: absolute;
+    background: #FDD006;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 17px
+}
+
+.Enviar {
+    left: 822px;
+    top: 837px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Poppins;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+.Rectangle5 {
+    width: 341px;
+    height: 88px;
+    left: 1081px;
+    top: 390px;
+    position: absolute;
+    background: #D9D9D9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 17px
+}
+
+.Rectangle6 {
+    width: 681px;
+    height: 88px;
+    left: 720px;
+    top: 240px;
+    position: absolute;
+    background: #D9D9D9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 17px
+}
+
+.Nome {
+    width: 74px;
+    height: 21px;
+    left: 728px;
+    top: 206px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Poppins;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+.EntreEmContato {
+    width: 441px;
+    height: 101px;
+    left: 47px;
+    top: 197px;
+    position: absolute;
+    color: white;
+    font-size: 39px;
+    font-family: Poppins;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+.TireSuasDVidasConosco {
+    width: 569px;
+    height: 165px;
+    left: 47px;
+    top: 295px;
+    position: absolute;
+    color: white;
+    font-size: 56px;
+    font-family: Poppins;
+    font-weight: 700;
+    word-wrap: break-word
+}
+
+.Email {
+    width: 74px;
+    height: 21px;
+    left: 728px;
+    top: 357px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Poppins;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+.NMeroDeTelefoneCelular {
+    width: 341px;
+    height: 21px;
+    left: 1081px;
+    top: 357px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Poppins;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+.Mensagem {
+    width: 152px;
+    height: 21px;
+    left: 728px;
+    top: 506px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Poppins;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+.OEmail1 {
+    width: 54px;
+    height: 53px;
+    left: 44px;
+    top: 756px;
+    position: absolute
+}
+
+.Telefone1 {
+    width: 59px;
+    height: 58px;
+    left: 44px;
+    top: 830px;
+    position: absolute
+}
+
+.Rectangle2 {
+    width: 1440px;
+    height: 900px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: #184BFF
+}
