@@ -93,3 +93,36 @@ body{
     display: flex;
     flex-direction: row;
 }
+
+#content {
+    padding: 20px;
+}
+
+#div_razoes {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: #6685AF;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px 0 20px;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.paragrafos {
+    padding: 0 50px 10px 40px;
+}
+
+#visaoNegocio {
+    width: 1000px;
+    display: block;
+    margin: auto
+    ;
+}
