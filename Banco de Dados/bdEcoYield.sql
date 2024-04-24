@@ -41,7 +41,6 @@ fkAmbienteEmpresa int,
 create table leitura(
 idLeitura int auto_increment,
 temperatura decimal(3,1),
-umidade decimal(3,1),
 dtHora datetime,
 fkSensor int,
 constraint fk_sensor foreign key (fkSensor) references sensor(idSensor),
@@ -85,21 +84,37 @@ values ('Umidade', 1),
 	('Umidade', 6),
 	('Temperatura', 6);
 
-insert into leitura (temperatura, umidade, dtHora, fksensorTemperatura, fksensorUmidade)
-values (25.5, 60.2, '2024-04-11 08:00:00', 1, 1),
-	(24.8, 59.7, '2024-04-11 08:15:00', 2, 2),
-	(26.3, 61.5, '2024-04-11 08:30:00', 3, 3),
-	(24.2, 58.9, '2024-04-11 08:45:00', 1, 4),
-	(27.1, 62.0, '2024-04-11 09:00:00', 2, 5),
-	(25.9, 61.3, '2024-04-11 09:15:00', 3, 6),
-	(26.8, 60.8, '2024-04-11 09:30:00', 1, 7),
-	(25.1, 59.4, '2024-04-11 09:45:00', 2, 8),
-	(27.3, 62.5, '2024-04-11 10:00:00', 3, 9),
-	(24.6, 58.2, '2024-04-11 10:15:00', 1, 10);
+insert into leitura (temperatura, dtHora, fksensor)
+values (25.5, 60.2, '2024-04-11 08:00:00', 1),
+	(24.8, 59.7, '2024-04-11 08:15:00', 2),
+	(26.3, 61.5, '2024-04-11 08:30:00', 3),
+	(24.2, 58.9, '2024-04-11 08:45:00', 1),
+	(27.1, 62.0, '2024-04-11 09:00:00', 2),
+	(25.9, 61.3, '2024-04-11 09:15:00', 3),
+	(26.8, 60.8, '2024-04-11 09:30:00', 1),
+	(25.1, 59.4, '2024-04-11 09:45:00', 2),
+	(27.3, 62.5, '2024-04-11 10:00:00', 3),
+	(24.6, 58.2, '2024-04-11 10:15:00', 1);
     
     select * from empresa;
     select * from funcionario;
     select * from ambienteEmpresa;
     select * from sensor;
-    select * from leitura;
+    select * from leitura;	
+    select * from leituraArduino;	
     
+create table leiturinha(
+idLeitura int primary key auto_increment,
+temperatura decimal(4,2),
+dtHora datetime
+);
+
+create table leituraArduino(
+id int primary key auto_increment,
+temperatura decimal(4,2),
+dtHora timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP()
+);
+
+select * from leituraArduino;
+
+truncate table leituraArduino;
