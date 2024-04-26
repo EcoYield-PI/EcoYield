@@ -2,6 +2,7 @@ body {
     margin: 0;
     font-family: Verdana;
     background-color: white;
+    
 }
 
 .Container {
@@ -95,9 +96,6 @@ body {
     flex-direction: row;
 }
 
-#content {
-    padding: 20px;
-}
 
 #div_razoes {
     display: flex;
@@ -117,8 +115,29 @@ body {
     border-radius: 20px;
 }
 
-.paragrafos {
-    padding: 0 50px 10px 40px;
+.div-sobre {
+    padding: 0 ;
+    margin: 0;
+    width: 100%;
+    height: 80vh;
+    /* font-size: 17px; */
+    background-color: #27528B;
+    display: flex;
+    margin-top: 3%;
+    text-align: justify;
+}
+
+.div-texto {
+    width: 50%;
+    padding: 0 40px;
+    color: #ffffff;
+}
+
+.div-imagem {
+    width: 50%;
+    text-align: end;
+    background-image: url(Imagens/imgsobre.jpg);
+    background-size: cover;
 }
 
 #visaoNegocio {
@@ -245,8 +264,143 @@ body {
     /* align-items: center; */
     text-align: center;
     justify-content: center;
+
 }
 
 .titulo h1 {
     text-align: center;
+}
+
+.footer {
+    position: relative;
+    background-color: #27528B;
+    height: 110vh;
+    width: 100%;
+    z-index: 999;
+}
+
+.teste {
+    position: absolute;
+    width: 736.71px;
+    height: 795.95px;
+    left: -374.84px;
+    top: -284px;
+
+    background: #fff;
+    border-radius: 67px;
+    transform: rotate(46.17deg);
+
+}
+
+.contato {
+    width: 441px;
+    height: 101px;
+    left: 47px;
+    top: 197px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: sans-serif;
+}
+
+.duvidas {
+    width: 569px;
+    height: 165px;
+    left: 47px;
+    top: 225px;
+    position: absolute;
+    color: #000;
+    font-size: 32px;
+    font-family: sans-serif;
+    font-weight: 700;
+}
+
+.formulario-contato {
+    margin: 3%;
+    padding: 0;
+    float: right;
+    width: 40%;
+    height: 100vh;
+}
+
+.formulario-contato div {
+    left: 628px;
+    color: white;
+    font-size: 24px;
+    font-family: sans-serif;
+    margin-bottom: 1%;
+}
+
+
+.formulario-contato input {
+    width: 95%;
+    height: 45px;
+    background: #D9D9D9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+    font-size: 38px;
+    border: none;
+    margin-bottom: 3%;
+
+} 
+
+.retangulo_mensagem {
+    width: 95%;
+    height: 150px;
+    background: #D9D9D9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+    font-size: 38px;
+    border: none;
+    margin-bottom: 3%;
+
+}
+
+.botao {
+    width: 150px;
+    height: 42px;
+    border-radius: 17px;
+    background: #F3D64C;
+    color: #27528B;
+    font-family: sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    float: right;
+}
+
+.botao:hover {
+    background-color: #bda73c;
+}
+
+.texto_imagens {
+    width: 110px;
+    height: 200px;
+    left: 114px;
+    top: 374px;
+    position: absolute
+}
+
+.linkedin_img {
+    width: 62px;
+    height: 61px;
+    left: 44px;
+    top: 374px;
+    position: absolute
+}
+
+.email_img {
+    width: 54px;
+    height: 53px;
+    left: 44px;
+    top: 456px;
+    position: absolute
+}
+
+.telefone_img {
+    width: 59px;
+    height: 58px;
+    left: 44px;
+    top: 530px;
+    position: absolute
 }
