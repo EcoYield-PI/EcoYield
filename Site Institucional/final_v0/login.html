@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="2"> -->
+    <link rel="stylesheet" href="css/login.css">
+
+    <title>Login</title>
+</head>
+<body>
+    <div id="container">
+        <h1><span style="color: #E6BA35;">Eco</span>Yield</h1>
+
+        <input type="text" id="input_Email_login" placeholder="Email">
+        <input type="password" id="input_Senha_login" placeholder="Senha">
+
+        <button onclick="login()" id="butLogin">Login</button>
+        <a href="cadastro.html" ><p id="butCad">Cadastro</p></a>
+        <a href="SitePrinc.html" ><p id="butVol">Voltar</p></a>
+
+
+
+    </div>
+
+</body>
+</html>
+
+<script>
+    function login(){
+    const email = input_Email_login.value;
+    const senha = input_Senha_login.value;
+
+    if(email =="" || senha ==""){
+        alert("Por favor! Preencha todos os campos.");
+
+    }
+    else if (email.indexOf("@") == -1 ){
+        alert("Seu email esta sem @.");
+    }
+    else if(email.indexOf(".com") == -1){
+        alert("Seu email esta sem .com");
+    }
+    else if(7 >= senha.length){
+        alert("A senha deve ter no mínimo 7 caracteres")
+    }
+    else if(senha.indexOf("@") == -1 &&  senha.indexOf("#") == -1 && 
+            senha.indexOf("!") == -1 &&  senha.indexOf("*") == -1 &&
+            senha.indexOf("&") == -1 &&  senha.indexOf("%") == -1 && 
+            senha.indexOf("$") == -1 &&  senha.indexOf("-") == -1 &&
+            senha.indexOf("_") == -1){
+            alert("Por favor, insira um caracter especial na senha.");
+    }
+
+    let contemNumero = false;
+
+    for (let numeros = 0; numeros <= 9; numeros+=1) {
+        if (senha.indexOf((numeros)) != -1) {
+            contemNumero = true;
+        }
+    }
+    if (false == contemNumero) {
+        alert("A senha deve conter pelo menos um número.");
+    }
+    else{
+        alert("Login feito com sucesso.");
+    }
+}
+</script>
+   

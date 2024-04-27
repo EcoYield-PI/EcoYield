@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    justify-content: right;
+    background-image: url(imgFundo.png);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0px;
+}
+
+h1{
+    font-size: 40px;
+}
+
+#cadastro{
+    text-align: center;    
+    height: 650px;
+    width: 40%;
+    padding: 19px;
+    background-color: #6484ac;
+    border-radius: 13px;
+    margin-top: 0px;
+}
+
+#butCance{
+    border: none; 
+    font-size: 20px;
+    text-decoration: none;
+}
+
+input {
+    height: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 90%;
+    border: none;
+    border-radius: 13px;
+}
+
+#butPrincipal {
+    width: 300px;
+    font-size: 30px;
+
+    margin-top: 50px;
+    padding: 10px 20px; 
+
+    background-color: #24548c; 
+    color: whitesmoke; 
+
+    border: none; 
+    border-radius: 11px; 
+    cursor: pointer;
+}
+
+#butPrincipal:hover{
+    color: whitesmoke;
+    background-color: #24558cf1;
+    opacity: 0.8;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+#butAbaixo{
+    margin-top: 13px;
+    cursor: pointer;
+    font-size: 22px;
+}

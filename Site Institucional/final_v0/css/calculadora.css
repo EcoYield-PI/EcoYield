@@ -1,0 +1,76 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    background-image: url(imgFundo.png);
+    font-family: Verdana;
+    margin: 0px;
+}
+
+h1{
+    font-size: 40px;
+    margin-top: 50px;
+    margin-bottom: 65px;
+}
+
+#container {
+    text-align: center;
+    
+    height: 585px;
+    width: 40%;
+    
+    padding: 19px;
+    background-color: #6484ac;
+    border-radius: 13px;
+}
+
+p{
+    font-size: 22px;
+
+    text-align: left;
+    margin: 5px;
+    margin-left: 20px;
+
+}
+
+input {
+    justify-content: left;
+    height: 15px;
+    margin-bottom: 18px;
+    padding: 10px;
+    width: 90%;
+    border: none;
+    border-radius: 13px;
+}
+
+#container button {
+    width: 300px;
+    font-size: 30px;
+
+    margin-top: 20px;
+    padding: 10px 20px; 
+
+    background-color: #24548c; 
+    color: whitesmoke; 
+
+    border: none; 
+    border-radius: 11px; 
+    cursor: pointer;
+} 
+
+#container button:hover{
+    color: whitesmoke;
+    background-color: #24558cf1;
+    opacity: 0.8;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#butAbaixo{
+    text-align: center;
+    margin-top: 13px;
+    cursor: pointer;
+    font-size: 22px;
+}

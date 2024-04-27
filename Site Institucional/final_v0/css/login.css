@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    justify-content: left;
+    background-image: url(imgFundo.png);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0px;
+}
+
+h1{
+    font-size: 40px;
+    margin-top: 50px;
+    margin-bottom: 120px;
+}
+
+
+#container{
+    text-align: center;
+    height: 650px;
+    width: 40%;
+    padding: 19px;
+    background-color: #6484ac;
+    border-radius: 13px;
+}
+
+input {
+    height: 15px;
+    width: 90%;
+    margin-bottom: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 13px;
+}
+
+#butLogin {
+    width: 300px;
+    font-size: 30px;
+
+    margin-top: 105px;
+    padding: 10px 20px; 
+
+    background-color: #24548c; 
+    color: whitesmoke; 
+
+    border: none; 
+    border-radius: 11px; 
+    cursor: pointer;
+}
+
+#butLogin:hover{
+    color: whitesmoke;
+    background-color: #24558cf1;
+    opacity: 0.8;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#butCad{
+    margin-top: 30px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+#butVol{
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 22px;
+}

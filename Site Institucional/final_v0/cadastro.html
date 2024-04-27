@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="2"> -->
+    <link rel="stylesheet" href="css/cadastro.css">
+
+    <title>Cadastro</title>
+</head>
+<body>
+    <div id="cadastro" >
+        <h1><span style="color: #E6BA35;">Eco</span>Yield</h1>
+
+        <h1>Criacao de conta</h1>
+
+        <input type="text" id="input_Nome_usuario" placeholder="Nome">
+        <input type="text" id="input_cnpj" placeholder="CNPJ">
+        <input type="text" id="input_Email_usuario" placeholder="Email">
+        <input type="password" id="input_Senha_usuario" placeholder="Senha">
+        <input type="password" id="input_Confirmacao_Senha_usuario" placeholder="Confirmar Senha">
+
+        <button onclick="criacao_conta()" id="butPrincipal">Cadastrar</button>
+        <a href="login.html"><p id="butAbaixo">Voltar</p></a>
+        
+    </div>
+    
+</body>
+</html>
+
+<script>
+    function criacao_conta() {
+        const nome = input_Nome_usuario.value;
+        const cnpj = input_cnpj.value;
+        const email = input_Email_usuario.value;
+        const senha = input_Senha_usuario.value;
+        const confirmacaoSenha = input_Confirmacao_Senha_usuario.value;
+        erro = false
+
+        if (!nome || !cnpj ||!senha || !confirmacaoSenha) {
+            alert("Por favor, preencha todos os campos.");
+            erro = true
+        }
+        else if(cnpj.length<14 || cpf.length>14){
+            alert("Por favor, insira um CNPJ válido.");
+            erro = true
+        }
+        if(!email){
+            alert("Por favor, insira seu e-mail.");
+            erro = true
+        }
+        else if (email.indexOf("@") == -1 || email.indexOf(".com") == -1){
+            alert("Por favor, insira um e-mail válido.");
+            erro = true
+        }
+        if (!senha) {
+            alert("Por favor, insira sua senha.");
+            erro = true
+        }
+        else if( 7 >= senha.length){
+            alert("A senha deve ter no mínimo 7 caracteres")
+            erro = true
+        }
+        else if(senha.indexOf("@") == -1 &&  senha.indexOf("#") == -1 && 
+                senha.indexOf("!") == -1 &&  senha.indexOf("*") == -1 && 
+                senha.indexOf("&") == -1 &&  senha.indexOf("%") == -1 && 
+                senha.indexOf("$") == -1 &&  senha.indexOf("-") == -1 &&
+                senha.indexOf("_") == -1){
+        alert("Por favor, insira um caracter especial na senha.");
+        erro = true
+        }
+
+        let contemNumero = false;
+        for (let numeros = 0; numeros <= 9; numeros+= 1) {
+            if (senha.indexOf((numeros)) != -1) {
+                contemNumero = true;
+            }
+        }
+        if (false == contemNumero) {
+            alert("A senha deve conter pelo menos um número.");
+            erro = true
+        }
+        else if (confirmacaoSenha!==senha) {
+            alert("Por favor, insira sua senha.");
+            erro = true
+        }
+        else if (erro == true){
+        alert("Cadastro realizado com sucesso!");
+        }
+    }
+</script>
