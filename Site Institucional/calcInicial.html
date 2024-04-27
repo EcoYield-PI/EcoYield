@@ -10,6 +10,16 @@
 <body>
     <div class="conteiner">
         <h1 class="titulo">Simulador <span style="color: #E6BA35;">Eco</span>Yield</h1>
+
+
+        Média de faturamento do setor: 
+        <input type="number" id="inpuFaturamento" placeholder="Ex: R$ 200000,00">  <br>
+
+        Quantidade de funcionarios: 
+        <input type="number" id="inpuQtdFuncionarios" placeholder="Ex: 100">  <br>
+
+        Média salarial por funcionario: 
+        <input type="number" id="inpuSalario" placeholder="Ex: R$ 2000,00">  <br>
         
         Digite a temperatura do seu ambiente: 
         <input type="number" id="inpuTemp" placeholder="Ex: 26ºC">  <br>
@@ -38,10 +48,26 @@
         }
         let desempenho = (i * aumeTempe)
         
-        textoDiv.innerHTML =`
-        A sua produtividade caíra: ${desempenho}
+        textoDiv.innerHTML +=`
+        A sua produtividade por funcionario caíra: ${desempenho.toFixed(2)}%
         `
-    
+    const Faturamento = Number(inpuFaturamento.value)
+    const qtdFuncionario = Number(inpuQtdFuncionarios.value)
+    const salario = Number(inpuSalario.value)
+    let fracao13 = salario*0.083
+    let fracaoFerias = salario*0.1111
+    let FGTS = salario*0.08
+    let FGTS13 = salario*0.014
+    let INSS = salario*0.20
+    let fracaoInss13Ferias = salario*0.04
+    let Custo_Funcionario_final = salario+fracao13+fracaoFerias+FGTS+FGTS13+INSS+fracaoInss13Ferias
+    let Valor_perda_produtividade=(Custo_Funcionario_final*(desempenho/100))*qtdFuncionario
+    let porcentagem_lucro_perda = Valor_perda_produtividade*100/Faturamento
+
+    textoDiv.innerHTML +=`
+        A sua perda por funcionario é de R$ ${(Custo_Funcionario_final*(desempenho/100)).toFixed(2)}, e sua perda de Faturamento total do sertor será de: ${porcentagem_lucro_perda.toFixed(2)}%<br>
+        `
+
     }
 </script>
 
