@@ -1,7 +1,8 @@
 body {
     display: flex;
     justify-content: right;
-    background-image: url(imgFundo.png);
+    background-image: url(../imagenss/imgFundo.png);
+    background-size: cover;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0px;
 }
@@ -24,6 +25,11 @@ h1{
     border: none; 
     font-size: 20px;
     text-decoration: none;
+}
+
+#p{
+    background-color: red;
+    margin-left: 0px;
 }
 
 input {

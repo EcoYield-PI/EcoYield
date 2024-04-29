@@ -1,55 +1,51 @@
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 0px;
-    background-image: url(imgFundo.png);
-    font-family: Verdana;
+    background-image: url(../imagenss/imgFundo.png);
+    background-size: cover;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0px;
 }
 
 h1{
     font-size: 40px;
-    margin-top: 50px;
-    margin-bottom: 65px;
+    margin-bottom: 30px;
+    margin-top:0;
 }
 
-#container {
-    text-align: center;
-    
-    height: 585px;
+.conteiner{
+    text-align: center;  
+    height: 635px;
     width: 40%;
-    
-    padding: 19px;
+    padding: 10px 0 ;
     background-color: #6484ac;
     border-radius: 13px;
+    margin-top: 0px;
 }
 
 p{
-    font-size: 22px;
-
     text-align: left;
-    margin: 5px;
-    margin-left: 20px;
-
+    padding-left: 30px;
+    font-size: 20px;
 }
 
 input {
-    justify-content: left;
     height: 15px;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
     padding: 10px;
     width: 90%;
     border: none;
     border-radius: 13px;
 }
 
-#container button {
+.but-calcular {
     width: 300px;
     font-size: 30px;
-
+    margin-left: 80px;
     margin-top: 20px;
     padding: 10px 20px; 
+    text-align: center;
+
 
     background-color: #24548c; 
     color: whitesmoke; 
@@ -57,20 +53,23 @@ input {
     border: none; 
     border-radius: 11px; 
     cursor: pointer;
-} 
+}
 
-#container button:hover{
+.but-calcular:hover{
     color: whitesmoke;
     background-color: #24558cf1;
     opacity: 0.8;
 }
+
 a{
     text-decoration: none;
     color: black;
 }
-#butAbaixo{
-    text-align: center;
+
+#butVol{
     margin-top: 13px;
     cursor: pointer;
+    margin-left: 0px;
     font-size: 22px;
+    margin-left: 207px;
 }

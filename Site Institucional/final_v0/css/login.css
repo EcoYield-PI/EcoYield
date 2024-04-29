@@ -1,7 +1,8 @@
 body {
     display: flex;
     justify-content: left;
-    background-image: url(imgFundo.png);
+    background-image: url(../imagenss/imgFundo.png);
+    background-size: cover;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0px;
 }
