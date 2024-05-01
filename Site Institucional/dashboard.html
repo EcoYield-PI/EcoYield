@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styledash.css">
     <title>Dashboard</title>
 </head>
+
 <body>
     <div class="menu-lateral">
         <ul>
-            <li><img src="https://th.bing.com/th/id/R.1d52a01c9bc98fe3a14cb1340ff4570f?rik=u%2fbNt70iyzgPMw&pid=ImgRaw&r=0" alt=""></li>
+            <li><img src="https://th.bing.com/th/id/R.1d52a01c9bc98fe3a14cb1340ff4570f?rik=u%2fbNt70iyzgPMw&pid=ImgRaw&r=0"
+                    alt=""></li>
             <li class="opcoes">Visão Geral</li>
             <li class="opcoes">Média Semanal</li>
             <li class="opcoes">Histórico</li>
@@ -17,11 +20,114 @@
         </ul>
     </div>
 
+    
     <div class="grafico">
+        <div class="ContainerGraficos">
+            <canvas id="graficoAmb1" style="height: 65vh; width: 55vw;">
 
+            </canvas>
+
+            <canvas id="graficoAmb2" style="height: 65vh; width: 55vw; display: none;">
+
+            </canvas>
+            
+            <canvas id="graficoAmb3" style="height: 65vh; width: 55vw; display: none;">
+
+            </canvas>
+        </div>
+        <div class="BotaoCont">
+            <button class="botaoTroca" onclick="Aparecer1()">Sensor 1</button>
+            <button class="botaoTroca" onclick="Aparecer2()">Sensor 2</button>
+            <button class="botaoTroca" onclick="Aparecer3()">Sensor 3</button>
+        </div>
     </div>
+    
     <div class="kpi">
 
     </div>
 </body>
+
 </html>
+
+<!-- Script do Chart JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Script para formação dos gráficos-->
+<script>
+    const Amb1 = document.getElementById('graficoAmb1');
+    const Amb2 = document.getElementById('graficoAmb2');
+    const Amb3 = document.getElementById('graficoAmb3');
+
+    new Chart(Amb1, {
+        type: 'line',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '1',
+                data: [12, 30, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(Amb2, {
+        type: 'line',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '2',
+                data: [12, 12, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(Amb3, {
+        type: 'line',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '3',
+                data: [12, 9, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    function Aparecer1(){
+        graficoAmb1.style.display = 'block';
+        graficoAmb2.style.display = 'none';
+        graficoAmb3.style.display = 'none';
+    }
+    function Aparecer2(){
+        graficoAmb1.style.display = 'none';
+        graficoAmb2.style.display = 'block';
+        graficoAmb3.style.display = 'none';
+    }
+    function Aparecer3(){
+        graficoAmb1.style.display = 'none';
+        graficoAmb2.style.display = 'none';
+        graficoAmb3.style.display = 'block';
+    }
+</script>

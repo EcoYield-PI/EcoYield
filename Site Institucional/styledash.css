@@ -54,3 +54,20 @@ body {
     border-radius: 40px;
     box-shadow: 12px 8px 25px 2px rgb(165, 165, 165);
 }
+
+.ContainerGraficos {
+    padding: 10px;
+}
+
+.BotaoCont{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.botaoTroca {
+    width: 20%;
+    height: 45px;
+    background-color:#6685AF;
+    border-radius: 40px;
+}
