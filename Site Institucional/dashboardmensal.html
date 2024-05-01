@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styledash.css">
+    <title>Dashboard Mensal</title>
+</head>
+
+<body>
+    <div class="menu-lateral">
+        <ul>
+            <li><img src="https://th.bing.com/th/id/R.1d52a01c9bc98fe3a14cb1340ff4570f?rik=u%2fbNt70iyzgPMw&pid=ImgRaw&r=0"
+                    alt=""></li>
+            <a href="dashboard.html" style="text-decoration: none;"><li class="opcoes">Visão Geral</li></a>
+            <a href="dashboardmensal.html" style="text-decoration: none;"><li class="opcoes">Média Mensal</li></a>
+            <li class="opcoes">Histórico</li>
+            <a href="index.html" style="text-decoration: none;"><li class="sair"><button id="btn_sair" class="botaoSair">Sair</button></li></a>
+        </ul>
+    </div>
+
+    
+    <div class="grafico">
+        <div class="ContainerGraficos">
+            <canvas id="graficoMensal" style="height: 65vh; width: 55vw;">
+
+            </canvas>
+        </div>
+    </div>
+    
+    <div class="kpi">
+
+    </div>
+</body>
+
+</html>
+
+<!-- Script do Chart JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Script para formação dos gráficos-->
+<script>
+    const Mensal = document.getElementById('graficoMensal');
+    
+
+    new Chart(Mensal, {
+        type: 'bar',
+        data: {
+            labels: ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN'],
+            datasets: [{
+                label: 'Média Mensal',
+                data: [25.4, 28, 23, 22, 20, 29],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    
+</script>

@@ -22,6 +22,10 @@ body {
     width: 60%;
 }
 
+.menu-lateral ul li:hover{
+    color: #c2c2c4;
+}
+
 .opcoes {
     margin-top: 15%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -68,6 +72,32 @@ body {
 .botaoTroca {
     width: 20%;
     height: 45px;
+    display: inline-block;
     background-color:#6685AF;
+    color: white;
     border-radius: 40px;
+    box-shadow: 2px 2px 0px #000;
+    transition: transform 150ms linear;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.botaoTroca:hover{
+    transform:scale(1.06);
+    background-color: #666baf;
+}
+
+.botaoSair{
+    width: 20%;
+    height: 45px;
+    display: inline-block;
+    background-color:#ffffff;
+    border-radius: 40px;
+    box-shadow: 2px 2px 0px #000;
+    transition: transform 150ms linear;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.botaoSair:hover{
+    transform:scale(1.06);
+    background-color: #c2c2c4;
 }
