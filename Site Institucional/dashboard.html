@@ -43,8 +43,14 @@
     </div>
     
     <div class="kpi">
+        <div class="containerKPI">
+    <h2>KPI's</h2>
+    <div class="kpi-item1" id="kpiTemperatura">Média de Temperatura:<br> <span id="valorTemperatura">--</span>°C</div>
+    <div class="kpi-item2" id="kpiUmidade"> Média de Umidade:<br>  <span id="valorUmidade">--</span>%</div>
+        </div>
+</div>
 
-    </div>
+
 </body>
 
 </html>
@@ -57,6 +63,17 @@
     const Amb1 = document.getElementById('graficoAmb1');
     const Amb2 = document.getElementById('graficoAmb2');
     const Amb3 = document.getElementById('graficoAmb3');
+
+    let temperaturaAmb1 = [12, 30, 3, 5, 2, 3]; // Dados de exemplo de temperatura para o Ambiente 1
+    let umidadeAmb1 = [60, 70, 65, 75, 80, 72]; // Dados de exemplo de umidade para o Ambiente 1
+
+    let temperaturaAmb2 = [12, 12, 3, 5, 2, 3]; // Dados de exemplo de temperatura para o Ambiente 2
+    let umidadeAmb2 = [65, 68, 70, 72, 71, 68]; // Dados de exemplo de umidade para o Ambiente 2
+
+    let temperaturaAmb3 = [12, 9, 3, 5, 2, 3]; // Dados de exemplo de temperatura para o Ambiente 3
+    let umidadeAmb3 = [55, 50, 52, 53, 56, 54]; // Dados de exemplo de umidade para o Ambiente 3
+
+    let hora = 
 
     new Chart(Amb1, {
         type: 'line',
@@ -116,18 +133,51 @@
     });
 
     function Aparecer1(){
+        let temperaturaAmb = 0
+        let umidadeAmb = 0
+        let hora = 3
+        let qtdmedicao = 0
         graficoAmb1.style.display = 'block';
         graficoAmb2.style.display = 'none';
         graficoAmb3.style.display = 'none';
+        for(;qtdmedicao<=hora-1;qtdmedicao++){
+            temperaturaAmb+=temperaturaAmb1[qtdmedicao];
+            umidadeAmb+= umidadeAmb1[qtdmedicao];
+        }
+        valorTemperatura.innerHTML = `${Math.trunc(temperaturaAmb/qtdmedicao)}`;
+        valorUmidade.innerHTML = `${(umidadeAmb/qtdmedicao).toFixed(1)}`;
     }
     function Aparecer2(){
+        let temperaturaAmb = 0
+        let umidadeAmb = 0
+        let hora = 3
+        let qtdmedicao = 0
         graficoAmb1.style.display = 'none';
         graficoAmb2.style.display = 'block';
         graficoAmb3.style.display = 'none';
+        valorTemperatura.innerHTML = `${temperaturaAmb2}`;
+        for(;qtdmedicao<=hora-1;qtdmedicao++){
+            temperaturaAmb+=temperaturaAmb2[qtdmedicao];
+            umidadeAmb+= umidadeAmb2[qtdmedicao];
+        }
+        valorTemperatura.innerHTML = `${Math.trunc(temperaturaAmb/qtdmedicao)}`;
+        valorUmidade.innerHTML = `${(umidadeAmb/qtdmedicao).toFixed(1)}`;
     }
     function Aparecer3(){
+        let temperaturaAmb = 0
+        let umidadeAmb = 0
+        let hora = 3
+        let qtdmedicao = 0
         graficoAmb1.style.display = 'none';
         graficoAmb2.style.display = 'none';
         graficoAmb3.style.display = 'block';
+        valorTemperatura.innerHTML = `${temperaturaAmb3}`;
+        for(;qtdmedicao<=hora-1;qtdmedicao++){
+            temperaturaAmb+=temperaturaAmb3[qtdmedicao];
+            umidadeAmb+= umidadeAmb3[qtdmedicao];
+        }
+        valorTemperatura.innerHTML = `${Math.trunc(temperaturaAmb/qtdmedicao)}`;
+        valorUmidade.innerHTML = `${(umidadeAmb/qtdmedicao).toFixed(1)}`;
+        
     }
 </script>
