@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styledash.css">
+    <title>Histórico</title>
+</head>
+
+<body>
+    <div class="menu-lateral">
+        <ul>
+            <li><img src="https://th.bing.com/th/id/R.1d52a01c9bc98fe3a14cb1340ff4570f?rik=u%2fbNt70iyzgPMw&pid=ImgRaw&r=0"
+                    alt=""></li>
+            <a href="dashboard.html" style="text-decoration: none;"><li class="opcoes">Visão Geral</li></a>
+            <a href="dashboardmensal.html" style="text-decoration: none;"><li class="opcoes">Média Mensal</li></a>
+            <a href="historico.html" style="text-decoration: none;"><li class="opcoes">Histórico</li></a>
+            <a href="index.html" style="text-decoration: none;"><li class="sair"><button id="btn_sair" class="botaoSair">Sair</button></li></a>
+        </ul>
+    </div>
+
+    <div class="conteudo">
+        <h1>Histórico de Dados</h1>
+
+        <div class="historico-opcoes">
+            <h2>Selecione o Ambiente</h2>
+            <ul>
+                <li><a href="#" onclick="mostrarTabelaAmbiente1('ambiente1')">Ambiente 1</a></li>
+                <li><a href="#" onclick="mostrarTabelaAmbiente2('ambiente2')">Ambiente 2</a></li>
+                <li><a href="#" onclick="mostrarTabelaAmbiente3('ambiente3')">Ambiente 3</a></li>
+            </ul>
+            
+        </div>
+
+        <div class="historico" id="ambiente1">
+            <h2>Ambiente 1</h2>
+            <table>
+                <tr>
+                    <th>Data</th>
+                    <th>Temperatura (°C)</th>
+                    <th>Umidade (%)</th>
+                </tr>
+                <tr>
+                    <td>01/05/2024</td>
+                    <td>25</td>
+                    <td>70</td>
+                </tr>
+                <tr>
+                    <td>02/05/2024</td>
+                    <td>24</td>
+                    <td>68</td>
+                </tr>
+                <tr>
+                    <td>03/05/2024</td>
+                    <td>26</td>
+                    <td>72</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="historico" id="ambiente2">
+            <h2>Ambiente 2</h2>
+            <table>
+                <tr>
+                    <th>Data</th>
+                    <th>Temperatura (°C)</th>
+                    <th>Umidade (%)</th>
+                </tr>
+                <tr>
+                    <td>01/05/2024</td>
+                    <td>22</td>
+                    <td>65</td>
+                </tr>
+                <tr>
+                    <td>02/05/2024</td>
+                    <td>23</td>
+                    <td>67</td>
+                </tr>
+                <tr>
+                    <td>03/05/2024</td>
+                    <td>21</td>
+                    <td>63</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="historico" id="ambiente3">
+            <h2>Ambiente 3</h2>
+            <table>
+                <tr>
+                    <th>Data</th>
+                    <th>Temperatura (°C)</th>
+                    <th>Umidade (%)</th>
+                </tr>
+                <tr>
+                    <td>01/05/2024</td>
+                    <td>20</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>02/05/2024</td>
+                    <td>19</td>
+                    <td>58</td>
+                </tr>
+                <tr>
+                    <td>03/05/2024</td>
+                    <td>21</td>
+                    <td>62</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+
+function mostrarTabelaAmbiente1() {
+    let tabelas = document.querySelectorAll('.historico');
+    for (let tabelaAtual = 0; tabelaAtual < tabelas.length; tabelaAtual++) {
+        if (tabelas[tabelaAtual].id == 'ambiente1') {
+            tabelas[tabelaAtual].style.display = 'block';
+        } else {
+            tabelas[tabelaAtual].style.display = 'none';
+        }
+    }
+}
+
+function mostrarTabelaAmbiente2() {
+    let tabelas = document.querySelectorAll('.historico');
+    for (let tabelaAtual = 0; tabelaAtual < tabelas.length; tabelaAtual++) {
+        if (tabelas[tabelaAtual].id == 'ambiente2') {
+            tabelas[tabelaAtual].style.display = 'block';
+        } else {
+            tabelas[tabelaAtual].style.display = 'none';
+        }
+    }
+}
+
+function mostrarTabelaAmbiente3() {
+    let tabelas = document.querySelectorAll('.historico');
+    for (let tabelaAtual = 0; tabelaAtual < tabelas.length; tabelaAtual++) {
+        if (tabelas[tabelaAtual].id == 'ambiente3') {
+            tabelas[tabelaAtual].style.display = 'block';
+        } else {
+            tabelas[tabelaAtual].style.display = 'none';
+        }
+    }
+}
+
+</script>

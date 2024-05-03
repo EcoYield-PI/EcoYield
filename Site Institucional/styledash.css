@@ -167,3 +167,107 @@ body {
 }
 
 
+.menu-lateral {
+    height: 100vh;
+    width: 20%;
+    background-color: #6685AF;
+    text-align: center;
+}
+
+.menu-lateral ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-lateral ul li img {
+    width: 60%;
+}
+
+.menu-lateral ul li:hover{
+    color: #c2c2c4;
+}
+
+.opcoes {
+    margin-top: 15%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+
+.sair {
+    margin-top: 60%;
+}
+
+.sair #btn_sair {
+    width: 40%;
+    height: 45px;
+}
+
+
+.conteudo {
+    width: 80%;
+    padding: 20px;
+}
+
+.historico-opcoes {
+    margin-bottom: 20px;
+}
+
+.historico-opcoes h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #6685AF;
+}
+
+.historico-opcoes ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.historico-opcoes ul li {
+    margin-bottom: 10px;
+}
+
+.historico-opcoes ul li a {
+    text-decoration: none;
+    color: #6685AF;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.historico-opcoes ul li a:hover {
+    color: #444;
+}
+
+.historico {
+    display: none;
+    background-color: #FFF;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.historico h2 {
+    color: #6685AF;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #666;
+}
