@@ -16,10 +16,11 @@ const HABILITAR_OPERACAO_INSERIR = true;
 
 // Função para comunicação serial
 const serial = async (
-    // valoresDht11Umidade,
+    valoresDht11Umidade,
     // valoresDht11Temperatura,
     // valoresLuminosidade,
-    valoresLm35Temperatura
+    valoresLm35Temperatura,
+    valorFkConjuntoSensor
     // valoresChave
 ) => {
     let poolBancoDados = ''
@@ -65,17 +66,19 @@ const serial = async (
         const valores = data.split(';');
         //o split quando encontra um caracter, no caso o ";", quebra e transforma tudo abaixo numa lista
         // por exemplo: 30;20;30;24;40   ->   [30, 20, 30, 24, 40] 
-        //? const dht11Umidade = parseFloat(valores[0]);
-        //? const dht11Temperatura = parseFloat(valores[1]);
         const lm35Temperatura = parseFloat(valores[0]);
+        const dht11Umidade = parseFloat(valores[1]);
+        const fkConjuntoSensor = parseFloat(valores[2]);
+        //? const dht11Temperatura = parseFloat(valores[1]);
         //? const luminosidade = parseFloat(valores[3]); 
         //? const chave = parseInt(valores[4]); //sensor de proximidade. Este que retorna apenas 0 ou 1 como valor
 
         // Armazena os valores dos sensores nos arrays correspondentes
-        // valoresDht11Umidade.push(dht11Umidade);
+        valoresLm35Temperatura.push(lm35Temperatura);
+        valoresDht11Umidade.push(dht11Umidade);
+        valorFkConjuntoSensor.push(fkConjuntoSensor);
         // valoresDht11Temperatura.push(dht11Temperatura);
         // valoresLuminosidade.push(luminosidade);
-        valoresLm35Temperatura.push(lm35Temperatura);
         // valoresChave.push(chave);
         /*Dados que serão usados pra gerar os gráficos*/
 
@@ -86,13 +89,16 @@ const serial = async (
             // Este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
                 // 'INSERT INTO medida (dht11_umidade, dht11_temperatura, luminosidade, lm35_temperatura, chave) VALUES (?, ?, ?, ?, ?)',
-                'INSERT INTO leituraArduino (temperatura) VALUES (?)',
+                'INSERT INTO leituraArduino (temperatura, umidade, fkconjuntoSensor) VALUES (?, ?, ?)',
+                [lm35Temperatura, dht11Umidade, fkConjuntoSensor]
+                // 'INSERT INTO leituraArduino () VALUES (?)',
+                // [dht11Umidade]
                 // [dht11Umidade, dht11Temperatura, luminosidade, lm35Temperatura, chave]
-                [lm35Temperatura]
                 /* os valores acima serão responsáveis para substituir cada "?" ordenadamente em relação ao "insert into" */
             );
+            console.log(`Valores inseridos no banco: ${lm35Temperatura}, ${dht11Umidade}, ${fkConjuntoSensor}`)
             // console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura + ", " + luminosidade + ", " + lm35Temperatura + ", " + chave)
-            console.log("valores inseridos no banco: " + lm35Temperatura )
+            // console.log("valores inseridos no banco: " + dht11Umidade)
 
         }
 
@@ -108,10 +114,10 @@ const serial = async (
 // não altere!
 // Função para criar e configurar o servidor web
 const servidor = (
-    // valoresDht11Umidade,
+    valoresDht11Umidade,
     // valoresDht11Temperatura,
     // valoresLuminosidade,
-    valoresLm35Temperatura
+    valoresLm35Temperatura,
     // valoresChave
 ) => {
     const app = express();
@@ -129,18 +135,20 @@ const servidor = (
     });
 
     // Define os endpoints da API para cada tipo de sensor
-    // app.get('/sensores/dht11/umidade', (_, response) => {
-    //     return response.json(valoresDht11Umidade);
-    // });
+    app.get('/sensores/dht11/umidade', (_, response) => {
+        return response.json(valoresDht11Umidade);
+    });
+    
+    app.get('/sensores/lm35/temperatura', (_, response) => {
+        return response.json(valoresLm35Temperatura);
+    });
+
     // app.get('/sensores/dht11/temperatura', (_, response) => {
     //     return response.json(valoresDht11Temperatura);
     // });
     // app.get('/sensores/luminosidade', (_, response) => {
     //     return response.json(valoresLuminosidade);
     // });
-    app.get('/sensores/lm35/temperatura', (_, response) => {
-        return response.json(valoresLm35Temperatura);
-    });
     // app.get('/sensores/chave', (_, response) => {
     //     return response.json(valoresChave);
     // });
@@ -149,24 +157,26 @@ const servidor = (
 // Função principal assíncrona para iniciar a comunicação serial e o servidor web
 (async () => {
     // Arrays para armazenar os valores dos sensores
-    // const valoresDht11Umidade = [];
+    const valoresDht11Umidade = [];
     // const valoresDht11Temperatura = [];
     // const valoresLuminosidade = [];
     const valoresLm35Temperatura = [];
+    const valorFkConjuntoSensor = [];
     // const valoresChave = [];
 
     // Inicia a comunicação serial
     await serial(
-        // valoresDht11Umidade,
+        valoresDht11Umidade,
         // valoresDht11Temperatura,
         // valoresLuminosidade,
-        valoresLm35Temperatura
+        valoresLm35Temperatura,
+        valorFkConjuntoSensor
         // valoresChave
     );
 
     // Inicia o servidor web
     servidor(
-        // valoresDht11Umidade,
+        valoresDht11Umidade,
         // valoresDht11Temperatura,
         // valoresLuminosidade,
         valoresLm35Temperatura
