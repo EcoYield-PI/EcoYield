@@ -11,6 +11,9 @@ DHT dht_1 = DHT(dht_pin, dht_type);
 const int LM35 = A1; // Define o pino que lerá a saída do LM35
 float temperatura = 0; // Variável que armazenará a temperatura medida
 int valorLido = 0; //variavel auxiliar
+float umidade = 0; // Variavel que armazenará umidade
+int valorLidoU = 0; // Variavel Auxiliar
+int fkConjuntoSensor = 1; // Variavel Auxiliar
 
 //Função que será executada uma vez quando ligar ou resetar o Arduino
 void setup() {
@@ -21,16 +24,30 @@ void setup() {
  
 void loop() {
   float umidade = dht_1.readHumidity();
-  valorLido = analogRead(LM35); //leitura analogica da porta A0
+  valorLido = analogRead(LM35); //leitura analogica da porta A1
 
   // --utilizamos o objeto criado para realizar a leitura
   temperatura = (valorLido * 0.00488); //5 volts/ 1023 - 0.0048 precisao do A/D
 temperatura = temperatura * 100; //converte milivolts para celsius - cada 10mV == 1°c
-  if(isnan(temperatura)){
+  if(isnan(temperatura) or isnan(umidade)){
     Serial.println("Erro ao ler"); 
   } else {
-    Serial.println(temperatura);
-  }
+    Serial.print(temperatura);
+    Serial.print (";");
+    Serial.print(umidade);
+    Serial.print (";");
+    Serial.println(fkConjuntoSensor);
+    Serial.print(temperatura - 3);
+    Serial.print (";");
+    Serial.print(umidade + 2);
+    Serial.print (";");
+    Serial.println(fkConjuntoSensor + 1);
+    Serial.print(temperatura + 3);
+    Serial.print (";");
+    Serial.print(umidade - 5);
+    Serial.print (";");
+    Serial.println(fkConjuntoSensor + 2);
+  }0
 
-  delay(2000);
+  delay(1000);
 }
