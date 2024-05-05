@@ -102,6 +102,25 @@ body {
     background-color: #c2c2c4;
 }
 
+.alerta {
+    width: 100px;
+    height: fit-content;
+    font-size: xx-large;
+    display: flex;
+    text-align: center;
+    color: red;
+    background-color: yellow;
+    border-radius: 10px;
+    animation: alertaPiscar 1s infinite;
+}
+
+@keyframes alertaPiscar {
+    0% {color: red;}
+    50% {color: yellow;}
+    100% {color: red;}
+
+}
+
 .kpi {
     width: 20vw;
     height: 70vh;
@@ -111,29 +130,17 @@ body {
     box-shadow: 12px 8px 25px 2px rgb(165, 165, 165);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #6685AF;
     padding: 20px;
     
 }
-.containerKPI{
-    border: 2px solid #6685AF;
-    width: 90%;
-    height: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #666baf;
-    border-radius: 20px;
-    padding: 6%;
-    
-}
+
 .kpi h2 {
     margin-bottom: 20px;
-    color: rgb(150, 214, 226);
+    color:#6685AF;
     
 }
 
@@ -142,8 +149,8 @@ body {
     align-items: center;
     margin-bottom: 10px;
     margin-right: 6%;
-    border: 2px solid #e90d0d;
-    color: rgb(121, 7, 7);
+    border: 2px solid #000;
+    color: #6685AF;
     justify-content: space-between;
     text-align: center;
     border-radius: 20px;
@@ -154,8 +161,8 @@ body {
     align-items: center;
     margin-bottom: 10px;
     margin-right: 6%;
-    border: 2px solid #1a437d;
-    color: rgb(9, 9, 129);
+    border: 2px solid #000;
+    color: #6685AF;
     justify-content: space-between;
     text-align: center;
     border-radius: 20px;
