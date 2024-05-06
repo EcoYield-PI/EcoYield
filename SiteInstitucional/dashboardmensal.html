@@ -13,14 +13,22 @@
         <ul>
             <li><img src="https://th.bing.com/th/id/R.1d52a01c9bc98fe3a14cb1340ff4570f?rik=u%2fbNt70iyzgPMw&pid=ImgRaw&r=0"
                     alt=""></li>
-            <a href="dashboard.html" style="text-decoration: none;"><li class="opcoes">Visão Geral</li></a>
-            <a href="dashboardmensal.html" style="text-decoration: none;"><li class="opcoes">Média Mensal</li></a>
-            <a href="historico.html" style="text-decoration: none;"><li class="opcoes">Histórico</li></a>
-            <a href="index.html" style="text-decoration: none;"><li class="sair"><button id="btn_sair" class="botaoSair">Sair</button></li></a>
+            <a href="dashboard.html" style="text-decoration: none;">
+                <li class="opcoes">Visão Geral</li>
+            </a>
+            <a href="dashboardmensal.html" style="text-decoration: none;">
+                <li class="opcoes">Média Mensal</li>
+            </a>
+            <a href="historico.html" style="text-decoration: none;">
+                <li class="opcoes">Histórico</li>
+            </a>
+            <a href="index.html" style="text-decoration: none;">
+                <li class="sair"><button id="btn_sair" class="botaoSair">Sair</button></li>
+            </a>
         </ul>
     </div>
 
-    
+
     <div class="grafico">
         <div class="ContainerGraficos">
             <canvas id="graficoMensal" style="height: 65vh; width: 55vw;">
@@ -28,10 +36,11 @@
             </canvas>
         </div>
     </div>
-    
-    <div class="kpi">
 
-    </div>
+    <div class="kpi">
+        <h2>KPI's</h2>
+        <div class="kpi-item3" id="kpiMedia">Média mensal:<br> <span id="valormensal">--</span>°C
+        </div>
 </body>
 
 </html>
@@ -42,7 +51,10 @@
 <!-- Script para formação dos gráficos-->
 <script>
     const Mensal = document.getElementById('graficoMensal');
-    
+    let temperaturamensal = [25.4, 28, 23, 22, 20, 29];
+    var tempmedia1 = 0;
+
+    var mediamensal = Math.trunc(temperaturamensal/tempmedia1);
 
     new Chart(Mensal, {
         type: 'bar',
@@ -63,5 +75,5 @@
         }
     });
 
-    
+valormensal.innerHTML = `29`
 </script>

@@ -168,6 +168,18 @@ body {
     border-radius: 20px;
     padding: 10%;
 }
+.kpi-item3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: 6%;
+    border: 2px solid #000;
+    color: #6685AF;
+    justify-content: space-between;
+    text-align: center;
+    border-radius: 20px;
+    padding: 10%;
+}
 
 .kpi-item span {
     padding: 5px;
