@@ -51,18 +51,30 @@
 <!-- Script para formação dos gráficos-->
 <script>
     const Mensal = document.getElementById('graficoMensal');
-    let temperaturamensal = [25.4, 28, 23, 22, 20, 29];
-    var tempmedia1 = 0;
+    
+    const temperaturaMensal = [25.4, 28, 23, 22, 20, 29];
+    const qtdmedicao = temperaturaMensal.length; // Obtendo a quantidade de medições diretamente do array
 
-    var mediamensal = Math.trunc(temperaturamensal/tempmedia1);
+    let somaTemperaturas = 0;
+    for (let i = 0; i < temperaturaMensal.length; i++) {
+        somaTemperaturas += temperaturaMensal[i];
+    }
+
+    const mediaTemperaturaMensal = somaTemperaturas / qtdmedicao;
+
+    // Exibindo a média da temperatura dentro de um elemento HTML com id "mediaTemperatura"
+    const mediaTemperaturaElement = document.getElementById('mediaTemperatura');
+    if (mediaTemperaturaElement) {
+        mediaTemperaturaElement.innerHTML = mediaTemperaturaMensal.toFixed(1);
+    }
 
     new Chart(Mensal, {
         type: 'bar',
         data: {
             labels: ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN'],
             datasets: [{
-                label: 'Média Mensal',
-                data: [25.4, 28, 23, 22, 20, 29],
+                label: 'Temperatura Mensal',
+                data: temperaturaMensal,
                 borderWidth: 1
             }]
         },
@@ -75,5 +87,4 @@
         }
     });
 
-valormensal.innerHTML = `29`
 </script>
