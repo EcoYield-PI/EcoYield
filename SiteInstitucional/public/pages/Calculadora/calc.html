@@ -8,7 +8,7 @@
 
 </head>
 <body>
-    <div class="conteiner">
+    <div class="conteiner" id="conteiner_id" style="display: block;">
         <h1 class="titulo">Simulador <span style="color: #E6BA35;">Eco</span>Yield</h1>
 
 
@@ -30,44 +30,112 @@
         <button onclick="butProdu()">Calcular taxa</button>
     </div> 
 
-    <div id="textoDiv"></div>
-
+    <div class="resultado" id="textoDiv" style="display: none;">
+    
+    </div>
+<a href="calcInicial.html"></a>
 </body>
 </html>
 
 
 <script>
     function butProdu(){
-    let temperatura = inpuTemp.value
-    let hora = inpuHora.value
+        const Faturamento = Number(inpuFaturamento.value)
+        const qtdFuncionario = Number(inpuQtdFuncionarios.value)
+        const salario = Number(inpuSalario.value)
+        let temperatura = Number(inpuTemp.value)
+        let hora = Number(inpuHora.value)
+        let umidade = 40
+        let temperaturaadiconal = 0
 
-    let temperaturaFinal = temperatura - 25;
-    let aumeTempe =  temperaturaFinal * 0.57;
-    
-        for(i=1; i <= hora; i *= 1.5){
+        if(!Faturamento){
+            alert("Preencha o campo do Faturamento!")
         }
-        let desempenho = (i * aumeTempe)
+        else if (!qtdFuncionario){
+            alert ("Prencha o campo das Quantidade de funcionarios!")
+        }
+        else if (!salario){
+            alert ("Prencha o campo do Salario!")
+        }
+        else if(!temperatura){
+            alert("Preencha o campo da Temperatura!")
+        }
+        else if (!hora){
+            alert ("Prencha o campo das Horas de Trabalho!")
+        }
+        else{
+        conteiner_id.style = "none"
+        textoDiv.style = "block"
+        for(let contUmid=25;contUmid<=umidade;contUmid+=5){
+            if(contUmid == 25 && temperatura>=31){
+            
+            if(temperatura<=41){
+                temperaturaadiconal=5
+                }
+            if(temperatura<=39){
+                temperaturaadiconal = 4
+                }
+            if(temperatura<=37){
+                temperaturaadiconal=3
+                }
+            if(temperatura<=35){
+                temperaturaadiconal=2
+                }
+            if(temperatura<=33){
+                temperaturaadiconal=1
+                }
+            else{
+                temperaturaadiconal=6
+                }
+
+            }
+            else if(contUmid > 25 && temperatura>=28 && temperatura<=32){
+                temperaturaadiconal += 1         
+            }
+            else if(contUmid > 25 && temperatura>=33){
+                temperaturaadiconal += 2
+            }
+        }
+        temperatura += temperaturaadiconal
+
+        let temperaturaFinal = temperatura - 25;
+        let aumeTempe =  temperaturaFinal * 0.57;
+
         
-        textoDiv.innerHTML +=`
-        A sua produtividade por funcionario caíra: ${desempenho.toFixed(2)}%
-        `
-    const Faturamento = Number(inpuFaturamento.value)
-    const qtdFuncionario = Number(inpuQtdFuncionarios.value)
-    const salario = Number(inpuSalario.value)
-    let fracao13 = salario*0.083
-    let fracaoFerias = salario*0.1111
-    let FGTS = salario*0.08
-    let FGTS13 = salario*0.014
-    let INSS = salario*0.20
-    let fracaoInss13Ferias = salario*0.04
-    let Custo_Funcionario_final = salario+fracao13+fracaoFerias+FGTS+FGTS13+INSS+fracaoInss13Ferias
-    let Valor_perda_produtividade=(Custo_Funcionario_final*(desempenho/100))*qtdFuncionario
-    let porcentagem_lucro_perda = Valor_perda_produtividade*100/Faturamento
+            for(i=1; i <= hora; i *= 1.5){
+            }
+            let desempenho = (i * aumeTempe)
+            
+            textoDiv.innerHTML +=`
+            A sua produtividade por funcionario caíra: ${desempenho.toFixed(2)}%
+            `
+        
+        let fracao13 = salario*0.083
+        let fracaoFerias = salario*0.1111
+        let FGTS = salario*0.08
+        let FGTS13 = salario*0.014
+        let INSS = salario*0.20
+        let fracaoInss13Ferias = salario*0.04
+        let Custo_Funcionario_final = salario+fracao13+fracaoFerias+FGTS+FGTS13+INSS+fracaoInss13Ferias
+        let Valor_perda_produtividade=(Custo_Funcionario_final*(desempenho/100))*qtdFuncionario
+        let porcentagem_lucro_perda = Valor_perda_produtividade*100/Faturamento
 
-    textoDiv.innerHTML +=`
-        A sua perda por funcionario é de R$ ${(Custo_Funcionario_final*(desempenho/100)).toFixed(2)}, e sua perda de Faturamento total do sertor será de: ${porcentagem_lucro_perda.toFixed(2)}%<br>
-        `
+        let resultado = textoDiv.value
+        textoDiv.innerHTML =`
+        <h1 class="titulo">Simulador <span style="color: #E6BA35;">Eco</span>Yield</h1>
 
+        Devido à relação da perda de produtividade com o estresse térmico causado pela temperatura neste ambiente, ocorrerá que:<br><br>A sua produtividade por funcionario caíra: <b>${desempenho.toFixed(2)}%</b><br>Tendo a perda por funcionario de R$ <b>${(Custo_Funcionario_final*(desempenho/100)).toFixed(2)}</b><br>Com isso terá a diminuição no Faturamento total do sertor de: <b>${porcentagem_lucro_perda.toFixed(2)}%</b><br>
+            <p class="voltar">
+                <a href="calcInicial.html"><button onclick="voltarPerguntas()">Voltar para as perguntas</button></p></a>
+            
+            `
+            conteiner_id.style.display = 'none';
+            resultado.style.display = 'block';
+        }
+        function voltarPerguntas(){
+            
+            
+        }
     }
 </script>
 
