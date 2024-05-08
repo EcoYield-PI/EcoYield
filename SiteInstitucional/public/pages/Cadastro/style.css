@@ -22,13 +22,13 @@ body {
 #formArea {
     background-color: #6685AF;
     width: 45vw;
-    height: 93vh;
+    height: 94vh;
     border-radius: 10px 0px 0px 10px;
 }
 
 h1 {
     color: #ffffff;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-size: 28px;
 }
 
@@ -73,7 +73,7 @@ form input::placeholder {
 form #button {
     width: fit-content;
     padding: 12px 40px 12px 40px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     background-color: #3C67A0;
     border-radius: 10px;
     color: #ffffff;
@@ -101,15 +101,14 @@ form a {
 
 #sideImage {
     width: 45vw;
-    height: 93vh;
-    background-image: url(../../assets/formSide.png);
+    height: 94vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url(../../assets/formSide.png);
     background-size: cover;
     border-radius: 0px 10px 10px 0px;
 }
 
 #sideImage div {
-    background-color: rgba(0, 0, 0, 0.4);
     width: 45vw;
-    height: 93vh;
+    height: 94vh;
     border-radius: 0px 10px 10px 0px;
 }
