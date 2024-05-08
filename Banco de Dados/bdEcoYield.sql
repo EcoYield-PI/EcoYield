@@ -34,8 +34,6 @@ tipo varchar(5) not null,
 constraint chk_tipo check(tipo in('LM35', 'DHT11'))
 );
 
-select * from conjuntoSensor;
-
 create table conjuntoSensor(
 	id int primary key auto_increment,
     fksensorTemperatura int not null,
