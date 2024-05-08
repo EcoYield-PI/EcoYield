@@ -89,7 +89,7 @@ body {
 }
 
 #banner {
-    background-image: url('assets/bannerBackground.jpg');
+    background-image: url('../img/bannerBackground.jpg');
     background-size: cover;
     margin-bottom: 40px;
 }
