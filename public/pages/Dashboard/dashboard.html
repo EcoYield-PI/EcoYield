@@ -11,31 +11,43 @@
 <body>
     <div class="menu-lateral">
         <ul>
-            <li><img src="https://th.bing.com/th/id/R.1d52a01c9bc98fe3a14cb1340ff4570f?rik=u%2fbNt70iyzgPMw&pid=ImgRaw&r=0" alt="Icone de Perfil"></li>
-            <a href="dashboard.html" style="text-decoration: none;"><li class="opcoes">Visão Geral</li></a>
-            <a href="dashboardmensal.html" style="text-decoration: none;"><li class="opcoes">Média Mensal</li></a>
-            <a href="historico.html" style="text-decoration: none;"><li class="opcoes">Histórico</li></a>
-            <a href="../../index.html" style="text-decoration: none;"><li class="sair"><button id="btn_sair" class="botaoSair">Sair</button></li></a>
+            <li><img src="https://th.bing.com/th/id/R.1d52a01c9bc98fe3a14cb1340ff4570f?rik=u%2fbNt70iyzgPMw&pid=ImgRaw&r=0"
+                    alt="Icone de Perfil"></li>
+            <a href="dashboard.html" style="text-decoration: none;">
+                <li class="opcoes">Visão Geral</li>
+            </a>
+            <a href="dashboardanual.html" style="text-decoration: none;">
+                <li class="opcoes">Média Anual</li>
+            </a>
+            <a href="historico.html" style="text-decoration: none;">
+                <li class="opcoes">Histórico</li>
+            </a>
+            <a href="../../index.html" style="text-decoration: none;">
+                <li class="sair"><button id="btn_sair" class="botaoSair">Sair</button></li>
+            </a>
         </ul>
     </div>
 
     <div id="alerta" class="alerta" style="display: none;">
         <h2>!</h2>
     </div>
-    <div class="grafico">
-        <div class="ContainerGraficos">
-            
-            <canvas id="graficoAmb1" style="height: 65vh; width: 55vw;">
+    <div class="tudo">
+        <div class="grafico">
+            <span id="TEXTOAMBIENTE">SELECIONE UM AMBIENTE:</span>
+            <div class="ContainerGraficos" id="CG">
 
-            </canvas>
+                <canvas id="graficoAmb1" style="height: 65vh; width: 55vw;">
 
-            <canvas id="graficoAmb2" style="height: 65vh; width: 55vw; display: none;">
+                </canvas>
+                
+                <canvas id="graficoAmb2" style="height: 65vh; width: 55vw; display: none;">
 
-            </canvas>
-            
-            <canvas id="graficoAmb3" style="height: 65vh; width: 55vw; display: none;">
+                </canvas>
 
-            </canvas>
+                <canvas id="graficoAmb3" style="height: 65vh; width: 55vw; display: none;">
+
+                </canvas>
+            </div>
         </div>
         <div class="BotaoCont">
             <button id="botao1" class="botaoTroca" onclick="Aparecer1()">Ambiente 1</button>
@@ -43,13 +55,13 @@
             <button id="botao3" class="botaoTroca" onclick="Aparecer3()">Ambiente 3</button>
         </div>
     </div>
-    
     <div class="kpi">
-        
-    <h2>KPI's</h2>
-            <div class="kpi-item1" id="kpiTemperatura">Média de Temperatura:<br> <span id="valorTemperatura">--</span>°C</div>
-            <div class="kpi-item2" id="kpiUmidade"> Média de Umidade:<br>  <span id="valorUmidade">--</span>%</div>
-        
+
+        <h2>KPI's</h2>
+        <div class="kpi-item1" id="kpiTemperatura">Média de Temperatura:<br> <span id="valorTemperatura">--</span>°C
+        </div>
+        <div class="kpi-item2" id="kpiUmidade"> Média de Umidade:<br> <span id="valorUmidade">--</span>%</div>
+
     </div>
 
 
@@ -88,26 +100,26 @@
     var qtdmedicao2 = 0
     var qtdmedicao3 = 0
     var horaFor = 3
-    for(;qtdmedicao3<=horaFor-1;qtdmedicao3++){
-        temperatura3+=temperaturaAmb3[qtdmedicao3];
-        umidade3+= umidadeAmb3[qtdmedicao3];
+    for (; qtdmedicao3 <= horaFor - 1; qtdmedicao3++) {
+        temperatura3 += temperaturaAmb3[qtdmedicao3];
+        umidade3 += umidadeAmb3[qtdmedicao3];
     }
-    var mediaTemp3 = Math.trunc(temperatura3/qtdmedicao3);
-    var mediaUmi3 = (umidade3/qtdmedicao3).toFixed(1);
+    var mediaTemp3 = Math.trunc(temperatura3 / qtdmedicao3);
+    var mediaUmi3 = (umidade3 / qtdmedicao3).toFixed(1);
 
-    for(;qtdmedicao1<=horaFor-1;qtdmedicao1++){
-        temperatura1+=temperaturaAmb1[qtdmedicao1];
-        umidade1+= umidadeAmb1[qtdmedicao1];
+    for (; qtdmedicao1 <= horaFor - 1; qtdmedicao1++) {
+        temperatura1 += temperaturaAmb1[qtdmedicao1];
+        umidade1 += umidadeAmb1[qtdmedicao1];
     }
-    var mediaTemp1 = Math.trunc(temperatura1/qtdmedicao1);
-    var mediaUmi1 = (umidade1/qtdmedicao1).toFixed(1);
+    var mediaTemp1 = Math.trunc(temperatura1 / qtdmedicao1);
+    var mediaUmi1 = (umidade1 / qtdmedicao1).toFixed(1);
 
-    for(;qtdmedicao2<=horaFor-1;qtdmedicao2++){
-        temperatura2+=temperaturaAmb2[qtdmedicao2];
-        umidade2+= umidadeAmb2[qtdmedicao2];
+    for (; qtdmedicao2 <= horaFor - 1; qtdmedicao2++) {
+        temperatura2 += temperaturaAmb2[qtdmedicao2];
+        umidade2 += umidadeAmb2[qtdmedicao2];
     }
-    var mediaTemp2 = Math.trunc(temperatura2/qtdmedicao2);
-    var mediaUmi2 = (umidade2/qtdmedicao2).toFixed(1);
+    var mediaTemp2 = Math.trunc(temperatura2 / qtdmedicao2);
+    var mediaUmi2 = (umidade2 / qtdmedicao2).toFixed(1);
 
     new Chart(Amb1, {
         type: 'line',
@@ -117,7 +129,7 @@
                 label: 'Temperatura',
                 data: temperaturaAmb1,
                 borderWidth: 2
-            },{
+            }, {
                 label: 'Umidade',
                 data: umidadeAmb1,
                 borderWidth: 2
@@ -140,7 +152,7 @@
                 label: 'Temperatura',
                 data: temperaturaAmb2,
                 borderWidth: 2
-            },{
+            }, {
                 label: 'Umidade',
                 data: umidadeAmb2,
                 borderWidth: 2
@@ -163,7 +175,7 @@
                 label: 'Temperatura',
                 data: temperaturaAmb3,
                 borderWidth: 2
-            },{
+            }, {
                 label: 'Umidade',
                 data: umidadeAmb3,
                 borderWidth: 2
@@ -178,41 +190,47 @@
         }
     });
 
-    function Aparecer1(){
+    function Aparecer1() {
         graficoAmb1.style.display = 'block';
+        CG.style.display = 'block';
         graficoAmb2.style.display = 'none';
         graficoAmb3.style.display = 'none';
+        TEXTOAMBIENTE.style.display = 'none';
         valorTemperatura.innerHTML = `${mediaTemp1}`;
         valorUmidade.innerHTML = `${mediaUmi1}`;
     }
-    function Aparecer2(){
+    function Aparecer2() {
         graficoAmb1.style.display = 'none';
         graficoAmb2.style.display = 'block';
         graficoAmb3.style.display = 'none';
+        CG.style.display = 'block';
+        TEXTOAMBIENTE.style.display = 'none';
         valorTemperatura.innerHTML = `${mediaTemp2}`;
         valorUmidade.innerHTML = `${mediaUmi2}`;
     }
-    function Aparecer3(){
+    function Aparecer3() {
         graficoAmb1.style.display = 'none';
         graficoAmb2.style.display = 'none';
         graficoAmb3.style.display = 'block';
+        CG.style.display = 'block';
+        TEXTOAMBIENTE.style.display = 'none';
         valorTemperatura.innerHTML = `${mediaTemp3}`;
         valorUmidade.innerHTML = `${mediaUmi3}`;
     }
 
 
-if(mediaTemp1 < 18 || mediaTemp1 > 26){
+    if (mediaTemp1 < 18 || mediaTemp1 > 26) {
         alerta.style.display = 'block';
         botao1.style.color = "red";
-}
+    }
 
-if(mediaTemp2 < 18 || mediaTemp2 > 26){
+    if (mediaTemp2 < 18 || mediaTemp2 > 26) {
         alerta.style.display = 'block';
         botao2.style.color = "red";
-}
+    }
 
-if(mediaTemp3 < 18 || mediaTemp3 > 26){
-    alerta.style.display = 'block';
-    botao3.style.color = "red";
-}
+    if (mediaTemp3 < 18 || mediaTemp3 > 26) {
+        alerta.style.display = 'block';
+        botao3.style.color = "red";
+    }
 </script>

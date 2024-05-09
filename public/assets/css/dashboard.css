@@ -43,11 +43,33 @@ body {
 
 .grafico {
     width: 60vw;
-    height: 70vh;
+    height: 73.2vh;
     border-radius: 40px;
     background-color: #FFF;
-    margin: 2%;
     box-shadow: 12px 8px 25px 2px rgb(165, 165, 165);
+    flex-direction: column;
+    margin-top: 3.5%;
+    padding: 5px;
+    text-align: center;
+}
+
+.grafico span{
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #6685AF;
+}
+
+.graficoAnual {
+    width: 60vw;
+    height: 73.2vh;
+    border-radius: 40px;
+    background-color: #FFF;
+    box-shadow: 12px 8px 25px 2px rgb(165, 165, 165);
+    flex-direction: column;
+    margin-top: 2%;
+    padding: 5px;
+    text-align: center;
+    margin-left: 2%;
 }
 
 .kpi {
@@ -61,13 +83,17 @@ body {
 
 .ContainerGraficos {
     padding: 10px;
+    display: none;
+}
+
+.ContainerGraficosAnual {
+    padding: 10px;
 }
 
 .BotaoCont{
     display: flex;
-    flex-direction: row;
+    
 }
-
 
 .botaoTroca {
     width: 20%;

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/dashboard.css">
-    <title>Dashboard Mensal</title>
+    <title>Dashboard Anual</title>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
                 <li class="opcoes">Visão Geral</li>
             </a>
             <a href="dashboardmensal.html" style="text-decoration: none;">
-                <li class="opcoes">Média Mensal</li>
+                <li class="opcoes">Média Anual</li>
             </a>
             <a href="historico.html" style="text-decoration: none;">
                 <li class="opcoes">Histórico</li>
@@ -28,9 +28,9 @@
     </div>
 
 
-    <div class="grafico">
-        <div class="ContainerGraficos">
-            <canvas id="graficoMensal" style="height: 65vh; width: 55vw;">
+    <div class="graficoAnual">
+        <div class="ContainerGraficosAnual">
+            <canvas id="graficoAnual" style="height: 65vh; width: 55vw;">
 
             </canvas>
         </div>
@@ -38,7 +38,7 @@
 
     <div class="kpi">
         <h2>KPI's</h2>
-        <div class="kpi-item3" id="kpiMedia">Média mensal:<br> <span id="mediaTemperatura">--</span>°C
+        <div class="kpi-item3" id="kpiMedia">Média Anual:<br> <span id="mediaTemperatura">--</span>°C
         </div>
 </body>
 
@@ -49,7 +49,7 @@
 
 <!-- Script para formação dos gráficos-->
 <script>
-    const Mensal = document.getElementById('graficoMensal');
+    const Anual = document.getElementById('graficoAnual');
     
     const temperaturaMensal = [25.4, 28, 23, 22, 20, 29];
     const qtdmedicao = temperaturaMensal.length; // Obtendo a quantidade de medições diretamente do array
@@ -67,12 +67,12 @@
         mediaTemperaturaElement.innerHTML = mediaTemperaturaMensal.toFixed(1);
     }
 
-    new Chart(Mensal, {
+    new Chart(Anual, {
         type: 'bar',
         data: {
             labels: ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN'],
             datasets: [{
-                label: 'Temperatura Mensal',
+                label: 'Temperatura Anual',
                 data: temperaturaMensal,
                 borderWidth: 1
             }]
