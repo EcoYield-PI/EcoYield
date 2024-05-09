@@ -171,7 +171,6 @@ body {
 }
 
 .kpi-item1 {
-    display: flex;
     align-items: center;
     margin-bottom: 10px;
     margin-right: 6%;
@@ -183,7 +182,6 @@ body {
     padding: 10%;
 }
 .kpi-item2 {
-    display: flex;
     align-items: center;
     margin-bottom: 10px;
     margin-right: 6%;
@@ -195,7 +193,6 @@ body {
     padding: 10%;
 }
 .kpi-item3 {
-    display: flex;
     align-items: center;
     margin-bottom: 10px;
     margin-right: 6%;
