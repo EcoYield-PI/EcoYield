@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Line Chart</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     <!-- Biblioteca que permite a geração dos gráficos -->
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
@@ -19,17 +20,21 @@
 </head>
 
 <body>
-    <div>
-        <h1>Sensor DHT 11 - Umidade</h1>
+
+    <div class="container">
+        <div class="chart-canvas">
+       <!-- <h1>Sensor DHT 11 - Umidade</h1> -->
         <section style="width:100%">
-            <canvas id="dht11Umidade"></canvas>
+            <canvas id="dht11Umidade"></canvas></div>
             <!-- <canvas> -> tag da api chatjs para gerar a estrutura dos graficos -->
         </section>
-        <h1>Sensor DHT 11 - Temperatura</h1>
+        <div class="chart-canvas">
+        <!--<h1>Sensor DHT 11 - Temperatura</h1>-->
         <section style="width: 100%;">
-            <canvas id="dht11Temperatura"></canvas>
+            <canvas id="dht11Temperatura"></canvas></div>
         </section>
-        <h1>Sensor Luminosidade</h1>
+        </div>
+      <!-- <h1>Sensor Luminosidade</h1>
         <section style="width: 100%;">
             <canvas id="luminosidade"></canvas>
         </section>
@@ -41,7 +46,7 @@
         <section style="width: 100%;">
             <canvas id="chave"></canvas>
         </section>
-    </div>
+    </div> --> 
 
     <script>
         /* -- dht11Umidade -- */
@@ -111,7 +116,7 @@
                         yAxes: [{
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Luminosidade'
+                                labelString: 'Temperatura'
                             },
                             ticks: {
                                 beginAtZero: true
@@ -124,7 +129,7 @@
                 }
             }
         );
-        /* -- luminosidade -- */
+        /* -- luminosidade -- 
         var contextoLuminosidade = document.getElementById('luminosidade').getContext('2d');
         contextoLuminosidade.canvas.width = 1000;
         contextoLuminosidade.canvas.height = 300;
@@ -164,7 +169,7 @@
                 }
             }
         );
-        /* -- lm35Temperatura */
+        /* -- lm35Temperatura 
         var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
         contextoLm35Temperatura.canvas.width = 1000;
         contextoLm35Temperatura.canvas.height = 300;
@@ -204,7 +209,7 @@
                 }
             }
         );
-        /* -- chave */
+        /* -- chave 
         var contextoChave = document.getElementById('chave').getContext('2d');
         contextoChave.canvas.width = 1000;
         contextoChave.canvas.height = 300;
@@ -274,7 +279,7 @@
                 grafico.data.datasets[0].data.push(parseFloat(valor));
                 grafico.update();
             })
-        }
+        } */ 
 
         setInterval(() => {
             // obterDados(dht11Umidade, 'dht11/umidade');
