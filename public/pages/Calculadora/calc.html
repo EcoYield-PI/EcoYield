@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,126 +8,139 @@
     <link rel="stylesheet" href="../../assets/css/calculadora.css">
 
 </head>
+
 <body>
     <a href="../../index.html" id="voltarSite"><button>Voltar ao Site</button></a>
     <div class="conteiner" id="conteiner_id" style="display: block;">
         <h1 class="titulo">Simulador <span style="color: #E6BA35;">Eco</span>Yield</h1>
 
-        Média de faturamento do setor: 
-        <input type="number" id="inpuFaturamento" placeholder="Ex: R$ 200000,00">  <br>
+        Média de faturamento do setor:
+        <input type="number" id="inpuFaturamento" placeholder="Ex: R$ 200000,00"> <br>
 
-        Quantidade de funcionarios: 
-        <input type="number" id="inpuQtdFuncionarios" placeholder="Ex: 100">  <br>
+        Quantidade de funcionarios:
+        <input type="number" id="inpuQtdFuncionarios" placeholder="Ex: 100"> <br>
 
-        Média salarial por funcionario: 
-        <input type="number" id="inpuSalario" placeholder="Ex: R$ 2000,00">  <br>
-        
-        Digite a temperatura do seu ambiente: 
-        <input type="number" id="inpuTemp" placeholder="Ex: 26ºC">  <br>
+        Média salarial por funcionario:
+        <input type="number" id="inpuSalario" placeholder="Ex: R$ 2000,00"> <br>
+
+        Digite a temperatura do seu ambiente:
+        <input type="number" id="inpuTemp" placeholder="Ex: 26ºC"> <br>
+
+        Digite a umidade do seu ambiente:
+        <input type="number" id="inpuUmid" placeholder="Ex: 25%"> <br>
 
         Digite as horas de trabalho:
-        <input type="number" id="inpuHora" placeholder="Ex: 2 horas"> <br>  
-   
+        <input type="number" id="inpuHora" placeholder="Ex: 2 horas"> <br>
+
         <button onclick="butProdu()">Calcular taxa</button>
-    </div> 
+    </div>
 
     <div class="resultado" id="textoDiv" style="display: none;">
-    
+
     </div>
-<a href="calcInicial.html"></a>
 </body>
+
 </html>
 
 
 <script>
-    function butProdu(){
+    function butProdu() {
         const Faturamento = Number(inpuFaturamento.value)
         const qtdFuncionario = Number(inpuQtdFuncionarios.value)
         const salario = Number(inpuSalario.value)
         let temperatura = Number(inpuTemp.value)
         let hora = Number(inpuHora.value)
-        let umidade = 40
+        let umidade = Number(inpuUmid)
         let temperaturaadiconal = 0
 
-        if(!Faturamento){
+        if (!Faturamento) {
             alert("Preencha o campo do Faturamento!")
         }
-        else if (!qtdFuncionario){
-            alert ("Prencha o campo das Quantidade de funcionarios!")
+        else if (!qtdFuncionario) {
+            alert("Prencha o campo das Quantidade de funcionarios!")
         }
-        else if (!salario){
-            alert ("Prencha o campo do Salario!")
+        else if (!salario) {
+            alert("Prencha o campo do Salario!")
         }
-        else if(!temperatura){
+        else if (!temperatura) {
             alert("Preencha o campo da Temperatura!")
         }
-        else if (!hora){
-            alert ("Prencha o campo das Horas de Trabalho!")
+        else if (!hora) {
+            alert("Prencha o campo das Horas de Trabalho!")
         }
-        else{
-        conteiner_id.style = "none"
-        textoDiv.style = "block"
-        for(let contUmid=25;contUmid<=umidade;contUmid+=5){
-            if(contUmid == 25 && temperatura>=31){
-            
-            if(temperatura<=41){
-                temperaturaadiconal=5
-                }
-            if(temperatura<=39){
-                temperaturaadiconal = 4
-                }
-            if(temperatura<=37){
-                temperaturaadiconal=3
-                }
-            if(temperatura<=35){
-                temperaturaadiconal=2
-                }
-            if(temperatura<=33){
-                temperaturaadiconal=1
-                }
-            else{
-                temperaturaadiconal=6
-                }
+        else {
+            conteiner_id.style = "none"
+            textoDiv.style = "block"
+            for (let contUmid = 25; contUmid <= umidade; contUmid += 5) {
+                if (contUmid == 25 && temperatura >= 31) {
 
-            }
-            else if(contUmid > 25 && temperatura>=28 && temperatura<=32){
-                temperaturaadiconal += 1         
-            }
-            else if(contUmid > 25 && temperatura>=33){
-                temperaturaadiconal += 2
-            }
-        }
-        temperatura += temperaturaadiconal
+                    if (temperatura <= 41) {
+                        temperaturaadiconal = 5
+                    }
+                    if (temperatura <= 39) {
+                        temperaturaadiconal = 4
+                    }
+                    if (temperatura <= 37) {
+                        temperaturaadiconal = 3
+                    }
+                    if (temperatura <= 35) {
+                        temperaturaadiconal = 2
+                    }
+                    if (temperatura <= 33) {
+                        temperaturaadiconal = 1
+                    }
+                    else {
+                        temperaturaadiconal = 6
+                    }
 
-        let temperaturaFinal = temperatura - 25;
-        let aumeTempe =  temperaturaFinal * 0.57;
+                }
+                else if (contUmid > 25 && temperatura >= 28 && temperatura <= 32) {
+                    temperaturaadiconal += 1
+                }
+                else if (contUmid > 25 && temperatura >= 33) {
+                    temperaturaadiconal += 2
+                }
+            }
 
-        
-            for(i=1; i <= hora; i *= 1.5){
+
+            temperatura += temperaturaadiconal
+
+
+            let temperaturaFinal = temperatura - 25;
+            if (temperatura < 18) {
+                temperaturaFinal = 18 - temperatura
+            }
+            else if (temperatura < 0) {
+                temperaturaFinal = Math.abs(temperatura + 18)
+            }
+            let aumeTempe = temperaturaFinal * 0.57;
+
+
+            for (i = 1; i <= hora; i *= 1.5) {
             }
             let desempenho = (i * aumeTempe)
-            
-            textoDiv.innerHTML +=`
+
+            textoDiv.innerHTML += `
             A sua produtividade por funcionario caíra: ${desempenho.toFixed(2)}%
             `
-        
-        let fracao13 = salario*0.083
-        let fracaoFerias = salario*0.1111
-        let FGTS = salario*0.08
-        let FGTS13 = salario*0.014
-        let INSS = salario*0.20
-        let fracaoInss13Ferias = salario*0.04
-        let Custo_Funcionario_final = salario+fracao13+fracaoFerias+FGTS+FGTS13+INSS+fracaoInss13Ferias
-        let Valor_perda_produtividade=(Custo_Funcionario_final*(desempenho/100))*qtdFuncionario
-        let porcentagem_lucro_perda = Valor_perda_produtividade*100/Faturamento
 
-        let resultado = textoDiv.value
-        textoDiv.innerHTML =`
+            let fracao13 = salario * 0.083
+            let fracaoFerias = salario * 0.1111
+            let FGTS = salario * 0.08
+            let FGTS13 = salario * 0.014
+            let INSS = salario * 0.20
+            let fracaoInss13Ferias = salario * 0.04
+            let Custo_Funcionario_final = salario + fracao13 + fracaoFerias + FGTS + FGTS13 + INSS + fracaoInss13Ferias
+            let Valor_perda_produtividade = (Custo_Funcionario_final * (desempenho / 100)) * qtdFuncionario
+            let porcentagem_lucro_perda = Valor_perda_produtividade * 100 / Faturamento
+
+            let resultado = textoDiv.value
+            textoDiv.innerHTML = `
         <h1 class="titulo">Simulador <span style="color: #E6BA35;">Eco</span>Yield</h1>
 
-        Devido à relação da perda de produtividade com o estresse térmico causado pela temperatura neste ambiente, ocorrerá que:<br><br>A sua produtividade por funcionario caíra: <b>${desempenho.toFixed(2)}%</b><br>Tendo a perda por funcionario de R$ <b>${(Custo_Funcionario_final*(desempenho/100)).toFixed(2)}</b><br>Com isso terá a diminuição no Faturamento total do setor de: <b>${porcentagem_lucro_perda.toFixed(2)}%</b>
+        Devido à relação da perda de produtividade com o estresse térmico causado pela temperatura neste ambiente, ocorrerá que:<br><br>A sua produtividade por funcionario caíra: <b>${desempenho.toFixed(2)}%</b><br>Tendo a perda por funcionario de <b>R$${(Custo_Funcionario_final * (desempenho / 100)).toFixed(2)}</b><br>Com isso terá a diminuição no Faturamento total do setor de: <b>${porcentagem_lucro_perda.toFixed(2)}%</b>
             <p class="voltar">
-                <a href="calcInicial.html"><button onclick="voltarPerguntas()">Voltar para as perguntas</button></p></a>
+                <a href="calc.html"><button onclick="voltarPerguntas()">Voltar para as perguntas</button></p></a>
             
             `
             conteiner_id.style.display = 'none';
@@ -134,56 +148,3 @@
         }
     }
 </script>
-
-<!--
-Para temperaturas menores de 18, Valores Negativos e validacao!
-
-    if(temperatura > -30 && temperatura < 65 ){
-        if(temperatura > 18 && temperatura < 25){
-            temperaturaFinal = 1
-        }
-        else if(temperatura > 25){
-            temperaturaFinal = temperatura - 25
-        }
-        else if(temperatura < 18){
-            temperaturaFinal = 18 - temperatura 
-        } 
-        else if(temperatura < 0){
-            temperaturaFinal = Math.abs(temperatura + 18)
-        }
-    }
-    else{
-        alert(`Essa temperatura pode causar risco à vida humana. `)
-    }
-    
- -->
-
-<!-- 
-conversao do kelvin, farenheit, celsius 
-
-    Escolha uma das opções:
-    => HTML
-    <select id="selectCKF">
-        <option value="cel">Celsius</option>
-        <option value="kel">Kelvin</option>
-        <option value="fah">Fahrenheit</option>
-    </select> 
-
-    => JS
-    let selectTemp = selectCKF.value
-
-    let celsius = 0;
-    let kelvin = 0;
-    let fahr = 0;
-
-    if(selectTemp = "cel"){
-        celsius = temperatura
-    }else if(selectTemp = "kel"){
-        kelvin = temperatura - 273
-        celsius = kelvin
-    }else if(selectTemp = "fah"){
-        fahr = 5 * (temperatura - 32 ) / 9 ;
-        celsius = fahr
-    }
- -->
-
