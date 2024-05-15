@@ -86,7 +86,8 @@ button:active {
     text-align: center;
 }
 b {
-    font-size: 22px;
+    font-size: 28px;
+    color: #e67635;
 }
 
 .voltar {
@@ -103,4 +104,21 @@ b {
     margin: 0 90px;
     font-size: 18px;
     font-weight: bold;
+}
+
+.ideal{
+    background-color: #E6BA35;
+    border-color: #4e71a0;
+    align-items: center;
+    border-radius: 8px;
+    margin: 0 90px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    margin-left: 0.5%; 
+}
+
+.Com_ecoyield{
+    color: greenyellow;
+    font-size: 24px;
 }
