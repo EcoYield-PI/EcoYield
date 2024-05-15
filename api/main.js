@@ -29,11 +29,11 @@ const serial = async (
             // Credenciais do banco de dados
             host: 'localhost',
             //quando for pra VM talvez precise pegar o IP dela.
-            user: 'sptech',
+            user: 'aluno',
             //criar um usuário que só tenha permissão de insert.
-            password: '123',
+            password: 'sptech100',
             database: 'ecoyield',
-            port: 3306
+            port: 3307
         }
     ).promise();
 
