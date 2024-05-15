@@ -118,3 +118,5 @@ select * from sensor;
 select * from conjuntoSensor;
 select * from leitura;	
 select * from simuladorLeitura;	
+
+truncate simuladorLeitura;
