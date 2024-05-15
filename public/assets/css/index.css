@@ -27,7 +27,7 @@ body {
 }
 
 #logo {
-    width: 130px;
+    width: 110px;
     margin-left: 60px;
     position: absolute;
     top: 15px;
@@ -45,13 +45,14 @@ body {
     display: inline-block;
     margin-left: 40px;
     list-style: none;
+    font-size: 14px
 }
 
 #navbar li:last-child {
     background-color: #ffbb00 ;
     padding: 10px;
     text-align: center;
-    width: 60px;
+    width: fit-content;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -79,7 +80,7 @@ body {
     width: 100%;
 }
 
-#navbar #loginRoute::after {
+#navbar #signUpButton::after {
     width: 0%;
 }
 
@@ -143,10 +144,25 @@ body {
 
 #visionDiagram {
     display: block;
-    margin: 40px 0;
+    margin: 30px 0;
     width: 86vw;
     text-align: center;
     border-radius: 10px;
+}
+
+#sensation {
+    margin-top: 15%;
+}
+
+#sensation img{
+    margin: 30px auto 0 auto;
+}
+
+#sensation #pictureCaption {
+    font-size: 12px;
+    text-align: center;
+    margin: 10px auto 0 auto;
+    max-width: 650px;
 }
 
 #goals {
