@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Fira Sans", sans-serif;
+}
+
+body{
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+nav.menuLateral {
+    width: 80px;
+    height: 100%;
+    background-color: #2b68be;
+    padding: 40px 0 40px 1%;
+    box-shadow: 3px 0 0 #18a3ff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+nav.menuLateral.expandir {
+    width: 300px;
+}
+
+.btn-expandir {
+    width: 100%;
+    padding-left: 10px;
+}
+
+.btn-expandir > i {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+ul {
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.item-menu{
+    transition: 1s;
+}
+
+ul li.ativo{
+    background-color: #18a3ff;
+}
+
+ul li.item-menu:hover {
+    background: #18a3ff;
+}
+
+ul li.item-menu a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 4%;
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 40px;
+}
+
+ul li.item-menu a .txt-link {
+    margin-left: 75px;
+    transition: .5s;
+}
+
+nav.menuLateral.expandir .txt-link {
+    margin-left: 40px;
+}
+
+ul li.item-menu a .icon > i{
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.containerGeral {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items:center ;
+}
+
+.empurradora{
+    width: 130px;
+    display: none;
+}
+
+.empurradora.aparecer {
+    display: block
+}
+
+.containerKPI {
+    width: 400px;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.KPI {
+    width: 80%;
+    height: 25%;
+    background-color: rgb(207, 207, 207);
+    border-radius: 20px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerLista {
+    width: 600px;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.listaAmbientes {
+    margin: 20px;
+    width: 80%;
+    height: 100%;
+    background-color: rgb(207, 207, 207);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+.listaAmbientes > a {
+    margin-top: 10px;
+    font-size: 30px;
+    text-decoration: none;
+    color: #2b68be;
+}
