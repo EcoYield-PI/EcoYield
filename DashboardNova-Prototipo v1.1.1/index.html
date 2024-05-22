@@ -29,7 +29,7 @@
                 </a>
             </li>
             <li class="item-menu" id="link_usuario">
-                <a href="#" >
+                <a href="#">
                     <span class="icon"><i class="bi bi-person-square"></i></i></span>
                     <span class="txt-link">Usuario</span>
                 </a>
@@ -82,8 +82,8 @@
                 </div>
 
                 <div class="modalButAMB">
-                    <button>Conjunto-Sensor 1</button>
-                    <button>Conjunto-Sensor 2</button>
+                    <button onclick="cs11()">Conjunto-Sensor 1</button>
+                    <button onclick="cs21()">Conjunto-Sensor 2</button>
                 </div>
 
                 <div class="modalButFECHAR">
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </dialog>
-        
+
         <dialog id="amb2" class="modalAMB">
             <div class="contAmb">
                 <div class="ambNome">
@@ -99,16 +99,16 @@
                 </div>
 
                 <div class="modalButAMB">
-                    <button>Conjunto-Sensor 1</button>
-                    <button>Conjunto-Sensor 2</button>
+                    <button onclick="cs12()">Conjunto-Sensor 1</button>
+                    <button onclick="cs22()">Conjunto-Sensor 2</button>
                 </div>
-                
+
                 <div class="modalButFECHAR">
                     <button onclick="fecharAMB()">Fechar</button>
                 </div>
             </div>
         </dialog>
-        
+
         <dialog id="amb3" class="modalAMB">
             <div class="contAmb">
                 <div class="ambNome">
@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="modalButAMB">
-                    <button>Conjunto-Sensor 1</button>
+                    <button onclick="cs13()">Conjunto-Sensor 1</button>
                 </div>
 
                 <div class="modalButFECHAR">
@@ -124,7 +124,7 @@
                 </div>
             </div>
         </dialog>
-        
+
         <dialog id="amb4" class="modalAMB">
             <div class="contAmb">
                 <div class="ambNome">
@@ -132,8 +132,8 @@
                 </div>
 
                 <div class="modalButAMB">
-                    <button>Conjunto-Sensor 1</button>
-                    <button>Conjunto-Sensor 2</button>
+                    <button onclick="cs14()">Conjunto-Sensor 1</button>
+                    <button onclick="cs24()">Conjunto-Sensor 2</button>
                 </div>
 
                 <div class="modalButFECHAR">
@@ -141,7 +141,7 @@
                 </div>
             </div>
         </dialog>
-        
+
         <dialog id="amb5" class="modalAMB">
             <div class="contAmb">
                 <div class="ambNome">
@@ -149,7 +149,7 @@
                 </div>
 
                 <div class="modalButAMB">
-                    <button>Conjunto-Sensor 1</button>
+                    <button onclick="cs15()">Conjunto-Sensor 1</button>
                 </div>
 
                 <div class="modalButFECHAR">
@@ -157,14 +157,14 @@
                 </div>
             </div>
         </dialog>
-        
+
         <dialog id="dialog" class="dialogUser" close>
             <div class="contModal">
                 <div class="nomeModal">
                     <h1>Nome-User</h1>
                     <span class="icon"><i class="bi bi-person-circle"></i></span>
                 </div>
-                
+
                 <div class="modalBut">
                     <button>Desconectar</button>
                     <button id="cancel">Fechar</button>
@@ -203,9 +203,41 @@
                         </div>
                 </div>
             </div>
+        </div>
+
+        <dialog id="dialogCS" class="modalCS">
+            <div class="contCS">
+                <div id="csNome">
+
+                </div>
+
+                <div class="conteudoCS">
+                    <canvas id="csChart" class="csChart" style="height: 500px; width: 680px;">
+                        asdasd
+                    </canvas>
+
+                    <div id="contKPIcs">
+                        <div class="KPIcs">
+                            <h3>Último alerta gerado:</h3>
+                            <span style="color: red;">Ambiente 2</span>
+                        </div>
+                        <div class="KPIcs">
+                            <h3>Temperatura mais alta:</h3>
+                            <span style="color: red;">31°C<br></span>
+                        </div>
+                        <div class="KPIcs">
+                            <h3>Umidade mais alta:</h3>
+                            <span style="color: red;">74%<br></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dialog>
 </body>
 
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
 
@@ -217,7 +249,7 @@
             item.classList.remove('ativo')
         )
         this.classList.add('ativo')
-        if(usuario.classList.contains('ativo')) {
+        if (usuario.classList.contains('ativo')) {
             modalUsuario()
         } else {
             dialog.close();
@@ -241,15 +273,15 @@
 
     // modal Usuario
     usuario = document.getElementById('link_usuario')
-    
+
     function modalUsuario() {
         dialog.showModal();
-        
-        cancel.addEventListener('click', () =>{
+
+        cancel.addEventListener('click', () => {
             dialog.close();
         })
     }
-    
+
     // modal Ambientes
     let amb1 = document.getElementById('amb1')
     let amb2 = document.getElementById('amb2')
@@ -285,5 +317,112 @@
         amb5.close();
     }
 
+    let nomeCS = "Sensor 1"
 
+    
+    function cs11() {
+        fecharAMB();
+        const ctx = document.getElementById('csChart');
+        nomeCS = "Sensor 1"
+        dialogCS.showModal();
+        csNome.innerHTML = `<h1>${nomeCS}</h1>`
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    function cs21() {
+        fecharAMB();
+        const ctx21 = document.getElementById('csChart');
+        dialogCS.showModal();
+        nomeCS = "Sensor 2"
+        csNome.innerHTML = `<h1>${nomeCS}</h1>`
+        new Chart(ctx21, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'dife', 'rente', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    function cs12() {
+        fecharAMB();
+        const ctx = document.getElementById('csChart');
+        dialogCS.showModal();
+        nomeCS = "Sensor 1"
+        csNome.innerHTML = `<h1>${nomeCS}</h1>`
+        //AQUI VAI O CHART COM OS DADOS DO GRAFICO 2
+    }
+
+    function cs22() {
+        fecharAMB();
+        const ctx = document.getElementById('csChart');
+        dialogCS.showModal();
+        nomeCS = "Sensor 2"
+        csNome.innerHTML = `<h1>${nomeCS}</h1>`
+        //AQUI VAI O CHART COM OS DADOS DO GRAFICO 2
+    }
+
+    function cs13() {
+        fecharAMB();
+        const ctx = document.getElementById('csChart');
+        dialogCS.showModal();
+        nomeCS = "Sensor 1"
+        csNome.innerHTML = `<h1>${nomeCS}</h1>`
+        //AQUI VAI O CHART COM OS DADOS DO GRAFICO 2
+    }
+
+    function cs14() {
+        fecharAMB();
+        const ctx = document.getElementById('csChart');
+        dialogCS.showModal();
+        nomeCS = "Sensor 1"
+        csNome.innerHTML = `<h1>${nomeCS}</h1>`
+        //AQUI VAI O CHART COM OS DADOS DO GRAFICO 2
+    }
+
+    function cs24() {
+        fecharAMB();
+        const ctx = document.getElementById('csChart');
+        dialogCS.showModal();
+        nomeCS = "Sensor 2"
+        csNome.innerHTML = `<h1>${nomeCS}</h1>`
+        //AQUI VAI O CHART COM OS DADOS DO GRAFICO 2
+    }
+
+    function cs15() {
+        fecharAMB();
+        const ctx = document.getElementById('csChart');
+        dialogCS.showModal();
+        nomeCS = "Sensor 1"
+        csNome.innerHTML = `<h1>${nomeCS}</h1>`
+        //AQUI VAI O CHART COM OS DADOS DO GRAFICO 2
+    }
 </script>
