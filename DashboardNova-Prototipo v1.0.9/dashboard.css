@@ -82,6 +82,7 @@ ul li.item-menu a .icon > i{
     margin-left: 10px;
 }
 
+
 .titulo {
     display: flex;
     align-items: center;
@@ -366,4 +367,52 @@ table th {
     background-color: #f2f2f2;
     font-weight: bold;
     color: #666;
+}
+
+.dialogUser {
+    margin-right: auto;
+    margin-left: auto;
+    height: 400px;
+    width: 500px;
+    border-radius: 30px;
+    border: 3px solid #18a3ff;
+    margin-top: 180px;
+}
+
+.dialogUser::backdrop {
+    background-color: rgba(0, 0, 0, 0.2)
+}
+
+.contModal {
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nomeModal{
+    height: 50%;
+    text-align: center;
+    margin-top:10px ;
+}
+
+.nomeModal > span {
+    font-size: 160px;
+}
+
+.modalBut{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    margin-top: 40px;
+}
+
+.modalBut > button {
+    width: 150px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #18a3ff;
+    color: white;
 }
