@@ -28,7 +28,7 @@
                     <span class="txt-link">Histórico</span>
                 </a>
             </li>
-            <li class="item-menu">
+            <li class="item-menu" id="link_usuario">
                 <a href="#">
                     <span class="icon"><i class="bi bi-person-square"></i></i></span>
                     <span class="txt-link">Usuario</span>
@@ -41,6 +41,7 @@
 
     </div>
 
+    
     <div class="containerTUDO">
         <div class="conteudo">
             <h1>Histórico de Dados</h1>
@@ -54,6 +55,21 @@
                 </ul>
 
             </div>
+
+            <dialog id="dialog" class="dialogUser" close>
+                <div class="contModal">
+                    <div class="nomeModal">
+                        <h1>Nome-User</h1>
+                        <span class="icon"><i class="bi bi-person-circle"></i></span>
+                    </div>
+                    
+                    <div class="modalBut">
+                        <button>Desconectar</button>
+                        <button id="cancel">Fechar</button>
+                    </div>
+                </div>
+            </dialog>
+        
 
             <div class="historico" id="ambiente1">
                 <h2>Ambiente 1</h2>
@@ -180,6 +196,11 @@
             item.classList.remove('ativo')
         )
         this.classList.add('ativo')
+        if(usuario.classList.contains('ativo')) {
+            modalUsuario()
+        } else {
+            dialog.close();
+        }
     }
 
     menuItem.forEach((item) =>
@@ -196,4 +217,15 @@
         menuLat.classList.toggle('expandir')
         empurrar.classList.toggle('aparecer')
     })
+
+    // modal Usuario
+    usuario = document.getElementById('link_usuario')
+    
+    function modalUsuario() {
+        dialog.showModal();
+        
+        cancel.addEventListener('click', () =>{
+            dialog.close();
+        })
+    }
 </script>
