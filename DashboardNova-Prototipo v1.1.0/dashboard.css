@@ -158,12 +158,18 @@ ul li.item-menu a .icon > i{
     border-radius: 20px;
 }
 
-.listaAmbientes > a {
-    margin-top: 10px;
+.listaAmbientes > button {
+    margin-top: 50px;
     font-size: 30px;
     text-decoration: none;
-    color: #2b68be;
+    color: #FFF;
+    width: 150px;
+    border-radius: 10px;
+    background-color: #77b9e6;
+    cursor: pointer;
 }
+
+
 
 .containerTermometro {
     display: flex;
@@ -380,7 +386,7 @@ table th {
 }
 
 .dialogUser::backdrop {
-    background-color: rgba(0, 0, 0, 0.2)
+    background-color: rgba(0, 0, 0, 0.7)
 }
 
 .contModal {
@@ -415,4 +421,56 @@ table th {
     border-radius: 30px;
     background-color: #18a3ff;
     color: white;
+    margin-right: 10px;
 }
+
+.modalAMB {
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    width: 500px;
+    border-radius: 30px;
+    border: 3px solid #18a3ff;
+    margin-top: 180px;
+}
+
+.modalAMB::backdrop {
+    background-color: rgba(0, 0, 0, 0.7)
+}
+
+.contAmb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.modalButAMB {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.modalButAMB > button {
+    width: 250px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: #18a3ff;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.ambNome {
+    margin-bottom: 90px;
+}
+
+.modalButFECHAR > button{
+    width: 150px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #ff0800;
+    color: white;
+    margin-bottom: 10px;
+}
+

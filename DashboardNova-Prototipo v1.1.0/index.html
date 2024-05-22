@@ -75,7 +75,89 @@
             </div>
         </div>
 
+        <dialog id="amb1" class="modalAMB">
+            <div class="contAmb">
+                <div class="ambNome">
+                    <h1> Ambiente 1</h1>
+                </div>
 
+                <div class="modalButAMB">
+                    <button>Conjunto-Sensor 1</button>
+                    <button>Conjunto-Sensor 2</button>
+                </div>
+
+                <div class="modalButFECHAR">
+                    <button onclick="fecharAMB()">Fechar</button>
+                </div>
+            </div>
+        </dialog>
+        
+        <dialog id="amb2" class="modalAMB">
+            <div class="contAmb">
+                <div class="ambNome">
+                    <h1> Ambiente 2</h1>
+                </div>
+
+                <div class="modalButAMB">
+                    <button>Conjunto-Sensor 1</button>
+                    <button>Conjunto-Sensor 2</button>
+                </div>
+                
+                <div class="modalButFECHAR">
+                    <button onclick="fecharAMB()">Fechar</button>
+                </div>
+            </div>
+        </dialog>
+        
+        <dialog id="amb3" class="modalAMB">
+            <div class="contAmb">
+                <div class="ambNome">
+                    <h1> Ambiente 3</h1>
+                </div>
+
+                <div class="modalButAMB">
+                    <button>Conjunto-Sensor 1</button>
+                </div>
+
+                <div class="modalButFECHAR">
+                    <button onclick="fecharAMB()">Fechar</button>
+                </div>
+            </div>
+        </dialog>
+        
+        <dialog id="amb4" class="modalAMB">
+            <div class="contAmb">
+                <div class="ambNome">
+                    <h1> Ambiente 4</h1>
+                </div>
+
+                <div class="modalButAMB">
+                    <button>Conjunto-Sensor 1</button>
+                    <button>Conjunto-Sensor 2</button>
+                </div>
+
+                <div class="modalButFECHAR">
+                    <button onclick="fecharAMB()">Fechar</button>
+                </div>
+            </div>
+        </dialog>
+        
+        <dialog id="amb5" class="modalAMB">
+            <div class="contAmb">
+                <div class="ambNome">
+                    <h1> Ambiente 5</h1>
+                </div>
+
+                <div class="modalButAMB">
+                    <button>Conjunto-Sensor 1</button>
+                </div>
+
+                <div class="modalButFECHAR">
+                    <button onclick="fecharAMB()">Fechar</button>
+                </div>
+            </div>
+        </dialog>
+        
         <dialog id="dialog" class="dialogUser" close>
             <div class="contModal">
                 <div class="nomeModal">
@@ -92,11 +174,11 @@
 
         <div class="containerLista">
             <div class="listaAmbientes">
-                <a href="">AMB1</a>
-                <a href="">AMB2</a>
-                <a href="">AMB3</a>
-                <a href="">AMB4</a>
-                <a href="">AMB5</a>
+                <button onclick="but1()">AMB1</button>
+                <button onclick="but2()">AMB2</button>
+                <button onclick="but3()">AMB3</button>
+                <button onclick="but4()">AMB4</button>
+                <button onclick="but5()">AMB5</button>
             </div>
         </div>
 
@@ -168,4 +250,40 @@
         })
     }
     
+    // modal Ambientes
+    let amb1 = document.getElementById('amb1')
+    let amb2 = document.getElementById('amb2')
+    let amb3 = document.getElementById('amb3')
+    let amb4 = document.getElementById('amb4')
+    let amb5 = document.getElementById('amb5')
+
+    function but1() {
+        amb1.showModal();
+    }
+
+    function but2() {
+        amb2.showModal();
+    }
+
+    function but3() {
+        amb3.showModal();
+    }
+
+    function but4() {
+        amb4.showModal();
+    }
+
+    function but5() {
+        amb5.showModal();
+    }
+
+    function fecharAMB() {
+        amb1.close();
+        amb2.close();
+        amb3.close();
+        amb4.close();
+        amb5.close();
+    }
+
+
 </script>
