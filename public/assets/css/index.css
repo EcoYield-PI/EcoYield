@@ -13,17 +13,16 @@ body {
     background-color: #4d5e7a28;
 }
 
-#header {
+#nav {
     width: 100%;
     height: 12vh;
     position: fixed;
     transition: 0.5s;
     font-weight: 600;
     z-index: 1;
-    margin-bottom: 200px;
 }
 
-#header.scroll {
+#nav.scroll {
     background-color: #27528b;
 }
 
@@ -130,6 +129,7 @@ body {
 .contentTitle {
     margin: 60px 0 20px 10px;
     font-weight: 600;
+    padding-top: 100px;
 }
 
 .paragraphs {
