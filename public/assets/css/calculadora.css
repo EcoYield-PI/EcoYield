@@ -54,6 +54,16 @@ button:active {
     font-size: 17px;
 }
 
+.conteiner select{
+    border-color: #27528B;
+    color: rgb(24, 23, 23);
+    font-weight: 350px;
+    background-color: #a5b9d3;
+    width: 400px;
+    height: 35px;
+    border-radius: 10px;
+    font-size: 17px;
+}
 .conteiner button {
     background-color: #E6BA35;
     border-color: #E6BA35;
