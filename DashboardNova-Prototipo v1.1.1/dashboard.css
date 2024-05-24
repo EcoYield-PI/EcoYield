@@ -9,7 +9,8 @@
 
 body{
     height: 100vh;
-    background-color: whitesmoke;
+    background-color: #2b68be57;
+    overflow-y: hidden;
 }
 
 nav.menuLateral {
@@ -123,7 +124,7 @@ ul li.item-menu a .icon > i{
 .KPI {
     width: 100%;
     height: 25%;
-    background-color: rgb(207, 207, 207);
+    background-color: #e0e0ff;
     border-radius: 20px;
     margin: 2px;
     display: flex;
@@ -151,11 +152,12 @@ ul li.item-menu a .icon > i{
     margin: 20px;
     width: 80%;
     height: 100%;
-    background-color: rgb(207, 207, 207);
+    background-color: #e0e0ff;
     display: flex;
     align-items: center;
     flex-direction: column;
     border-radius: 20px;
+    box-shadow: #2b68be57 10px 10px 20px ;
 }
 
 .listaAmbientes > button {
@@ -167,6 +169,16 @@ ul li.item-menu a .icon > i{
     border-radius: 10px;
     background-color: #77b9e6;
     cursor: pointer;
+}
+
+.listaAmbientes :nth-child(2) {
+    background-color: #fc7528;
+}
+.listaAmbientes :nth-child(4) {
+    background-color: #fc7528;
+}
+.listaAmbientes :nth-child(5) {
+    background-color: #fc7528;
 }
 
 
@@ -390,12 +402,13 @@ table th {
 }
 
 .contModal {
-    height: 400px;
+    height: 350px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    
 }
 
 .nomeModal{
@@ -421,7 +434,7 @@ table th {
     border-radius: 30px;
     background-color: #18a3ff;
     color: white;
-    margin-right: 10px;
+    margin-bottom: 30px;
 }
 
 .modalAMB {
@@ -431,7 +444,7 @@ table th {
     width: 500px;
     border-radius: 30px;
     border: 3px solid #18a3ff;
-    margin-top: 180px;
+    margin-top: 130px;
 }
 
 .modalAMB::backdrop {
@@ -443,7 +456,7 @@ table th {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 30px;
+    padding: 8px;
 }
 
 .modalButAMB {
@@ -481,7 +494,7 @@ table th {
     width: 900px;
     border-radius: 30px;
     border: 3px solid #18a3ff;
-    margin-top: 90px;
+    margin-top: 30px;
 }
 
 .modalCS::backdrop {
