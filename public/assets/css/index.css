@@ -447,3 +447,30 @@ form #button:active {
     margin: 0 auto;
     font-weight: 600;
 }
+
+#assistante-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    /* background-color: #fff; */
+    border-radius: 100%;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+#assistante-icon img {
+    width: 90px; /* Ajuste o tamanho conforme necessário */
+    height: 80px;
+    margin-right: 5px;
+    border-radius: 100%;
+    background-color: #6685AF;
+}
+
+#assistante-icon span {
+    font-size: 15px;
+    color: #333;
+}
