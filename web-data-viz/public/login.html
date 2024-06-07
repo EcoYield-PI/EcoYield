@@ -28,7 +28,7 @@
             <form>
                 <input type="text" id="email_input" placeholder="Email">
                 <input type="password" id="senha_input" placeholder="Senha">
-                <a href="../Dashboard/dashboard.html" id="button" onclick="login()">Login</a>
+                <a href="../Dashboard/dashboard.html" id="button" onclick="entrar()">Login</a>
                 <span>Ainda não possui cadastro? <a href="cadastro.html">Cadastre-se</a></span>
                 <a href="#">Esqueci minha senha</a>
             </form>
@@ -43,19 +43,19 @@
 
 
     function entrar() {
-        aguardar();
+        // aguardar();
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            // cardErro.style.display = "block"
+            alert("Mensagem de erro para todos os campos em branco");
+            // finalizarAguardar();
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            // setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -85,7 +85,7 @@
                     sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./dashboard/dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -96,7 +96,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+                    // finalizarAguardar(texto);
                 });
             }
 
@@ -107,8 +107,8 @@
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
 
 </script>
