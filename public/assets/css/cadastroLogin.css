@@ -78,7 +78,7 @@ form input::placeholder {
     color: rgba(255, 255, 255, 0.61);
 }
 
-form #button {
+form button {
     width: fit-content;
     padding: 12px 40px 12px 40px;
     margin-bottom: 5px;
@@ -90,7 +90,7 @@ form #button {
     cursor: pointer;
 }
 
-form #button:active {
+form button:active {
     opacity: 0.5;
     transform: translateY(1.5px) translateX(1.5px);
     transition: 0.1s ease-in-out;

@@ -123,11 +123,11 @@ body {
 }
 
 #content {
-    padding: 10px 70px;
+    padding: 10px 40px;
 }
 
 .contentTitle {
-    margin: 60px 0 20px 10px;
+    margin: 10px 0 20px 10px;
     font-weight: 600;
     padding-top: 100px;
 }
@@ -152,7 +152,7 @@ body {
 }
 
 #sensation {
-    margin-top: 15%;
+    margin-top: 10%;
 }
 
 #sensation img{
@@ -167,7 +167,7 @@ body {
 }
 
 #goals {
-    margin: 15% 0 15% 0;
+    margin: 2% 0 10% 0;
 }
 
 
@@ -199,6 +199,7 @@ body {
 
 .card p {
     font-size: 14px;
+    line-height: 1.5;
 }
 
 #about {
@@ -215,7 +216,7 @@ body {
 
 #about .paragraphs {
     max-width: 45vw;
-    padding: 40px 0 0 40px;
+    padding: 2px 0 0 40px;
     font-size: 14px;
     display: inline-block;
 }
@@ -234,7 +235,7 @@ body {
 /* Carousel */
 
 #team {
-    margin: 15% 0 15% 0;
+    margin: 10% 0 10% 0;
 }
 
 #teamCards {
