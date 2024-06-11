@@ -52,7 +52,6 @@
             return false;
         }
 
-        console.log('FOI');
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
 
@@ -75,20 +74,17 @@
                     console.log("JSON recebido: ", json);
 
                     // Verifique se as propriedades existem no JSON
-                    if (json.id && json.nome && json.email && json.empresaId) {
                         sessionStorage.ID_USUARIO = json.id;
                         sessionStorage.NOME_USUARIO = json.nome;
                         sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.ID_EMPRESA = json.empresaId;
+                        // sessionStorage.ID_EMPRESA = json.empresaId;
+                        sessionStorage.DEPARTAMENTOS = JSON.stringify(json.departamentos);
                         console.log("Dados armazenados no sessionStorage");
 
                         setTimeout(function () {
                             window.location = "../Dashboard/dashboard.html";
                         }, 1000); // apenas para exibir o loading
 
-                    } else {
-                        console.error("JSON recebido não contém as propriedades esperadas.");
-                    }
                 }).catch(erroJson => {
                     console.error("Erro ao converter resposta em JSON: ", erroJson);
                 });
