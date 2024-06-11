@@ -120,3 +120,9 @@ select * from leitura;
 select * from simuladorLeitura;	
 
 truncate simuladorLeitura;
+
+create user 'doisComputadores'@'%' identified by '12345';
+GRANT ALL PRIVILEGES ON *.* to 'doisComputadores'@'%' with grant option;
+flush privileges;
+
+
