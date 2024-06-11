@@ -29,7 +29,7 @@
                 <input type="text" id="email_input" placeholder="Email">
                 <input type="password" id="senha_input" placeholder="Senha">
                 <input type="password" id="confirmacao_senha_input" placeholder="Confirmar Senha">
-                <span href="login.html">Já possui cadastro? <a href="login.html">Faça Login</a></span>
+                <span>Já possui cadastro? <a href="../Login/login.html">Faça Login</a></span>
               </form>
               <button><a  id="button" onclick="cadastrar()">Cadastrar</a></button>
         </div>
@@ -48,14 +48,14 @@
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var sobrenomeVar = sobrenome_input.value;
-    var rgVar = rg_input.value;
-    var cpfVar = cpf_input.value
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var empresaVar = empresa_input.value
+    const nomeVar = nome_input.value;
+    const sobrenomeVar = sobrenome_input.value;
+    const rgVar = rg_input.value;
+    const cpfVar = cpf_input.value
+    const emailVar = email_input.value;
+    const senhaVar = senha_input.value;
+    const confirmacaoSenhaVar = confirmacao_senha_input.value;
+    const empresaVar = empresa_input.value
     if (
       nomeVar == "" ||
       emailVar == "" ||
@@ -102,7 +102,7 @@
             ("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
           setTimeout(() => {
-            window.location = "login.html";
+            window.location = "../Login/login.html";
           }, "2000");
 
           limparFormulario();

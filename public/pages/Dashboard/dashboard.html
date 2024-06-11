@@ -1,248 +1,240 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Home</title>
     <link rel="stylesheet" href="../../assets/css/dashboard.css">
-    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
-    <div class="menu-lateral">
+    <nav class="menuLateral">
+        <div class="btn-expandir">
+            <i class="bi bi-list" id="btn-exp"></i>
+        </div>
+
         <ul>
-            <li><img src="https://th.bing.com/th/id/R.1d52a01c9bc98fe3a14cb1340ff4570f?rik=u%2fbNt70iyzgPMw&pid=ImgRaw&r=0"
-                    alt="Icone de Perfil"></li>
-            <a href="dashboard.html" style="text-decoration: none;">
-                <li class="opcoes">Visão Geral</li>
-            </a>
-            <a href="dashboardanual.html" style="text-decoration: none;">
-                <li class="opcoes">Média Anual</li>
-            </a>
-            <a href="historico.html" style="text-decoration: none;">
-                <li class="opcoes">Histórico</li>
-            </a>
-            <a href="../../index.html" style="text-decoration: none;">
-                <li class="sair"><button id="btn_sair" class="botaoSair">Sair</button></li>
-            </a>
+            <li class="item-menu ativo">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-house-door-fill"></i></span>
+                    <span class="txt-link">Home</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="historico.html">
+                    <span class="icon"><i class="bi bi-archive"></i></span>
+                    <span class="txt-link">Histórico</span>
+                </a>
+            </li>
+            <li class="item-menu" id="link_usuario">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-person-square"></i></i></span>
+                    <span class="txt-link">Usuario</span>
+                </a>
+            </li>
         </ul>
-    </div>
+    </nav>
 
-    <div id="alerta" class="alerta" style="display: none;">
-        <h2>!</h2>
-    </div>
-    <div class="tudo">
-        <div class="grafico">
-            <span id="TEXTOAMBIENTE">SELECIONE UM AMBIENTE:</span>
-            <div class="ContainerGraficos" id="CG">
+    <div class="containerGeral">
+        <div class="empurradora">
 
-                <canvas id="graficoAmb1" style="height: 65vh; width: 55vw;">
-
-                </canvas>
-                
-                <canvas id="graficoAmb2" style="height: 65vh; width: 55vw; display: none;">
-
-                </canvas>
-
-                <canvas id="graficoAmb3" style="height: 65vh; width: 55vw; display: none;">
-
-                </canvas>
+        </div>
+        <div class="containerKPI">
+            <div class="KPI">
+                <h3>Ambientes em alerta:<br></h3>
+                <span>3/5<br></span>
+                <span style="color: red;">60%</span>
+            </div>
+            <div class="KPI">
+                <h3>Conjunto Sensores em alerta:</h3>
+                <span>5/8<br></span>
+                <span style="color: red;">62.5%</span>
+            </div>
+            <div class="KPI">
+                <h3>Alertas nas últimas 2 horas:<br></h3>
+                <span style="color: red;">6<br></span>
             </div>
         </div>
-        <div class="BotaoCont">
-            <button id="botao1" class="botaoTroca" onclick="Aparecer1()">Ambiente 1</button>
-            <button id="botao2" class="botaoTroca" onclick="Aparecer2()">Ambiente 2</button>
-            <button id="botao3" class="botaoTroca" onclick="Aparecer3()">Ambiente 3</button>
+
+        <div class="containerKPI">
+            <div class="KPI">
+                <h3>Último alerta gerado:</h3>
+                <span style="color: red;">Ambiente 2</span>
+            </div>
+            <div class="KPI">
+                <h3>Temperatura mais alta:</h3>
+                <span style="color: red;">31°C<br></span>
+            </div>
+            <div class="KPI">
+                <h3>Umidade mais alta:</h3>
+                <span style="color: red;">74%<br></span>
+            </div>
         </div>
-    </div>
-    <div class="kpi">
 
-        <h2>KPI's</h2>
-        <div class="kpi-item1" id="kpiTemperatura">Média de Temperatura:<br> <span id="valorTemperatura">--</span>°C
+        <dialog id="amb1" class="modalAMB">
+            <div class="contAmb">
+                <div class="ambNome">
+                    <h1> Ambiente 1</h1>
+                </div>
+
+                <div class="modalButAMB">
+                    <button onclick="cs11()">Conjunto-Sensor 1</button>
+                    <button onclick="cs21()">Conjunto-Sensor 2</button>
+                </div>
+
+                <div class="modalButFECHAR">
+                    <button onclick="fecharAMB()">Fechar</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="amb2" class="modalAMB">
+            <div class="contAmb">
+                <div class="ambNome">
+                    <h1> Ambiente 2</h1>
+                </div>
+
+                <div class="modalButAMB">
+                    <button onclick="cs12()">Conjunto-Sensor 1</button>
+                    <button onclick="cs22()">Conjunto-Sensor 2</button>
+                </div>
+
+                <div class="modalButFECHAR">
+                    <button onclick="fecharAMB()">Fechar</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="amb3" class="modalAMB">
+            <div class="contAmb">
+                <div class="ambNome">
+                    <h1> Ambiente 3</h1>
+                </div>
+
+                <div class="modalButAMB">
+                    <button onclick="cs13()">Conjunto-Sensor 1</button>
+                </div>
+
+                <div class="modalButFECHAR">
+                    <button onclick="fecharAMB()">Fechar</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="amb4" class="modalAMB">
+            <div class="contAmb">
+                <div class="ambNome">
+                    <h1> Ambiente 4</h1>
+                </div>
+
+                <div class="modalButAMB">
+                    <button onclick="cs14()">Conjunto-Sensor 1</button>
+                    <button onclick="cs24()">Conjunto-Sensor 2</button>
+                </div>
+
+                <div class="modalButFECHAR">
+                    <button onclick="fecharAMB()">Fechar</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="amb5" class="modalAMB">
+            <div class="contAmb">
+                <div class="ambNome">
+                    <h1>Ambiente 5</h1>
+                </div>
+
+                <div class="modalButAMB">
+                    <button onclick="cs15()">Conjunto-Sensor 1</button>
+                </div>
+
+                <div class="modalButFECHAR">
+                    <button onclick="fecharAMB()">Fechar</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="dialog" class="dialogUser" close>
+            <div class="contModal">
+                <div class="nomeModal">
+                    <h1>Nome-User</h1>
+                    <span class="icon"><i class="bi bi-person-circle"></i></span>
+                </div>
+
+                <div class="modalBut">
+                    <button>Desconectar</button>
+                    <button id="cancel">Fechar</button>
+                </div>
+            </div>
+        </dialog>
+
+        <div class="containerLista">
+            <div class="listaAmbientes">
+                <button onclick="but1()">AMB1</button>
+                <button onclick="but2()">AMB2</button>
+                <button onclick="but3()">AMB3</button>
+                <button onclick="but4()">AMB4</button>
+                <button onclick="but5()">AMB5</button>
+            </div>
         </div>
-        <div class="kpi-item2" id="kpiUmidade"> Média de Umidade:<br> <span id="valorUmidade">--</span>%</div>
 
-    </div>
+        <div class="containerTermometro">
+            <span>Legenda de Alertas:</span>
+            <div class="Termometro">
+                <div id="T1" class="T1">>=30°C</div>
+                <div id="T2" class="T2">>=26°C</div>
+                <div id="T3" class="T3">
+                    <div id="G1" class="G1">25°C</div>
+                    <div id="G2" class="G2">24°C</div>
+                    <div id="G3" class="G3">23°C</div>
+                    <div id="G4" class="G4">22°C</div>
+                    <div id="G5" class="G5">20°C</div>
+                    <div id="G6" class="G6">19°C</div>
+                    18°C
+                </div>
+                <div id="T4" class="T4">
+                    <=18°C </div>
+                        <div id="T5" class="T5">
+                            <=15°C </div>
+                        </div>
+                </div>
+            </div>
+        </div>
 
+        <dialog id="dialogCS" class="modalCS">
+            <div class="contCS">
+                <div id="csNome">
 
+                </div>
+
+                <div class="conteudoCS">
+                    <canvas id="csChart" class="csChart" style="height: 500px; width: 680px;">
+                        asdasd
+                    </canvas>
+
+                    <div id="contKPIcs">
+                        <div class="KPIcs">
+                            <h3>Último alerta gerado:</h3>
+                            <span style="color: red;">Ambiente 2</span>
+                        </div>
+                        <div class="KPIcs">
+                            <h3>Temperatura mais alta:</h3>
+                            <span style="color: red;">31°C<br></span>
+                        </div>
+                        <div class="KPIcs">
+                            <h3>Umidade mais alta:</h3>
+                            <span style="color: red;">74%<br></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dialog>
 </body>
 
 </html>
 
-<!-- Script do Chart JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../../assets/js/dashboard.js"></script>
 
-<!-- Script para formação dos gráficos-->
-<script>
-    const Amb1 = document.getElementById('graficoAmb1');
-    const Amb2 = document.getElementById('graficoAmb2');
-    const Amb3 = document.getElementById('graficoAmb3');
-
-    let temperaturaAmb1 = [25, 23, 24, 22, 24, 26]; // Dados de exemplo de temperatura para o Ambiente 1
-    let umidadeAmb1 = [60, 70, 65, 75, 80, 72]; // Dados de exemplo de umidade para o Ambiente 1
-
-    let temperaturaAmb2 = [26, 26, 29, 30, 30, 32]; // Dados de exemplo de temperatura para o Ambiente 2
-    let umidadeAmb2 = [65, 68, 70, 72, 71, 68]; // Dados de exemplo de umidade para o Ambiente 2
-
-    let temperaturaAmb3 = [20, 18, 15, 16, 21, 17]; // Dados de exemplo de temperatura para o Ambiente 3
-    let umidadeAmb3 = [55, 50, 52, 53, 56, 54]; // Dados de exemplo de umidade para o Ambiente 3
-
-    let hora = ["11:00", "12:00", "13:00", "14:00", "15:00", "16:00"]
-
-    // VARIAVEIS PARA ARRUMAR O CODIGO DE MEDIAS
-    var temperatura1 = 0
-    var temperatura2 = 0
-    var temperatura3 = 0
-    var umidade1 = 0
-    var umidade2 = 0
-    var umidade3 = 0
-    var qtdmedicao1 = 0
-    var qtdmedicao2 = 0
-    var qtdmedicao3 = 0
-    var horaFor = 3
-    for (; qtdmedicao3 <= horaFor - 1; qtdmedicao3++) {
-        temperatura3 += temperaturaAmb3[qtdmedicao3];
-        umidade3 += umidadeAmb3[qtdmedicao3];
-    }
-    var mediaTemp3 = Math.trunc(temperatura3 / qtdmedicao3);
-    var mediaUmi3 = (umidade3 / qtdmedicao3).toFixed(1);
-
-    for (; qtdmedicao1 <= horaFor - 1; qtdmedicao1++) {
-        temperatura1 += temperaturaAmb1[qtdmedicao1];
-        umidade1 += umidadeAmb1[qtdmedicao1];
-    }
-    var mediaTemp1 = Math.trunc(temperatura1 / qtdmedicao1);
-    var mediaUmi1 = (umidade1 / qtdmedicao1).toFixed(1);
-
-    for (; qtdmedicao2 <= horaFor - 1; qtdmedicao2++) {
-        temperatura2 += temperaturaAmb2[qtdmedicao2];
-        umidade2 += umidadeAmb2[qtdmedicao2];
-    }
-    var mediaTemp2 = Math.trunc(temperatura2 / qtdmedicao2);
-    var mediaUmi2 = (umidade2 / qtdmedicao2).toFixed(1);
-
-    new Chart(Amb1, {
-        type: 'line',
-        data: {
-            labels: hora,
-            datasets: [{
-                label: 'Temperatura',
-                data: temperaturaAmb1,
-                borderWidth: 2,
-                borderColor: ['#f78708'],
-                backgroundColor: ['#f78708']
-            }, {
-                label: 'Umidade',
-                data: umidadeAmb1,
-                borderWidth: 2,
-                borderColor: ['#45b3e7'],
-                backgroundColor: ['#45b3e7']
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    new Chart(Amb2, {
-        type: 'line',
-        data: {
-            labels: hora,
-            datasets: [{
-                label: 'Temperatura',
-                data: temperaturaAmb2,
-                borderWidth: 2,
-                borderColor: ['#f78708'],
-                backgroundColor: ['#f78708']
-            }, {
-                label: 'Umidade',
-                data: umidadeAmb2,
-                borderWidth: 2,
-                borderColor: ['#45b3e7'],
-                backgroundColor: ['#45b3e7']
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    new Chart(Amb3, {
-        type: 'line',
-        data: {
-            labels: hora,
-            datasets: [{
-                label: 'Temperatura',
-                data: temperaturaAmb3,
-                borderWidth: 2,
-                borderColor: ['#f78708'],
-                backgroundColor: ['#f78708']
-            }, {
-                label: 'Umidade',
-                data: umidadeAmb3,
-                borderWidth: 2,
-                borderColor: ['#45b3e7'],
-                backgroundColor: ['#45b3e7']
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    function Aparecer1() {
-        graficoAmb1.style.display = 'block';
-        CG.style.display = 'block';
-        graficoAmb2.style.display = 'none';
-        graficoAmb3.style.display = 'none';
-        TEXTOAMBIENTE.style.display = 'none';
-        valorTemperatura.innerHTML = `${mediaTemp1}`;
-        valorUmidade.innerHTML = `${mediaUmi1}`;
-    }
-    function Aparecer2() {
-        graficoAmb1.style.display = 'none';
-        graficoAmb2.style.display = 'block';
-        graficoAmb3.style.display = 'none';
-        CG.style.display = 'block';
-        TEXTOAMBIENTE.style.display = 'none';
-        valorTemperatura.innerHTML = `${mediaTemp2}`;
-        valorUmidade.innerHTML = `${mediaUmi2}`;
-    }
-    function Aparecer3() {
-        graficoAmb1.style.display = 'none';
-        graficoAmb2.style.display = 'none';
-        graficoAmb3.style.display = 'block';
-        CG.style.display = 'block';
-        TEXTOAMBIENTE.style.display = 'none';
-        valorTemperatura.innerHTML = `${mediaTemp3}`;
-        valorUmidade.innerHTML = `${mediaUmi3}`;
-    }
-
-
-    if (mediaTemp1 < 18 || mediaTemp1 > 26) {
-        alerta.style.display = 'block';
-        botao1.style.color = "red";
-    }
-
-    if (mediaTemp2 < 18 || mediaTemp2 > 26) {
-        alerta.style.display = 'block';
-        botao2.style.color = "red";
-    }
-
-    if (mediaTemp3 < 18 || mediaTemp3 > 26) {
-        alerta.style.display = 'block';
-        botao3.style.color = "red";
-    }
-</script>

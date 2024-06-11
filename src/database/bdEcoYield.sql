@@ -35,7 +35,7 @@ constraint chk_tipo check(tipo in('LM35', 'DHT11'))
 );
 
 create table conjuntoSensor(
-	id int,
+	id int primary key auto_increment,
     fkempresa int not null,
     fksensorTemperatura int not null,
     fksensorUmidade int not null,
@@ -46,8 +46,7 @@ create table conjuntoSensor(
     constraint conjuntoSensor_empresa_fk foreign key (fkempresa) references empresa(id),
     constraint conjuntoSensor_departamento_fk foreign key (fkdepartamento) references departamento(id),
     constraint uk_fksensorTemperatura unique key (fksensorTemperatura),
-    constraint uk_fksensorUmidade unique key (fksensorUmidade),
-    primary key (id, fkempresa)
+    constraint uk_fksensorUmidade unique key (fksensorUmidade)
 );
 
 create table leitura(
@@ -96,11 +95,11 @@ values ('DHT11'),
 	('DHT11'),
 	('LM35');
 
-insert into conjuntoSensor(id, fkempresa, fksensorTemperatura, fksensorUmidade, fkdepartamento)
-values(1, 1, 1, 2, 5),
-		(2, 1, 3, 4, 5),
-		(1, 2, 5, 6, 3),
-        (1, 3, 8, 8, 2);
+insert into conjuntoSensor(fkempresa, fksensorTemperatura, fksensorUmidade, fkdepartamento)
+values(1, 1, 2, 5),
+		(1, 3, 4, 5),
+		(2, 5, 6, 3),
+        (3, 8, 8, 2);
 
 create table simuladorLeitura(
 id int primary key auto_increment,

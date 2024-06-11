@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="../../assets/css/cadastroLogin.css">
     <link rel="stylesheet" href="../../assets/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </head>
 
 <body>
     <div id="container">
         <a href="../../index.html"><i class="fa-regular fa-circle-left" style="color: #ffffff;"></i></a>
-        
+
         <div id="sideImage">
             <div></div>
         </div>
@@ -28,8 +28,8 @@
             <form>
                 <input type="text" id="email_input" placeholder="Email">
                 <input type="password" id="senha_input" placeholder="Senha">
-                <a href="../Dashboard/dashboard.html" id="button" onclick="entrar()">Login</a>
-                <span>Ainda não possui cadastro? <a href="cadastro.html">Cadastre-se</a></span>
+                <button id="button" onclick="entrar()">Login</button>
+                <span>Ainda não possui cadastro? <a href="../Cadastro/cadastro.html">Cadastre-se</a></span>
                 <a href="#">Esqueci minha senha</a>
             </form>
         </div>
@@ -43,20 +43,17 @@
 
 
     function entrar() {
-        // aguardar();
-
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            // cardErro.style.display = "block"
             alert("Mensagem de erro para todos os campos em branco");
-            // finalizarAguardar();
             return false;
+        } else {
+            // Se necessário, pode adicionar lógica aqui
         }
-        else {
-            // setInterval(sumirMensagem, 5000)
-        }
+
+        console.log('FOI');
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -71,40 +68,46 @@
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
+            console.log("ESTOU NO THEN DO entrar()!");
 
             if (resposta.ok) {
-                console.log(resposta);
+                console.log("Resposta OK: ", resposta);
 
                 resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    console.log("JSON recebido: ", json);
 
-                    setTimeout(function () {
-                        window.location = "./dashboard/dashboard.html";
-                    }, 1000); // apenas para exibir o loading
+                    // Verifique se as propriedades existem no JSON
+                    if (json.id && json.nome && json.email && json.empresaId) {
+                        sessionStorage.ID_USUARIO = json.id;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.ID_EMPRESA = json.empresaId;
+                        console.log("Dados armazenados no sessionStorage");
 
+                        setTimeout(function () {
+                            window.location = "../Cadastro/cadastro.html";
+                        }, 1000); // apenas para exibir o loading
+                    } else {
+                        console.error("JSON recebido não contém as propriedades esperadas.");
+                    }
+                }).catch(erroJson => {
+                    console.error("Erro ao converter resposta em JSON: ", erroJson);
                 });
 
             } else {
-
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    // finalizarAguardar(texto);
                 });
             }
 
         }).catch(function (erro) {
-            console.log(erro);
-        })
+            console.error("Erro na requisição fetch: ", erro);
+        });
 
         return false;
+
     }
 
     // function sumirMensagem() {
