@@ -28,7 +28,7 @@
             <form>
                 <input type="text" id="email_input" placeholder="Email">
                 <input type="password" id="senha_input" placeholder="Senha">
-                <button id="button" onclick="entrar()">Login</button>
+                <button id="button" onclick="entrar(event)">Login</button>
                 <span>Ainda não possui cadastro? <a href="../Cadastro/cadastro.html">Cadastre-se</a></span>
                 <a href="#">Esqueci minha senha</a>
             </form>
@@ -40,21 +40,18 @@
 </html>
 
 <script>
+    function entrar(event) {
+        event.preventDefault(); // Previne o comportamento padrão de submissão do formulário
 
-
-    function entrar() {
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+        var emailVar = document.getElementById('email_input').value;
+        var senhaVar = document.getElementById('senha_input').value;
 
         if (emailVar == "" || senhaVar == "") {
             alert("Mensagem de erro para todos os campos em branco");
             return false;
-        } else {
-            // Se necessário, pode adicionar lógica aqui
         }
 
         console.log('FOI');
-
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
 
@@ -85,8 +82,9 @@
                         console.log("Dados armazenados no sessionStorage");
 
                         setTimeout(function () {
-                            window.location = "../Cadastro/cadastro.html";
+                            window.location = "../Dashboard/dashboard.html";
                         }, 1000); // apenas para exibir o loading
+
                     } else {
                         console.error("JSON recebido não contém as propriedades esperadas.");
                     }
@@ -107,11 +105,5 @@
         });
 
         return false;
-
     }
-
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
-
 </script>
