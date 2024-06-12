@@ -7,4 +7,8 @@ router.get("/:empresaId", function (req, res) {
   departamentoController.buscarDepartamentosPorEmpresa(req, res);
 });
 
+// router.get("/:empresaId/:deptoId", function (req, res) {
+//   departamentoController.buscarConjuntosPorDeptoEEmpresa(req, res);
+// });
+
 module.exports = router;

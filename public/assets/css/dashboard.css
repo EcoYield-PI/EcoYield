@@ -7,7 +7,7 @@
     font-family: "Fira Sans", sans-serif;
 }
 
-body{
+body {
     height: 100vh;
     background-color: #2b68be57;
     overflow-y: hidden;
@@ -35,7 +35,7 @@ nav.menuLateral.expandir {
     padding-left: 10px;
 }
 
-.btn-expandir > i {
+.btn-expandir>i {
     color: white;
     font-size: 24px;
     cursor: pointer;
@@ -47,11 +47,11 @@ ul {
     list-style-type: none;
 }
 
-ul li.item-menu{
+ul li.item-menu {
     transition: 1s;
 }
 
-ul li.ativo{
+ul li.ativo {
     background-color: #18a3ff;
 }
 
@@ -59,7 +59,7 @@ ul li.item-menu:hover {
     background: #18a3ff;
 }
 
-ul li.item-menu a{
+ul li.item-menu a {
     color: #fff;
     text-decoration: none;
     font-size: 20px;
@@ -78,7 +78,7 @@ nav.menuLateral.expandir .txt-link {
     margin-left: 40px;
 }
 
-ul li.item-menu a .icon > i{
+ul li.item-menu a .icon>i {
     font-size: 30px;
     margin-left: 10px;
 }
@@ -99,10 +99,10 @@ ul li.item-menu a .icon > i{
     height: 100%;
     display: flex;
     justify-content: space-evenly;
-    align-items:center ;
+    align-items: center;
 }
 
-.empurradora{
+.empurradora {
     width: 16%;
     display: none;
 }
@@ -134,7 +134,7 @@ ul li.item-menu a .icon > i{
     flex-direction: column;
 }
 
-.KPI > span {
+.KPI>span {
     font-size: 20px;
 }
 
@@ -157,21 +157,22 @@ ul li.item-menu a .icon > i{
     align-items: center;
     flex-direction: column;
     border-radius: 20px;
-    box-shadow: #2b68be57 10px 10px 20px ;
+    box-shadow: #2b68be57 10px 10px 20px;
 }
 
-.listaAmbientes > button {
+.listaAmbientes>input {
     margin-top: 50px;
-    font-size: 30px;
+    font-size: 24px;
     text-decoration: none;
+    padding: 10px;
     color: #FFF;
-    width: 150px;
+    width: 180px;
     border-radius: 10px;
     background-color: #77b9e6;
     cursor: pointer;
 }
 
-.listaAmbientes :nth-child(2) {
+/* .listaAmbientes :nth-child(2) {
     background-color: #fc7528;
 }
 .listaAmbientes :nth-child(4) {
@@ -179,7 +180,7 @@ ul li.item-menu a .icon > i{
 }
 .listaAmbientes :nth-child(5) {
     background-color: #fc7528;
-}
+} */
 
 
 
@@ -375,7 +376,8 @@ table {
     border-collapse: collapse;
 }
 
-table th, table td {
+table th,
+table td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -408,27 +410,27 @@ table th {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
+
 }
 
-.nomeModal{
+.nomeModal {
     height: 50%;
     text-align: center;
-    margin-top:10px ;
+    margin-top: 10px;
 }
 
-.nomeModal > span {
+.nomeModal>span {
     font-size: 160px;
 }
 
-.modalBut{
+.modalBut {
     display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
     margin-top: 40px;
 }
 
-.modalBut > button {
+.modalBut>button {
     width: 150px;
     height: 40px;
     border-radius: 30px;
@@ -465,7 +467,7 @@ table th {
     flex-direction: column;
 }
 
-.modalButAMB > button {
+.modalButAMB>button {
     width: 250px;
     height: 50px;
     border-radius: 30px;
@@ -478,7 +480,7 @@ table th {
     margin-bottom: 90px;
 }
 
-.modalButFECHAR > button{
+.modalButFECHAR>button {
     width: 150px;
     height: 40px;
     border-radius: 30px;
@@ -536,3 +538,41 @@ table th {
     margin-left: 5px;
     margin-bottom: 60px;
 }
+
+.display-none {
+    display: none;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.display-block {
+    display: block;
+}
+
+.tituloGraficos {
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+}
+
+.graph {
+    width: 70%;
+    margin: auto;
+    padding-top: 10px;
+}
+
+#modalDepartamento {
+    overflow: hidden;
+    background-color: rgb(149, 181, 248);
+}
+
+#graficos:nth-child(1) {
+    height: 80%;
+}
+
+canvas {
+    width: 80% !important;
+    height: 80% !important;
+  }

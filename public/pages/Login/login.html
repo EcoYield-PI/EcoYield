@@ -77,10 +77,12 @@
                         sessionStorage.ID_USUARIO = json.id;
                         sessionStorage.NOME_USUARIO = json.nome;
                         sessionStorage.EMAIL_USUARIO = json.email;
-                        // sessionStorage.ID_EMPRESA = json.empresaId;
+                        sessionStorage.ID_EMPRESA = json.empresaId;
                         sessionStorage.DEPARTAMENTOS = JSON.stringify(json.departamentos);
+                        // sessionStorage.CONJUNTOS = JSON.stringify(json.conjuntos);
                         console.log("Dados armazenados no sessionStorage");
 
+                        console.log(json)
                         setTimeout(function () {
                             window.location = "../Dashboard/dashboard.html";
                         }, 1000); // apenas para exibir o loading

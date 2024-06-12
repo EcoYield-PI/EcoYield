@@ -36,6 +36,23 @@ function autenticar(req, res) {
                                     res.status(204).json({ departamentos: [] });
                                 }
                             })
+
+                        // departamentoModel.buscarConjuntosPorDeptoEEmpresa(resultadoAutenticar[0].empresaId)
+                        //     .then((resultadoConjuntos) => {
+                        //         if (resultadoConjuntos.length > 0) {
+                        //             res.json({
+                        //                 id: resultadoAutenticar[0].id,
+                        //                 email: resultadoAutenticar[0].email,
+                        //                 nome: resultadoAutenticar[0].nome,
+                        //                 senha: resultadoAutenticar[0].senha,
+                        //                 conjuntos: resultadoConjuntos
+                        //             });
+                        //         } else {
+                        //             res.status(204).json({ conjuntos: [] });
+                        //         }
+                        //     })
+
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {

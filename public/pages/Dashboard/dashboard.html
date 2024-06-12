@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-    
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Dashboard - Home</title>
-        <link rel="stylesheet" href="../../assets/css/dashboard.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Home</title>
+    <!-- <link rel="stylesheet" href="../../assets/css/dashboards.css"> -->
+    <link rel="stylesheet" href="../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -92,72 +93,6 @@
             </div>
         </dialog>
 
-        <dialog id="amb2" class="modalAMB">
-            <div class="contAmb">
-                <div class="ambNome">
-                    <h1> Ambiente 2</h1>
-                </div>
-
-                <div class="modalButAMB">
-                    <button onclick="cs12()">Conjunto-Sensor 1</button>
-                    <button onclick="cs22()">Conjunto-Sensor 2</button>
-                </div>
-
-                <div class="modalButFECHAR">
-                    <button onclick="fecharAMB()">Fechar</button>
-                </div>
-            </div>
-        </dialog>
-
-        <dialog id="amb3" class="modalAMB">
-            <div class="contAmb">
-                <div class="ambNome">
-                    <h1> Ambiente 3</h1>
-                </div>
-
-                <div class="modalButAMB">
-                    <button onclick="cs13()">Conjunto-Sensor 1</button>
-                </div>
-
-                <div class="modalButFECHAR">
-                    <button onclick="fecharAMB()">Fechar</button>
-                </div>
-            </div>
-        </dialog>
-
-        <dialog id="amb4" class="modalAMB">
-            <div class="contAmb">
-                <div class="ambNome">
-                    <h1> Ambiente 4</h1>
-                </div>
-
-                <div class="modalButAMB">
-                    <button onclick="cs14()">Conjunto-Sensor 1</button>
-                    <button onclick="cs24()">Conjunto-Sensor 2</button>
-                </div>
-
-                <div class="modalButFECHAR">
-                    <button onclick="fecharAMB()">Fechar</button>
-                </div>
-            </div>
-        </dialog>
-
-        <dialog id="amb5" class="modalAMB">
-            <div class="contAmb">
-                <div class="ambNome">
-                    <h1>Ambiente 5</h1>
-                </div>
-
-                <div class="modalButAMB">
-                    <button onclick="cs15()">Conjunto-Sensor 1</button>
-                </div>
-
-                <div class="modalButFECHAR">
-                    <button onclick="fecharAMB()">Fechar</button>
-                </div>
-            </div>
-        </dialog>
-
         <dialog id="dialog" class="dialogUser" close>
             <div class="contModal">
                 <div class="nomeModal">
@@ -178,62 +113,18 @@
             </div>
         </div>
 
-        <div class="containerTermometro">
-            <span>Legenda de Alertas:</span>
-            <div class="Termometro">
-                <div id="T1" class="T1">>=30°C</div>
-                <div id="T2" class="T2">>=26°C</div>
-                <div id="T3" class="T3">
-                    <div id="G1" class="G1">25°C</div>
-                    <div id="G2" class="G2">24°C</div>
-                    <div id="G3" class="G3">23°C</div>
-                    <div id="G4" class="G4">22°C</div>
-                    <div id="G5" class="G5">20°C</div>
-                    <div id="G6" class="G6">19°C</div>
-                    18°C
-                </div>
-                <div id="T4" class="T4">
-                    <=18°C </div>
-                        <div id="T5" class="T5">
-                            <=15°C </div>
-                        </div>
-                </div>
+        <dialog id="modalDepartamento" class="modalCS">
+            <div id="graficos">
+                <!-- graficos gerados no JS -->
             </div>
-        </div>
-
-        <dialog id="dialogCS" class="modalCS">
-            <div class="contCS">
-                <div id="csNome">
-
-                </div>
-
-                <div class="conteudoCS">
-                    <canvas id="csChart" class="csChart" style="height: 500px; width: 680px;">
-                        asdasd
-                    </canvas>
-
-                    <div id="contKPIcs">
-                        <div class="KPIcs">
-                            <h3>Último alerta gerado:</h3>
-                            <span style="color: red;">Ambiente 2</span>
-                        </div>
-                        <div class="KPIcs">
-                            <h3>Temperatura mais alta:</h3>
-                            <span style="color: red;">31°C<br></span>
-                        </div>
-                        <div class="KPIcs">
-                            <h3>Umidade mais alta:</h3>
-                            <span style="color: red;">74%<br></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <button onclick="modalDepartamento.close()">FECHAR</button>
         </dialog>
+
 </body>
 
 </html>
 
-<script src="../../assets/js/dashboard.js"></script>
+<!-- <script src="../../assets/js/dashboard.js"></script> -->
 
 <script>
     // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
@@ -244,69 +135,100 @@
 
     function exibirDepartamentosDoUsuario() {
         var departamentos = JSON.parse(sessionStorage.DEPARTAMENTOS);
+
+        let idsDeptoSet = new Set();
+
         departamentos.forEach(item => {
-            document.getElementById("btnDepartamento").innerHTML += `
-            <button class="btn-chart" onclick="exibirDepartamento(${item.id})" id="btnAquario${item.id}">${item.nome}</button> 
-            `
+            // Verificamos se o idConjunto já está no Set
+            if (!idsDeptoSet.has(item.id)) {
+                // Se não estiver, adicionamos ao Set
+                idsDeptoSet.add(item.id);
 
-            document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.nome}</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
-                    </div>
-                </div>
-            `
+                // Criamos o botão do departamento
+                document.getElementById("btnDepartamento").innerHTML += `
+                    <input type="button" class="btn-chart" onclick="exibirDepartamento(${item.idConjunto}), modalDepartamento.showModal()" id="btnAquario${item.idConjunto}" value="${item.nome}"> 
+                `;
 
-            obterDadosGrafico(item.id)
+                // Criamos a seção de gráficos do departamento
+                document.getElementById("graficos").innerHTML += `
+                    <div id="grafico${item.idConjunto}" class="display-none">
+                        <h3 class="tituloGraficos">
+                            <span id="tituloDepto${item.idConjunto}">${item.nome}</span>
+                        </h3>
+                    </div>
+                `;
+                // <div class="graph">
+                //     <canvas id="myChartCanvas${item.idConjunto}"></canvas>
+                // </div>
+
+                const botaoDepto = document.getElementById(`btnAquario${item.idConjunto}`);
+
+                departamentos.forEach(conjunto => {
+                    if(conjunto.nome == botaoDepto.value)
+                    document.getElementById(`grafico${item.idConjunto}`).innerHTML += `
+                        <button onclick="exibirConjuntoSetor(${conjunto.id})">Conjunto Sensor ${conjunto.idConjunto}</button>
+                    `;
+                    // <button onclick="exibirConjuntoSetor(${conjunto.id})">Conjunto Setor ${conjunto.id}</button>
+                });
+
+            }
+
+            obterDadosGrafico(item.idConjunto)
+            console.log(item.idConjunto);
         });
 
         if (departamentos.length > 0) {
-            exibirDepartamento(departamentos[0].id)
+            console.log(departamentos[0].id)
+            exibirDepartamento(departamentos[0].idConjunto) //parametro idDepto vem de cá
         }
     }
 
-    function alterarTitulo(idAquario) {
-        var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-        var descricao = JSON.parse(sessionStorage.DEPARTAMENTOS).find(item => item.id == idAquario).nome;
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
-    }
-
-    function exibirDepartamento(idAquario) {
+    function exibirDepartamento(idConjunto) {
         let todosOsGraficos = JSON.parse(sessionStorage.DEPARTAMENTOS);
 
-        for (i = 0; i < todosOsGraficos.length; i++) {
-            // exibindo - ou não - o gráfico
-            if (todosOsGraficos[i].id != idAquario) {
-                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-                if (elementoAtual.classList.contains("display-block")) {
-                    elementoAtual.classList.remove("display-block")
+        for (let i = 0; i < todosOsGraficos.length; i++) {
+            // Exibindo - ou não - o gráfico
+            if (todosOsGraficos[i].idConjunto != idConjunto) {
+                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].idConjunto}`);
+                if (elementoAtual) { // Verifica se o elemento existe
+                    if (elementoAtual.classList.contains("display-block")) {
+                        elementoAtual.classList.remove("display-block");
+                    }
+                    elementoAtual.classList.add("display-none");
+                } else {
+                    console.error(`Elemento com ID grafico${todosOsGraficos[i].idConjunto} não encontrado.`);
                 }
-                elementoAtual.classList.add("display-none")
 
-                // alterando estilo do botão
-                let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
-                if (btnAtual.classList.contains("btn-pink")) {
-                    btnAtual.classList.remove("btn-pink")
+                // Alterando estilo do botão
+                let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].idConjunto}`);
+                if (btnAtual) { // Verifica se o botão existe
+                    if (btnAtual.classList.contains("btn-pink")) {
+                        btnAtual.classList.remove("btn-pink");
+                    }
+                    btnAtual.classList.add("btn-white");
+                } else {
+                    console.error(`Botão com ID btnAquario${todosOsGraficos[i].idConjunto} não encontrado.`);
                 }
-                btnAtual.classList.add("btn-white")
             }
         }
 
-        // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${idAquario}`)
-        graficoExibir.classList.remove("display-none")
-        graficoExibir.classList.add("display-block")
+        // Exibindo - ou não - o gráfico
+        let graficoExibir = document.getElementById(`grafico${idConjunto}`);
+        if (graficoExibir) { // Verifica se o elemento existe
+            graficoExibir.classList.remove("display-none");
+            graficoExibir.classList.add("display-block");
+        } else {
+            console.error(`Elemento com ID grafico${idConjunto} não encontrado.`);
+        }
 
-        // alterando estilo do botão
-        let btnExibir = document.getElementById(`btnAquario${idAquario}`)
-        btnExibir.classList.remove("btn-white")
-        btnExibir.classList.add("btn-pink")
+        // Alterando estilo do botão
+        let btnExibir = document.getElementById(`btnAquario${idConjunto}`);
+        if (btnExibir) { // Verifica se o botão existe
+            btnExibir.classList.remove("btn-white");
+            btnExibir.classList.add("btn-pink");
+        } else {
+            console.error(`Botão com ID btnAquario${idConjunto} não encontrado.`);
+        }
     }
 
     // O gráfico é construído com três funções:
@@ -320,21 +242,21 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idAquario) {
+    function obterDadosGrafico(idConjunto) {
 
-        alterarTitulo(idAquario)
+        // alterarTitulo(idDepto)
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${idConjunto}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idAquario);
+                    plotarGrafico(resposta, idConjunto);
 
                 });
             } else {
@@ -349,7 +271,7 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idAquario) {
+    function plotarGrafico(resposta, idConjunto) {
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -382,9 +304,9 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
+            labels.push(registro.horarioCaptura);
+            dados.datasets[0].data.push(registro.umid);
+            dados.datasets[1].data.push(registro.temp);
         }
 
         console.log('----------------------------------------------')
@@ -403,11 +325,11 @@
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idAquario}`),
+            document.getElementById(`myChartCanvas${idConjunto}`),
             config
         );
 
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+        setTimeout(() => atualizarGrafico(idConjunto, dados, myChart), 2000);
     }
 
 
@@ -416,26 +338,26 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idAquario, dados, myChart) {
+    function atualizarGrafico(idConjunto, dados, myChart) {
 
-        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real/${idConjunto}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
-                    obterdados(idAquario);
-                    // alertar(novoRegistro, idAquario);
+                    // obterdados(idConjunto);
+                    // alertar(novoRegistro, idConjunto);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
                     console.log(dados);
 
-                    let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
-                    avisoCaptura.innerHTML = ""
+                    // let avisoCaptura = document.getElementById(`avisoCaptura${idConjunto}`)
+                    // avisoCaptura.innerHTML = ""
 
 
-                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
+                    if (novoRegistro[0].horarioCaptura == dados.labels[dados.labels.length - 1]) {
+                        // console.log("---------------------------------------------------------------")
                         console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                         console.log("Horário do novo dado capturado:")
                         console.log(novoRegistro[0].momento_grafico)
                         console.log("Horário do último dado capturado:")
@@ -444,24 +366,24 @@
                     } else {
                         // tirando e colocando valores no gráfico
                         dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                        dados.labels.push(novoRegistro[0].horarioCaptura); // incluir um novo momento
 
                         dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].umid); // incluir uma nova medida de umidade
 
                         // dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                        dados.datasets[1].data.push(novoRegistro[0].temp); // incluir uma nova medida de temperatura
 
                         myChart.update();
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idConjunto, dados, myChart), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idConjunto, dados, myChart), 2000);
             }
         })
             .catch(function (error) {
@@ -470,4 +392,3 @@
 
     }
 </script>
-
