@@ -40,7 +40,8 @@ button:active {
     width:34%;
     margin: 40px auto 40px auto;
     gap: 10px;
-
+    margin-left: 15%;
+    border-radius: 10px;
 }
 
 .conteiner input {
@@ -131,4 +132,25 @@ b {
 .Com_ecoyield{
     color: greenyellow;
     font-size: 24px;
+}
+.card_informativo{
+    display: flex;
+    font-size: 22px;
+    /* flex-direction:column; */
+    align-items: center;
+    background-color: #27528B;
+    /* padding: 20px 60px; */
+    color: #fff;
+    /* height: 40%; */
+    width: 40%;
+    height: 491px;
+    margin-top: 5%;
+    margin-left: 55%;
+    margin-bottom: -40.8%;
+
+    /* margin-top: 20%; */
+    /* margin: 10% auto 10% auto; */
+    justify-content: space-between;
+    border-radius: 10px;
+    
 }

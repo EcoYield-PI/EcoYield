@@ -9,7 +9,8 @@
 </head>
 <body>
     <a href="../../index.html" id="voltarSite"><button>Voltar ao Site</button></a>
-    <div class="conteiner" id="conteiner_id" style="display: block;">
+    <div class="card_informativo"  id="card_informativo" style="display: block;"><img src="../../assets/img/grafico de umidade alta (1).png" id="imgLouca" alt="Card_Estrsse térmico"></div>
+    <div class="conteiner" id="conteiner_id">
         <h1 class="titulo">Simulador <span style="color: #E6BA35;">Eco</span>Yield</h1>
 
         <!-- Média de faturamento do setor: 
@@ -87,6 +88,8 @@
         else{
         conteiner_id.style = "none"
         textoDiv.style = "block"
+        card_informativo.style.display = "none"
+        imgLouca.style.display = "none"
         for(let contUmid=25;contUmid<=umidade;contUmid+=5){
             if(contUmid == 25 && temperatura>=31){
             
