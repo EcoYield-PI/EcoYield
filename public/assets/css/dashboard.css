@@ -172,18 +172,6 @@ ul li.item-menu a .icon>i {
     cursor: pointer;
 }
 
-/* .listaAmbientes :nth-child(2) {
-    background-color: #fc7528;
-}
-.listaAmbientes :nth-child(4) {
-    background-color: #fc7528;
-}
-.listaAmbientes :nth-child(5) {
-    background-color: #fc7528;
-} */
-
-
-
 .containerTermometro {
     display: flex;
     align-items: center;
@@ -563,7 +551,7 @@ table th {
     padding-top: 10px;
 }
 
-#modalDepartamento {
+dialog {
     overflow: hidden;
     background-color: rgb(149, 181, 248);
 }
@@ -576,3 +564,13 @@ canvas {
     width: 80% !important;
     height: 80% !important;
   }
+
+#modalConjunto {
+    width: 200px;
+    height: 400px;
+    z-index: 1;
+}
+
+.chartGraph {
+    cursor: pointer;
+}

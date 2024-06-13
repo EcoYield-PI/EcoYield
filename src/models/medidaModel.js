@@ -5,7 +5,7 @@ function buscarUltimasMedidas(idConjunto, limite_linhas) {
     var instrucaoSql = `select
             lt.temperatura temp,
             lt.umidade umid,
-            date_format(lt.dtHora, '%H:%m') horarioCaptura
+            date_format(lt.dtHora, '%H:%i') horarioCaptura
             from leitura lt
             inner join conjuntosensor cs on lt.fkconjuntoSensor = cs.id
             where cs.id = ${idConjunto}
@@ -21,7 +21,7 @@ function buscarMedidasEmTempoReal(idConjunto) {
     var instrucaoSql = `select
             lt.temperatura temp,
             lt.umidade umid,
-            date_format(lt.dtHora, '%H:%m') horarioCaptura
+            date_format(lt.dtHora, '%H:%i') horarioCaptura
             from leitura lt
             inner join conjuntosensor cs on lt.fkconjuntoSensor = cs.id
             where cs.id = ${idConjunto} 
