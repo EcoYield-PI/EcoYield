@@ -19,6 +19,7 @@ function buscarUltimasMedidas(idConjunto, limite_linhas) {
 function buscarMedidasEmTempoReal(idConjunto) {
 
     var instrucaoSql = `select
+            cs.id conjunto,
             lt.temperatura temp,
             lt.umidade umid,
             date_format(lt.dtHora, '%H:%i') horarioCaptura

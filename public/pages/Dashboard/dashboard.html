@@ -60,7 +60,6 @@
                 <span style="color: red;">6<br></span>
             </div>
         </div>
-
         <div class="containerKPI">
             <div class="KPI">
                 <h3>Último alerta gerado:</h3>
@@ -75,23 +74,6 @@
                 <span style="color: red;">74%<br></span>
             </div>
         </div>
-
-        <dialog id="amb1" class="modalAMB">
-            <div class="contAmb">
-                <div class="ambNome">
-                    <h1> Ambiente 1</h1>
-                </div>
-
-                <div class="modalButAMB">
-                    <button onclick="cs11()">Conjunto-Sensor 1</button>
-                    <button onclick="cs21()">Conjunto-Sensor 2</button>
-                </div>
-
-                <div class="modalButFECHAR">
-                    <button onclick="fecharAMB()">Fechar</button>
-                </div>
-            </div>
-        </dialog>
 
         <dialog id="dialog" class="dialogUser" close>
             <div class="contModal">
@@ -117,7 +99,6 @@
             <div id="graficos">
                 <!-- graficos gerados no JS -->
             </div>
-            <button onclick="modalDepartamento.close()">FECHAR</button>
         </dialog>
 
 </body>
@@ -131,15 +112,20 @@
 
     let proximaAtualizacao;
 
+    let departamentos = JSON.parse(sessionStorage.DEPARTAMENTOS);
+
     window.onload = exibirDepartamentosDoUsuario();
+    document.getElementById('modalDepartamento').addEventListener('close', aoFecharModal);
+
 
     function exibirDepartamentosDoUsuario() {
-        var departamentos = JSON.parse(sessionStorage.DEPARTAMENTOS);
 
         let idsDeptoSet = new Set();
 
         departamentos.forEach(item => {
             // Verificamos se o departamento já está no Set
+
+            console.log(item)
             if (!idsDeptoSet.has(item.nome)) {
                 // Se não estiver, adicionamos ao Set
                 idsDeptoSet.add(item.nome);
@@ -162,23 +148,20 @@
             // Adicionamos os gráficos dos conjuntos de sensores ao departamento
             document.getElementById(`graficoDepto${item.nome}`).innerHTML += `
             <div class="graph">
-                <h3 onclick="mudarEstiloGrafico(${item.idConjunto})" id="grafConj${item.idConjunto}" class="chartGraph">Conjunto ${item.idConjunto}</h3>
-                <canvas id="myChartCanvas${item.idConjunto}" style="display: none;"></canvas>
+                    <div id="buttonContainer${item.idConjunto}" >
+                        <button onclick="mudarEstiloGrafico(${item.idConjunto})" id="grafConj${item.idConjunto}" class="chartGraph">Conjunto ${item.idConjunto}</button>
+                    </div>
+                <div id="containerGraph${item.idConjunto}" style="display: none;">
+                    <h3>Depto. ${item.nome} Conjunto Sensor ${item.idConjunto}</h3>
+                    <canvas id="myChartCanvas${item.idConjunto}"></canvas>
+                    <button onclick="modalDepartamento.close()">FECHAR</button>
+                </div>
             </div>
         `;
 
             obterDadosGrafico(item.idConjunto);
         });
 
-        const botaoDepto = document.getElementById(`btnAquario${item.nome}`);
-
-            departamentos.forEach(conjunto => {
-                if (conjunto.nome == botaoDepto.value)
-                    document.getElementById(`graficoDepto${item.nome}`).innerHTML += `
-                        <button onclick="exibirConjuntoSetor(${conjunto.id})">Conjunto Sensor ${conjunto.idConjunto}</button>
-                    `;
-                // <button onclick="exibirConjuntoSetor(${conjunto.id})">Conjunto Setor ${conjunto.id}</button>
-            });
 
         // Se houver departamentos, exiba o primeiro por padrão
         if (departamentos.length > 0) {
@@ -186,11 +169,30 @@
         }
     }
 
+    function aoFecharModal() {
+        departamentos.forEach(item => {
+            let containerGraph = document.getElementById(`containerGraph${item.idConjunto}`);
+            containerGraph.style.display = "none";
 
+            let buttonsConjuntos = document.getElementById(`buttonContainer${item.idConjunto}`);
+            buttonsConjuntos.style.display = "block";
+        })
+        }
+        
+        
     function mudarEstiloGrafico(idConjunto) {
-        let graphConj = document.getElementById(`myChartCanvas${idConjunto}`);
+        let containerGraph = document.getElementById(`containerGraph${idConjunto}`);
+        
+        
+        departamentos.forEach(item => {
+            let buttonsConjuntos = document.getElementById(`buttonContainer${item.idConjunto}`);
+            buttonsConjuntos.style.display = "none";
 
-        graphConj.style.display = "block";
+        })
+
+        containerGraph.style.display = "block";
+        
+        // graficos.style.display = "none";
     }
 
     function exibirDepartamento(nomeDepto) {
