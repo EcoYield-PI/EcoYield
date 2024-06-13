@@ -13,6 +13,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 // var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var departamentosRouter = require("./src/routes/departamentos");
+var kpisGeraisRouter = require("./src/routes/kpisGerais.js");
 // var empresasRouter = require("./src/routes/empresas");
 
 app.use(express.json());
@@ -26,6 +27,7 @@ app.use("/usuarios", usuarioRouter);
 // app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/departamentos", departamentosRouter);
+app.use("/kpisGerais", kpisGeraisRouter);
 // app.use("/empresas", empresasRouter);
 
 app.listen(PORTA_APP, function () {

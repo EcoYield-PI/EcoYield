@@ -47,13 +47,13 @@
         <div class="containerKPI">
             <div class="KPI">
                 <h3>Ambientes em alerta:<br></h3>
-                <span>3/5<br></span>
-                <span style="color: red;">60%</span>
+                <span><span id="qtdDeptoAlerta"></span>/<span id="qtdDepto"></span></span><br>
+                <span style="color: red;"><span id="porcentDeptoAlerta"></span>%</span>
             </div>
             <div class="KPI">
                 <h3>Conjunto Sensores em alerta:</h3>
-                <span>5/8<br></span>
-                <span style="color: red;">62.5%</span>
+                <span><span id="qtdConjSensorAlerta">Aguarde...</span><span id="qtdConjSensorTotal"></span></span><br>
+                <span style="color: red;"><span id="porcentConjAlerta"></span>%</span>
             </div>
             <div class="KPI">
                 <h3>Alertas nas últimas 2 horas:<br></h3>
@@ -66,11 +66,11 @@
                 <span style="color: red;">Ambiente 2</span>
             </div>
             <div class="KPI">
-                <h3>Temperatura mais alta:</h3>
+                <h3>Temperatura mais alta registrada:</h3>
                 <span style="color: red;">31°C<br></span>
             </div>
             <div class="KPI">
-                <h3>Umidade mais alta:</h3>
+                <h3>Temperatura mais baixa registrada:</h3>
                 <span style="color: red;">74%<br></span>
             </div>
         </div>
@@ -114,7 +114,12 @@
 
     let departamentos = JSON.parse(sessionStorage.DEPARTAMENTOS);
 
+    const idEmpresa = JSON.parse(sessionStorage.ID_EMPRESA);
+    console.log(idEmpresa);
+
+
     window.onload = exibirDepartamentosDoUsuario();
+
     document.getElementById('modalDepartamento').addEventListener('close', aoFecharModal);
 
 
@@ -177,13 +182,13 @@
             let buttonsConjuntos = document.getElementById(`buttonContainer${item.idConjunto}`);
             buttonsConjuntos.style.display = "block";
         })
-        }
-        
-        
+    }
+
+
     function mudarEstiloGrafico(idConjunto) {
         let containerGraph = document.getElementById(`containerGraph${idConjunto}`);
-        
-        
+
+
         departamentos.forEach(item => {
             let buttonsConjuntos = document.getElementById(`buttonContainer${item.idConjunto}`);
             buttonsConjuntos.style.display = "none";
@@ -191,7 +196,7 @@
         })
 
         containerGraph.style.display = "block";
-        
+
         // graficos.style.display = "none";
     }
 
@@ -217,17 +222,6 @@
         // Alterando estilo do botão
     }
 
-    // O gráfico é construído com três funções:
-    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
     function obterDadosGrafico(idConjunto) {
 
         // alterarTitulo(idDepto)
@@ -254,9 +248,129 @@
             });
     }
 
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function obterDadosKpiGeral(idEmpresa) {
+
+        // alterarTitulo(idDepto)
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/kpisGerais/deptoAlerta/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    inserirKpiQtdDeptoAlerta(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                console.log(idEmpresa)
+            }
+        })
+
+        fetch(`/kpisGerais/deptoTotal/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    inserirKpiQtdDeptoTotal(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+
+        fetch(`/kpisGerais/conjTotal/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    inserirKpiQtdConjTotal(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+
+        fetch(`/kpisGerais/conjAlerta/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    inserirKpiQtdConjAlerta(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    let deptoAlert = null;
+    let deptoTotal = null;
+
+
+    function inserirKpiQtdDeptoAlerta(resposta) {
+        const qtdDeptoEmAlerta = resposta[0].totalDeptoAlerta;
+        document.getElementById('qtdDeptoAlerta').innerHTML = qtdDeptoEmAlerta;
+        deptoAlert = qtdDeptoEmAlerta;
+        calcularPorcentagemDeptoSePronto();
+    }
+
+    function inserirKpiQtdDeptoTotal(resposta) {
+        const qtdDeptoTotalEmpresa = resposta[0].qtdTotalDepartamento;
+        document.getElementById('qtdDepto').innerHTML = qtdDeptoTotalEmpresa;
+        deptoTotal = qtdDeptoTotalEmpresa;
+        calcularPorcentagemDeptoSePronto();
+    }
+
+    function calcularPorcentagemDeptoSePronto() {
+        if (deptoAlert !== null && deptoTotal !== null) {
+            porcentagemDeptoAlerta(deptoAlert, deptoTotal);
+        }
+    }
+
+    function porcentagemDeptoAlerta(deptoAlert, deptoTotal) {
+        const porcent = (deptoAlert / deptoTotal) * 100;
+        document.getElementById('porcentDeptoAlerta').innerHTML = porcent.toFixed(1);
+    }
+
+    let conjAlert = null;
+    let conjTotal = null;
+
+    function inserirKpiQtdConjTotal(resposta) {
+        const qtdTotalConj = resposta[0].totalConj;
+        document.getElementById('qtdConjSensorTotal').innerHTML = qtdTotalConj;
+        conjTotal = qtdTotalConj;
+        calcularPorcentagemConjSePronto();
+
+    }
+
+    function inserirKpiQtdConjAlerta(resposta) {
+        const qtdTotalConjAlerta = resposta[0].totalConjAlerta;
+        document.getElementById('qtdConjSensorAlerta').innerHTML = `${qtdTotalConjAlerta}/`;
+        conjAlert = qtdTotalConjAlerta;
+        calcularPorcentagemConjSePronto();
+    }
+
+    function calcularPorcentagemConjSePronto() {
+        if (conjTotal !== null && conjAlert !== null) {
+            porcentagemConjAlerta(conjTotal, conjAlert);
+        }
+    }
+
+    function porcentagemConjAlerta(conjTotal, conjAlert) {
+        const porcent = (conjAlert / conjTotal) * 100;
+        document.getElementById('porcentConjAlerta').innerHTML = porcent.toFixed(1);
+    }
+
     function plotarGrafico(resposta, idConjunto) {
 
         console.log('iniciando plotagem do gráfico...');
@@ -325,6 +439,7 @@
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function atualizarGrafico(idConjunto, dados, myChart) {
+        obterDadosKpiGeral(idEmpresa)
 
         fetch(`/medidas/tempo-real/${idConjunto}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -359,6 +474,7 @@
 
                         dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
                         dados.datasets[1].data.push(novoRegistro[0].temp); // incluir uma nova medida de temperatura
+
 
                         myChart.update();
                     }
