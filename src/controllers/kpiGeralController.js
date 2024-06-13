@@ -68,9 +68,81 @@ function mostrarTotalConjSensoresAlerta(req, res) {
     });
 }
 
+function mostrarTotalAlertaUltimas2h(req, res) {
+
+    var idEmpresa = req.params.idEmpresa;
+
+    kpiGeralModel.mostrarTotalAlertaUltimas2h(idEmpresa).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function mostrarDeptoUltimoAlerta(req, res) {
+
+    var idEmpresa = req.params.idEmpresa;
+
+    kpiGeralModel.mostrarDeptoUltimoAlerta(idEmpresa).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function mostrarTempMaisAltaEDtHora(req, res) {
+
+    var idEmpresa = req.params.idEmpresa;
+
+    kpiGeralModel.mostrarTempMaisAltaEDtHora(idEmpresa).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function mostrarTempMenorEDtHora(req, res) {
+
+    var idEmpresa = req.params.idEmpresa;
+
+    kpiGeralModel.mostrarTempMenorEDtHora(idEmpresa).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     mostrarQtdDeptoEmAlerta,
     mostrarTotalDeptoEmpresa,
     mostrarTotalConjSensores,
-    mostrarTotalConjSensoresAlerta
+    mostrarTotalConjSensoresAlerta,
+    mostrarTotalAlertaUltimas2h,
+    mostrarDeptoUltimoAlerta,
+    mostrarTempMaisAltaEDtHora,
+    mostrarTempMenorEDtHora
 }

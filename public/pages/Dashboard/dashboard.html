@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li class="item-menu" id="link_usuario">
-                <a href="#">
+                <a onclick="dialog.showModal()">
                     <span class="icon"><i class="bi bi-person-square"></i></i></span>
                     <span class="txt-link">Usuario</span>
                 </a>
@@ -46,45 +46,51 @@
         </div>
         <div class="containerKPI">
             <div class="KPI">
-                <h3>Ambientes em alerta:<br></h3>
-                <span><span id="qtdDeptoAlerta"></span>/<span id="qtdDepto"></span></span><br>
-                <span style="color: red;"><span id="porcentDeptoAlerta"></span>%</span>
+                <h3>Departamentos em alerta:</h3><br>
+                <span><span id="qtdDeptoAlerta"></span><span id="qtdDepto">Aguarde...</span></span>
+                <span style="color: rgb(65, 65, 65); font-size: 16px;"><span id="porcentDeptoAlerta"></span></span>
             </div>
             <div class="KPI">
-                <h3>Conjunto Sensores em alerta:</h3>
-                <span><span id="qtdConjSensorAlerta">Aguarde...</span><span id="qtdConjSensorTotal"></span></span><br>
-                <span style="color: red;"><span id="porcentConjAlerta"></span>%</span>
+                <h3>Conjunto Sensores em alerta:</h3><br>
+                <span><span id="qtdConjSensorAlerta">Aguarde...</span><span id="qtdConjSensorTotal"></span></span>
+                <span style="color: rgba(65, 65, 65, 0.801); font-size: 16px;"><span
+                        id="porcentConjAlerta"></span></span>
             </div>
             <div class="KPI">
-                <h3>Alertas nas últimas 2 horas:<br></h3>
-                <span style="color: red;">6<br></span>
+                <h3>Alertas nas últimas 2 horas:</h3><br>
+                <span style="color: red;" id="alerta2h">Aguarde...</span><br>
             </div>
         </div>
         <div class="containerKPI">
             <div class="KPI">
-                <h3>Último alerta gerado:</h3>
-                <span style="color: red;">Ambiente 2</span>
+                <h3>Último alerta gerado:</h3><br>
+                <span style="color: red;" id="ultimoAlerta">Aguarde...</span>
+                <span style="color: rgb(65, 65, 65); font-size: 14px;" id="momentoUltimoAlerta"></span>
             </div>
             <div class="KPI">
-                <h3>Temperatura mais alta registrada:</h3>
-                <span style="color: red;">31°C<br></span>
+                <h3>Maior temperatura nas ultimas 2 horas:</h3><br>
+                <span style="color: red;" id="tempMaisAlta">Aguarde...</span>
+                <span style="color: rgb(65, 65, 65); font-size: 16px;" id="deptoOcorridoAlta"></span>
+                <span style="color: rgb(65, 65, 65); font-size: 14px;" id="momentoTempMaisAlta"></span>
             </div>
             <div class="KPI">
-                <h3>Temperatura mais baixa registrada:</h3>
-                <span style="color: red;">74%<br></span>
+                <h3>Menor temperatura nas ultimas 2 horas:</h3><br>
+                <span style="color: red;" id="tempMenor">Aguarde...</span>
+                <span style="color: rgb(65, 65, 65); font-size: 16px;" id="deptoOcorridoBaixa"></span>
+                <span style="color: rgb(65, 65, 65); font-size: 14px;" id="momentoTempBaixa"></span>
             </div>
         </div>
 
         <dialog id="dialog" class="dialogUser" close>
             <div class="contModal">
                 <div class="nomeModal">
-                    <h1>Nome-User</h1>
+                    <h1 id="nomeUsuario">Nome-User</h1>
                     <span class="icon"><i class="bi bi-person-circle"></i></span>
                 </div>
 
                 <div class="modalBut">
-                    <button>Desconectar</button>
-                    <button id="cancel">Fechar</button>
+                    <button id="voltarLogin">Desconectar</button>
+                    <button id="cancel" onclick="dialog.close()">Fechar</button>
                 </div>
             </div>
         </dialog>
@@ -108,15 +114,19 @@
 <!-- <script src="../../assets/js/dashboard.js"></script> -->
 
 <script>
-    // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
 
     let departamentos = JSON.parse(sessionStorage.DEPARTAMENTOS);
 
     const idEmpresa = JSON.parse(sessionStorage.ID_EMPRESA);
-    console.log(idEmpresa);
 
+    const btnSair = document.getElementById('voltarLogin');
+
+    btnSair.addEventListener('click', function () {
+        window.location = "../Login/login.html";
+    }, "2000")
 
     window.onload = exibirDepartamentosDoUsuario();
 
@@ -308,6 +318,59 @@
                 console.error('Nenhum dado encontrado ou erro na API');
             }
         })
+
+        fetch(`/kpisGerais/qtdAlerta2h/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    inserirKpiQtdAlerta2h(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+
+        fetch(`/kpisGerais/ultimoAlertaDepto/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    inserirKpiUltimoAlertaDepto(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+
+        fetch(`/kpisGerais/tempMaisAltaEDthora/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    inserirKpitempMaisAltaEDthora(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+
+        fetch(`/kpisGerais/tempMenorEDthora/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    inserirKpitempMenorEDthora(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
@@ -319,7 +382,7 @@
 
     function inserirKpiQtdDeptoAlerta(resposta) {
         const qtdDeptoEmAlerta = resposta[0].totalDeptoAlerta;
-        document.getElementById('qtdDeptoAlerta').innerHTML = qtdDeptoEmAlerta;
+        document.getElementById('qtdDeptoAlerta').innerHTML = `${qtdDeptoEmAlerta}/`;
         deptoAlert = qtdDeptoEmAlerta;
         calcularPorcentagemDeptoSePronto();
     }
@@ -339,7 +402,7 @@
 
     function porcentagemDeptoAlerta(deptoAlert, deptoTotal) {
         const porcent = (deptoAlert / deptoTotal) * 100;
-        document.getElementById('porcentDeptoAlerta').innerHTML = porcent.toFixed(1);
+        document.getElementById('porcentDeptoAlerta').innerHTML = `${porcent.toFixed(1)}%`;
     }
 
     let conjAlert = null;
@@ -368,7 +431,37 @@
 
     function porcentagemConjAlerta(conjTotal, conjAlert) {
         const porcent = (conjAlert / conjTotal) * 100;
-        document.getElementById('porcentConjAlerta').innerHTML = porcent.toFixed(1);
+        document.getElementById('porcentConjAlerta').innerHTML = `${porcent.toFixed(1)}%`;
+    }
+
+    function inserirKpiQtdAlerta2h(resposta) {
+        const qtdAlerta2h = resposta[0].qtdAlertas2h;
+        document.getElementById('alerta2h').innerHTML = qtdAlerta2h;
+    }
+
+    function inserirKpiUltimoAlertaDepto(resposta) {
+        const ultimoAlertaDepto = resposta[0].depto;
+        const ultimoAlertaMomento = resposta[0].momento;
+        document.getElementById('ultimoAlerta').innerHTML = `Depto. ${ultimoAlertaDepto}`;
+        document.getElementById('momentoUltimoAlerta').innerHTML = ultimoAlertaMomento;
+    }
+
+    function inserirKpitempMaisAltaEDthora(resposta) {
+        const tempMaisAlta = resposta[0].tempAlta;
+        const momento = resposta[0].momento;
+        const depto = resposta[0].depto;
+        document.getElementById('tempMaisAlta').innerHTML = `${tempMaisAlta}°C`;
+        document.getElementById('deptoOcorridoAlta').innerHTML = `Depto. ${depto}`;
+        document.getElementById('momentoTempMaisAlta').innerHTML = momento;
+    }
+
+    function inserirKpitempMenorEDthora(resposta) {
+        const tempMaisAlta = resposta[0].tempBaixa;
+        const momento = resposta[0].momento;
+        const depto = resposta[0].depto;
+        document.getElementById('tempMenor').innerHTML = `${tempMaisAlta}°C`;
+        document.getElementById('deptoOcorridoBaixa').innerHTML = `Depto. ${depto}`;
+        document.getElementById('momentoTempBaixa').innerHTML = momento;
     }
 
     function plotarGrafico(resposta, idConjunto) {
