@@ -79,7 +79,7 @@ const serial = async (
             // altere!
             // Este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO simuladorLeitura (temperatura, umidade, fkconjuntoSensor) VALUES (?, ?, ?)',
+                'INSERT INTO leitura (temperatura, umidade, fkconjuntoSensor) VALUES (?, ?, ?)',
                 [lm35Temperatura, dht11Umidade, fkConjuntoSensor]
                 /* os valores acima serão responsáveis para substituir cada "?" ordenadamente em relação ao "insert into" */
             );
