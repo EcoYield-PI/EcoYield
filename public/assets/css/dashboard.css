@@ -513,20 +513,6 @@ table th {
     width: 10%;
 }
 
-.KPIcs {
-    width: 100%;
-    height: 25%;
-    background-color: rgb(207, 207, 207);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    margin-left: 5px;
-    margin-bottom: 60px;
-}
-
 .display-none {
     display: none;
 }
@@ -551,9 +537,14 @@ table th {
     padding-top: 10px;
 }
 
+#titleConj {
+    text-align: center;
+}
+
 dialog {
     overflow: hidden;
-    background-color: rgb(149, 181, 248);
+    background-color: rgb(186, 207, 255);
+    padding: 20px;
 }
 
 #graficos:nth-child(1) {
@@ -561,8 +552,9 @@ dialog {
 }
 
 canvas {
-    width: 80% !important;
-    height: 80% !important;
+    width: 90% !important;
+    height: 90% !important;
+    margin: auto;
   }
 
 #modalConjunto {
@@ -571,6 +563,64 @@ canvas {
     z-index: 1;
 }
 
+.tituloGraficos {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
 .chartGraph {
     cursor: pointer;
+    background-color: #77b9e6;
+    color: #ffff;
+    border: 1px solid #000000;
+    border-radius: 25px;
+    padding: 20px 30px;
+    display: flex;
+    margin: 10px auto 0 auto;
 }
+
+#contKPIcs {
+    display: flex;
+}
+
+.KPIcs {
+    width: 100%;
+    height: 120px;
+    background-color: rgb(117, 159, 250);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin: 20px 0 0 20px;
+    padding: 5px;
+}
+
+#fecharModalGraf {
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 30px;
+    color: rgb(63, 114, 224);
+    font-weight: bold;
+
+}
+
+.aviso_piscando {
+    animation: piscar 1s infinite;
+    background-color: rgb(255, 187, 0);
+}
+
+@keyframes piscar {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

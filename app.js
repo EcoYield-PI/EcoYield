@@ -8,13 +8,12 @@ var HOST_APP = process.env.APP_HOST;
 
 var app = express();
 
-// var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-// var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var departamentosRouter = require("./src/routes/departamentos");
+var kpisGraficosRouter = require("./src/routes/kpisGraficos.js");
 var kpisGeraisRouter = require("./src/routes/kpisGerais.js");
-// var empresasRouter = require("./src/routes/empresas");
+var alertasRouter = require("./src/routes/alertas.js");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -22,13 +21,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 
-// app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
-// app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/departamentos", departamentosRouter);
 app.use("/kpisGerais", kpisGeraisRouter);
-// app.use("/empresas", empresasRouter);
+app.use("/kpisGraficos", kpisGraficosRouter);
+app.use("/alertas", alertasRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

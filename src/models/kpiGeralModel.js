@@ -48,7 +48,7 @@ function mostrarTotalConjSensoresAlerta(idEmpresa) {
         INNER JOIN empresa emp ON cs.fkempresa = emp.id
         INNER JOIN leitura lt ON lt.fkconjuntoSensor = cs.id
         WHERE cs.fkempresa = ${idEmpresa}
-        AND (lt.temperatura < 18 OR lt.temperatura > 25)
+        and ((lt.temperatura > 25.00 or lt.temperatura < 18.00) or (lt.umidade < 45.00 or lt.umidade > 55.00))
         AND lt.dtHora = (
             SELECT MAX(dtHora)
             FROM leitura sub_lt
@@ -68,7 +68,8 @@ function mostrarTotalAlertaUltimas2h(idEmpresa) {
         inner join empresa emp on cs.fkempresa = emp.id
         WHERE emp.id = ${idEmpresa}
         and lt.dtHora >= DATE_SUB(NOW(), INTERVAL 2 HOUR) 
-        and (lt.temperatura > 25.00 or lt.temperatura < 18.00);`;
+        and ((lt.temperatura > 25.00 or lt.temperatura < 18.00) or (lt.umidade < 45.00 or lt.umidade > 55.00))
+        ;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -84,7 +85,7 @@ function mostrarDeptoUltimoAlerta(idEmpresa) {
         inner join empresa emp on cs.fkempresa = emp.id
         inner join leitura lt on lt.fkconjuntoSensor = cs.id
         where emp.id = ${idEmpresa}
-        and (lt.temperatura < 18 or lt.temperatura > 25)
+        and ((lt.temperatura > 25.00 or lt.temperatura < 18.00) or (lt.umidade < 45.00 or lt.umidade > 55.00))
         order by lt.id desc
         limit 1;`;
 
@@ -92,40 +93,40 @@ function mostrarDeptoUltimoAlerta(idEmpresa) {
     return database.executar(instrucaoSql);
 }
 
-function mostrarTempMaisAltaEDtHora(idEmpresa) {
+function mostrarTempIrregular2h(idEmpresa) {
 
     var instrucaoSql = `select
         depto.nome depto,
         date_format(lt.dtHora, '%H:%i') momento,
         lt.dtHora,
-        max(round(lt.temperatura, 1)) tempAlta
+        round(lt.temperatura, 1) temp
         from leitura lt
         inner join conjuntosensor cs on lt.fkconjuntoSensor = cs.id
         inner join empresa emp on cs.fkempresa = emp.id
         inner join departamento depto on cs.fkdepartamento = depto.id
         where emp.id = ${idEmpresa} and lt.dtHora >= DATE_SUB(NOW(), INTERVAL 2 HOUR)
-        group by depto, dtHora
-        order by tempAlta desc
+        and (lt.temperatura > 25.00 or lt.temperatura < 18.00)
+        order by lt.id desc
         limit 1;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function mostrarTempMenorEDtHora(idEmpresa) {
+function mostrarUmidIrregular2h(idEmpresa) {
 
     var instrucaoSql = `select
         depto.nome depto,
         date_format(lt.dtHora, '%H:%i') momento,
         lt.dtHora,
-        min(round(lt.temperatura, 1)) tempBaixa
+        round(lt.umidade, 1) umid
         from leitura lt
         inner join conjuntosensor cs on lt.fkconjuntoSensor = cs.id
         inner join empresa emp on cs.fkempresa = emp.id
         inner join departamento depto on cs.fkdepartamento = depto.id
         where emp.id = ${idEmpresa} and lt.dtHora >= DATE_SUB(NOW(), INTERVAL 2 HOUR)
-        group by depto, dtHora
-        order by tempBaixa
+        and (lt.umidade < 45.00 or lt.umidade > 55.00)
+        order by lt.id desc
         limit 1;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -139,6 +140,6 @@ module.exports = {
     mostrarTotalConjSensoresAlerta,
     mostrarTotalAlertaUltimas2h,
     mostrarDeptoUltimoAlerta,
-    mostrarTempMaisAltaEDtHora,
-    mostrarTempMenorEDtHora
+    mostrarTempIrregular2h,
+    mostrarUmidIrregular2h
 }

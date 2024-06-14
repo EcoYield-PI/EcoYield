@@ -5,7 +5,8 @@ function buscarDepartamentosPorEmpresa(empresaId) {
   var instrucaoSql = `select 
     dep.id id,
     dep.nome nome,
-    cjs.id idConjunto
+    cjs.id idConjunto,
+    cjs.numeroSensor numeroConjunto
     from departamento dep
     inner join conjuntoSensor cjs on cjs.fkdepartamento = dep.id
     inner join empresa emp on cjs.fkempresa = emp.id

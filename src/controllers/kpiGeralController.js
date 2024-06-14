@@ -102,11 +102,11 @@ function mostrarDeptoUltimoAlerta(req, res) {
     });
 }
 
-function mostrarTempMaisAltaEDtHora(req, res) {
+function mostrarTempIrregular2h(req, res) {
 
     var idEmpresa = req.params.idEmpresa;
 
-    kpiGeralModel.mostrarTempMaisAltaEDtHora(idEmpresa).then(function (resultado) {
+    kpiGeralModel.mostrarTempIrregular2h(idEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -119,11 +119,11 @@ function mostrarTempMaisAltaEDtHora(req, res) {
     });
 }
 
-function mostrarTempMenorEDtHora(req, res) {
+function mostrarUmidIrregular2h(req, res) {
 
     var idEmpresa = req.params.idEmpresa;
 
-    kpiGeralModel.mostrarTempMenorEDtHora(idEmpresa).then(function (resultado) {
+    kpiGeralModel.mostrarUmidIrregular2h(idEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -143,6 +143,6 @@ module.exports = {
     mostrarTotalConjSensoresAlerta,
     mostrarTotalAlertaUltimas2h,
     mostrarDeptoUltimoAlerta,
-    mostrarTempMaisAltaEDtHora,
-    mostrarTempMenorEDtHora
+    mostrarTempIrregular2h,
+    mostrarUmidIrregular2h
 }

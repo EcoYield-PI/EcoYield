@@ -27,12 +27,12 @@ router.get("/ultimoAlertaDepto/:idEmpresa", function (req, res) {
     kpiGeralController.mostrarDeptoUltimoAlerta(req, res);
 });
 
-router.get("/tempMaisAltaEDthora/:idEmpresa", function (req, res) {
-    kpiGeralController.mostrarTempMaisAltaEDtHora(req, res);
+router.get("/tempIrregular2h/:idEmpresa", function (req, res) {
+    kpiGeralController.mostrarTempIrregular2h(req, res);
 });
 
-router.get("/tempMenorEDthora/:idEmpresa", function (req, res) {
-    kpiGeralController.mostrarTempMenorEDtHora(req, res);
+router.get("/umidIrregular2h/:idEmpresa", function (req, res) {
+    kpiGeralController.mostrarUmidIrregular2h(req, res);
 });
 
 
