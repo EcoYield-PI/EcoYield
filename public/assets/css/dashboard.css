@@ -47,6 +47,14 @@ ul {
     list-style-type: none;
 }
 
+.item-menu {
+    cursor: pointer;
+}
+
+.modalBut {
+    cursor: pointer;
+}
+
 ul li.item-menu {
     transition: 1s;
 }
@@ -98,7 +106,7 @@ ul li.item-menu a .icon>i {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 }
 
@@ -111,22 +119,22 @@ ul li.item-menu a .icon>i {
     display: block
 }
 
-.containerKPI {
+.containerKPI{
     width: 220px;
     height: 85%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
-    margin-left: 10px;
+    margin-left: 40px;
 }
 
 .KPI {
     width: 100%;
     height: 25%;
-    background-color: #e0e0ff;
+    background-color: #f8faff;
     border-radius: 20px;
-    margin: 2px;
+    /* margin: 2px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -140,19 +148,28 @@ ul li.item-menu a .icon>i {
 
 .containerLista {
     width: 400px;
-    height: 85%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-right: 30px;
+    /* margin-right: 30px; */
+}
+
+#tituloDepto {
+    position:absolute;
+    font-size: 35px;
+    padding: 10px;
+    top: 20px;
+    background-color: rgb(139, 139, 196);
+    border-radius: 20px;
 }
 
 .listaAmbientes {
-    margin: 20px;
+    margin: 20px 0 0 30px;
     width: 80%;
-    height: 100%;
-    background-color: #e0e0ff;
+    height: 90%;
+    background-color: #cecefd;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -170,211 +187,6 @@ ul li.item-menu a .icon>i {
     border-radius: 10px;
     background-color: #77b9e6;
     cursor: pointer;
-}
-
-.containerTermometro {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 7%;
-    height: 80%;
-    margin-left: 60px;
-}
-
-.containerTermometro span {
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.Termometro {
-    display: flex;
-    flex-direction: column;
-    border: 6px solid rgb(0, 0, 0);
-    border-radius: 62px;
-    width: 65%;
-    height: 100%;
-}
-
-.T1 {
-    width: 100%;
-    height: 20%;
-    background-color: rgb(255, 3, 3);
-    border-radius: 56px 56px 0 0;
-    border-bottom: 2px solid black;
-    color: white;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-
-.T2 {
-    width: 100%;
-    height: 10%;
-    background-color: rgb(255, 3, 3);
-    border-bottom: 4px solid black;
-    color: white;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.T3 {
-    width: 100%;
-    height: 30%;
-    background-color: green;
-    border-bottom: 4px solid black;
-    flex-direction: column;
-    justify-content: space-evenly;
-    text-align: center;
-    color: white;
-}
-
-.T4 {
-    width: 100%;
-    height: 20%;
-    background-color: rgb(0, 174, 255);
-    border-bottom: 2px solid black;
-    color: white;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.T5 {
-    width: 100%;
-    height: 20%;
-    background-color: rgb(0, 174, 255);
-    border-radius: 0 0 56px 56px;
-    color: white;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.G1 {
-    border-bottom: 1px solid black;
-    height: 14%;
-    text-align: center;
-    color: white;
-}
-
-.G2 {
-    border-bottom: 1px solid black;
-    height: 14%;
-    text-align: center;
-    color: white;
-}
-
-.G3 {
-    border-bottom: 1px solid black;
-    height: 14%;
-    text-align: center;
-    color: white;
-}
-
-.G4 {
-    border-bottom: 1px solid black;
-    height: 14%;
-    text-align: center;
-    color: white;
-}
-
-.G5 {
-    border-bottom: 1px solid black;
-    height: 14%;
-    text-align: center;
-    color: white;
-}
-
-.G6 {
-    border-bottom: 1px solid black;
-    height: 14%;
-    text-align: center;
-    color: white;
-}
-
-.conteudo {
-    width: 80%;
-    padding: 20px;
-}
-
-.containerTUDO {
-    margin-left: 200px;
-}
-
-.espaco {
-    width: 200px;
-    height: 10px;
-}
-
-.historico-opcoes {
-    margin-bottom: 20px;
-}
-
-.historico-opcoes h2 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #6685AF;
-}
-
-.historico-opcoes ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-}
-
-.historico-opcoes ul li {
-    margin-bottom: 10px;
-}
-
-.historico-opcoes ul li a {
-    text-decoration: none;
-    color: #6685AF;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-.historico-opcoes ul li a:hover {
-    color: #444;
-}
-
-.historico {
-    display: none;
-    background-color: #FFF;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.historico h2 {
-    color: #6685AF;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 10px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table th,
-table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-    color: #666;
 }
 
 .dialogUser {
@@ -623,4 +435,16 @@ canvas {
     100% {
       opacity: 1;
     }
+  }
+
+  #containerLegendas {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+  }
+
+  .legenda {
+    width: 130px;
+    height: 290px;
+    margin-bottom: 20px;
   }

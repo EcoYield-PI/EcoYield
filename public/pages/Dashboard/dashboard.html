@@ -24,12 +24,6 @@
                     <span class="txt-link">Home</span>
                 </a>
             </li>
-            <li class="item-menu">
-                <a href="historico.html">
-                    <span class="icon"><i class="bi bi-archive"></i></span>
-                    <span class="txt-link">Histórico</span>
-                </a>
-            </li>
             <li class="item-menu" id="link_usuario">
                 <a onclick="dialog.showModal()">
                     <span class="icon"><i class="bi bi-person-square"></i></i></span>
@@ -39,34 +33,12 @@
         </ul>
     </nav>
 
-    <div class="containerGeral">
-        <div class="empurradora">
 
-        </div>
+    
+    <div class="containerGeral">
+
         <div class="containerKPI">
-            <div class="KPI">
-                <h3>Departamentos em alerta:</h3><br>
-                <span><span id="qtdDeptoAlerta"></span><span id="qtdDepto">Aguarde...</span></span>
-                <span style="color: rgb(65, 65, 65); font-size: 16px;"><span id="porcentDeptoAlerta"></span></span>
-            </div>
-            <div class="KPI">
-                <h3>Conjunto Sensores em alerta:</h3><br>
-                <span id="kpiConjSensor"><span id="qtdConjSensorAlerta">Aguarde...</span><span
-                        id="qtdConjSensorTotal"></span></span>
-                <span style="color: rgba(65, 65, 65, 0.801); font-size: 16px;"><span
-                        id="porcentConjAlerta"></span></span>
-            </div>
-            <div class="KPI">
-                <h3>Alertas nas últimas 2 horas:</h3><br>
-                <span id="alerta2h">Aguarde...</span><br>
-            </div>
-        </div>
-        <div class="containerKPI">
-            <div class="KPI">
-                <h3>Último alerta gerado:</h3><br>
-                <span id="ultimoAlerta">Aguarde...</span>
-                <span style="color: rgb(65, 65, 65); font-size: 14px;" id="momentoUltimoAlerta"></span>
-            </div>
+            
             <div class="KPI">
                 <h3>Temperatura irregular nas ultimas 2 horas:</h3><br>
                 <span id="tempIrregular">Aguarde...</span>
@@ -79,7 +51,27 @@
                 <span style="color: rgb(65, 65, 65); font-size: 16px;" id="deptoOcorridoUmidIrregular"></span>
                 <span style="color: rgb(65, 65, 65); font-size: 14px;" id="momentoUmidIrregular"></span>
             </div>
+            <div class="KPI">
+                <h3>Alertas nas últimas 2 horas:</h3><br>
+                <span id="alerta2h">Aguarde...</span><br>
+            </div>
         </div>
+
+        <div class="containerKPI">
+            <div class="KPI">
+                <h3>Conjunto Sensores em alerta:</h3><br>
+                <span id="kpiConjSensor"><span id="qtdConjSensorAlerta">Aguarde...</span><span
+                        id="qtdConjSensorTotal"></span></span>
+                <span style="color: rgba(65, 65, 65, 0.801); font-size: 16px;"><span
+                        id="porcentConjAlerta"></span></span>
+            </div>
+            <div class="KPI">
+                <h3>Último alerta gerado:</h3><br>
+                <span id="ultimoAlerta">Aguarde...</span>
+                <span style="color: rgb(65, 65, 65); font-size: 14px;" id="momentoUltimoAlerta"></span>
+            </div>
+        </div>
+        
 
         <dialog id="dialog" class="dialogUser" close>
             <div class="contModal">
@@ -97,6 +89,7 @@
 
         <div class="containerLista">
             <div id="btnDepartamento" class="listaAmbientes">
+                <h2 id="tituloDepto">Departamentos</h2>
                 <!-- <button onclick="but1()">AMB1</button> -->
             </div>
         </div>
@@ -106,6 +99,11 @@
                 <!-- graficos gerados no JS -->
             </div>
         </dialog>
+
+        <div id="containerLegendas">
+            <img src="../../assets/img/termometroLegenda.png" alt="" class="legenda">
+            <img src="../../assets/img/termometroLegenda.png" alt="" class="legenda">
+        </div>
 
 </body>
 
@@ -283,33 +281,6 @@
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/kpisGerais/deptoAlerta/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-                    inserirKpiQtdDeptoAlerta(resposta);
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                console.log(idEmpresa)
-            }
-        })
-
-        fetch(`/kpisGerais/deptoTotal/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-                    inserirKpiQtdDeptoTotal(resposta);
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-
         fetch(`/kpisGerais/conjTotal/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
@@ -395,21 +366,6 @@
 
     let deptoAlert = null;
     let deptoTotal = null;
-
-
-    function inserirKpiQtdDeptoAlerta(resposta) {
-        const qtdDeptoEmAlerta = resposta[0].totalDeptoAlerta;
-        document.getElementById('qtdDeptoAlerta').innerHTML = `${qtdDeptoEmAlerta}/`;
-        deptoAlert = qtdDeptoEmAlerta;
-        calcularPorcentagemDeptoSePronto();
-    }
-
-    function inserirKpiQtdDeptoTotal(resposta) {
-        const qtdDeptoTotalEmpresa = resposta[0].qtdTotalDepartamento;
-        document.getElementById('qtdDepto').innerHTML = qtdDeptoTotalEmpresa;
-        deptoTotal = qtdDeptoTotalEmpresa;
-        calcularPorcentagemDeptoSePronto();
-    }
 
     function calcularPorcentagemDeptoSePronto() {
         if (deptoAlert !== null && deptoTotal !== null) {

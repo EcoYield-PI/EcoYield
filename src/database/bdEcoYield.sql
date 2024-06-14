@@ -39,6 +39,7 @@ create table conjuntoSensor(
     fkempresa int not null,
     fksensorTemperatura int not null,
     fksensorUmidade int not null,
+	numeroConjunto int,
     fkdepartamento int not null,
     
     constraint conjuntoSensor_sensorTemperatura_fk foreign key (fksensorTemperatura) references sensor(id),

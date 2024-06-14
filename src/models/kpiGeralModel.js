@@ -1,34 +1,5 @@
 var database = require("../database/config");
 
-function mostrarQtdDeptoEmAlerta(idEmpresa) {
-
-    var instrucaoSql = `select 
-        count(distinct cs.fkDepartamento) totalDeptoAlerta
-        from conjuntoSensor cs
-        inner join empresa emp on cs.fkempresa = emp.id
-        inner join leitura lt on lt.fkconjuntoSensor = cs.id
-        where emp.id = ${idEmpresa} and (temperatura < 18 or temperatura > 25)
-        AND dtHora = (
-            SELECT MAX(dtHora)
-            FROM leitura 
-            WHERE leitura.id = lt.id
-        ); `;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
-function mostrarTotalDeptoEmpresa(idEmpresa) {
-
-    var instrucaoSql = `select 
-        count(distinct fkdepartamento) qtdTotalDepartamento 
-        from conjuntoSensor 
-        where fkempresa = ${idEmpresa}; `;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
 function mostrarTotalConjSensores(idEmpresa) {
 
     var instrucaoSql = `select 
@@ -134,8 +105,6 @@ function mostrarUmidIrregular2h(idEmpresa) {
 }
 
 module.exports = {
-    mostrarQtdDeptoEmAlerta,
-    mostrarTotalDeptoEmpresa,
     mostrarTotalConjSensores,
     mostrarTotalConjSensoresAlerta,
     mostrarTotalAlertaUltimas2h,
