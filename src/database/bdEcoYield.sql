@@ -54,7 +54,7 @@ create table leitura(
 id int primary key auto_increment,
 temperatura decimal(4,2) not null,
 umidade decimal(4,2) not null,
-dtHora datetime not null,
+dtHora NOT NULL DEFAULT CURRENT_TIMESTAMP(),
 fkconjuntoSensor int,
 constraint leitura_conjunto_fk foreign key (fkconjuntoSensor) references conjuntoSensor(id),
 );
@@ -95,14 +95,13 @@ values ('DHT11'),
 	('DHT11'),
 	('LM35');
 
-insert into conjuntoSensor(fkempresa, fksensorTemperatura, fksensorUmidade, fkdepartamento, numeroConjunto)
-values
-(1, 2, 1, 5, 1),
-(1, 4, 3, 5, 2),
-(1, 6, 5, 2, 1),
-(1, 8, 7, 2, 2),
-(1, 10, 9, 3, 1),
-(1, 10, 9, 4, 1);
+create table simuladorLeitura(
+id int primary key auto_increment,
+temperatura decimal(4,2),
+umidade decimal(4,2),
+dtHora timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+fkconjuntoSensor int
+);
 
 select * from empresa;
 select * from funcionario;
