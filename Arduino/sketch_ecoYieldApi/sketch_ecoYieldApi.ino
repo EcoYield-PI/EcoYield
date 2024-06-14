@@ -36,17 +36,27 @@ temperatura = temperatura * 100; //converte milivolts para celsius - cada 10mV =
     Serial.print (";");
     Serial.print(umidade);
     Serial.print (";");
-    Serial.println(fkConjuntoSensor);
+    Serial.println(fkConjuntoSensor + 6);
     Serial.print(temperatura - 3);
     Serial.print (";");
     Serial.print(umidade + 2);
     Serial.print (";");
-    Serial.println(fkConjuntoSensor + 1);
+    Serial.println(fkConjuntoSensor + 7);
     Serial.print(temperatura + 3);
     Serial.print (";");
     Serial.print(umidade - 5);
     Serial.print (";");
-    Serial.println(fkConjuntoSensor + 2);
+    Serial.println(fkConjuntoSensor + 8);
+    Serial.print(temperatura + 3);
+    Serial.print (";");
+    Serial.print(umidade - 5);
+    Serial.print (";");
+    Serial.println(fkConjuntoSensor + 9);
+    Serial.print(temperatura + 3);
+    Serial.print (";");
+    Serial.print(umidade - 5);
+    Serial.print (";");
+    Serial.println(fkConjuntoSensor + 10);
   }
 
   delay(5000);
