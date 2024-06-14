@@ -35,9 +35,9 @@ button:active {
     flex-direction: column;
     align-items: center;
     background-color: #27528B;
-    padding: 20px 60px;
+    padding: 0px 60px;
     color: #fff;
-    width:34%;
+    width:33%;
     margin: 40px auto 40px auto;
     gap: 10px;
     margin-left: 15%;
@@ -95,6 +95,7 @@ button:active {
     margin: 0 auto;
     gap: 10px;
     text-align: center;
+    
 }
 b {
     font-size: 28px;
@@ -137,20 +138,27 @@ b {
     display: flex;
     font-size: 22px;
     /* flex-direction:column; */
-    align-items: center;
+    align-items:end;
     background-color: #27528B;
     /* padding: 20px 60px; */
     color: #fff;
     /* height: 40%; */
-    width: 40%;
-    height: 491px;
+    width: 41%;
+    height: 655px;
     margin-top: 5%;
-    margin-left: 55%;
-    margin-bottom: -40.8%;
-
-    /* margin-top: 20%; */
-    /* margin: 10% auto 10% auto; */
+    margin-left: 57%;
+    margin-bottom: -54%;
     justify-content: space-between;
-    border-radius: 10px;
-    
+    border-radius: 10px;   
+}
+.span_card{
+    display: flex;
+    font-size: 22px;
+    align-items:center;
+    color: #fff;
+    border-radius: 5%;
+    background-color:#E6BA35;
+    margin-right: 20%;
+    margin-left: 6%;
+    text-align: center;
 }
